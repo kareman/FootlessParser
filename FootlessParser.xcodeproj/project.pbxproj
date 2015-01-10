@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BAC6B2251A61D92B005643D9 /* FootlessParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC6B2241A61D92B005643D9 /* FootlessParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BAC6B22B1A61D92B005643D9 /* FootlessParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */; };
 		BAC6B2321A61D92B005643D9 /* FootlessParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6B2311A61D92B005643D9 /* FootlessParserTests.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FootlessParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC6B2231A61D92B005643D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAC6B2241A61D92B005643D9 /* FootlessParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootlessParser.h; sourceTree = "<group>"; };
 		BAC6B22A1A61D92B005643D9 /* FootlessParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootlessParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC6B2301A61D92B005643D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAC6B2311A61D92B005643D9 /* FootlessParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootlessParserTests.swift; sourceTree = "<group>"; };
@@ -53,8 +51,8 @@
 		BAC6B2151A61D92B005643D9 = {
 			isa = PBXGroup;
 			children = (
-				BAC6B2211A61D92B005643D9 /* FootlessParser */,
-				BAC6B22E1A61D92B005643D9 /* FootlessParserTests */,
+				BAC6B2211A61D92B005643D9 /* source */,
+				BAC6B23B1A61DF08005643D9 /* tests */,
 				BAC6B2201A61D92B005643D9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,13 +66,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BAC6B2211A61D92B005643D9 /* FootlessParser */ = {
+		BAC6B2211A61D92B005643D9 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				BAC6B2241A61D92B005643D9 /* FootlessParser.h */,
 				BAC6B2221A61D92B005643D9 /* Supporting Files */,
 			);
-			path = FootlessParser;
+			path = source;
 			sourceTree = "<group>";
 		};
 		BAC6B2221A61D92B005643D9 /* Supporting Files */ = {
@@ -102,6 +99,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BAC6B23B1A61DF08005643D9 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				BAC6B22E1A61D92B005643D9 /* FootlessParserTests */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -109,7 +114,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAC6B2251A61D92B005643D9 /* FootlessParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +325,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = FootlessParser/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -338,7 +342,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = FootlessParser/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -358,7 +362,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FootlessParserTests/Info.plist;
+				INFOPLIST_FILE = tests/FootlessParserTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -372,7 +376,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FootlessParserTests/Info.plist;
+				INFOPLIST_FILE = tests/FootlessParserTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -397,6 +401,7 @@
 				BAC6B2371A61D92B005643D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BAC6B2381A61D92B005643D9 /* Build configuration list for PBXNativeTarget "FootlessParserTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +410,7 @@
 				BAC6B23A1A61D92B005643D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
