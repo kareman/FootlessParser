@@ -15,6 +15,7 @@
 		BAC6CE5E1AC5B621002246E5 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; };
 		BAC6CE601AC5B669002246E5 /* LlamaKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAC6CE591AC5B51D002246E5 /* LlamaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BAC6CE611AC5B669002246E5 /* Runes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BAC6CE671AC5BBB3002246E5 /* Runes+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE661AC5BBB3002246E5 /* Runes+Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		BAC6B2311A61D92B005643D9 /* FootlessParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootlessParserTests.swift; sourceTree = "<group>"; };
 		BAC6CE591AC5B51D002246E5 /* LlamaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LlamaKit.framework; path = Carthage/Build/Mac/LlamaKit.framework; sourceTree = "<group>"; };
 		BAC6CE5A1AC5B51D002246E5 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/Mac/Runes.framework; sourceTree = "<group>"; };
+		BAC6CE661AC5BBB3002246E5 /* Runes+Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runes+Result.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		BAC6B2211A61D92B005643D9 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				BAC6CE651AC5BBB3002246E5 /* General */,
 				BAC6B2221A61D92B005643D9 /* Supporting Files */,
 			);
 			path = source;
@@ -149,6 +152,14 @@
 				BAC6CE5A1AC5B51D002246E5 /* Runes.framework */,
 			);
 			name = Mac;
+			sourceTree = "<group>";
+		};
+		BAC6CE651AC5BBB3002246E5 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				BAC6CE661AC5BBB3002246E5 /* Runes+Result.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC6CE671AC5BBB3002246E5 /* Runes+Result.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
