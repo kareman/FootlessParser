@@ -1,5 +1,5 @@
 //
-// ParserInputTests.swift
+// ParserInput_Tests.swift
 // FootlessParserTests
 //
 // Released under the MIT License (MIT), http://opensource.org/licenses/MIT
@@ -10,7 +10,7 @@
 import FootlessParser
 import XCTest
 
-class ParserInputTests: XCTestCase {
+class ParserInput_Tests: XCTestCase {
 
 	func testFromString () {
 		let sut = ParserInput("abc")
