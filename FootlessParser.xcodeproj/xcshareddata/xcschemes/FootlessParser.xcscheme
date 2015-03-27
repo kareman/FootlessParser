@@ -51,6 +51,11 @@
                BlueprintName = "FootlessParserTests"
                ReferencedContainer = "container:FootlessParser.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "FootlessParserTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
