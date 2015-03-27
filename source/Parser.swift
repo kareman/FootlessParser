@@ -8,6 +8,7 @@
 //
 
 import LlamaKit
+import Runes
 
 // TODO: Implement ParserError
 public typealias ParserError = String
@@ -19,14 +20,12 @@ public struct Parser <Token, Output> {
 /** Match a single token. */
 public func token <T: Equatable> (token: T) -> Parser<T, T> {
 	return Parser { input in
-		if let next = input.next() {
+		return input.read(expect: toString(token)) >>- { next in
 			if next.head == token {
 				return success(output:token, nextinput:next.tail)
 			} else {
-				return failure("expected \(token), got \(next.head).")
+				return failure("expected '\(token)', got '\(next.head)'.")
 			}
-		} else {
-			return failure("expected \(token), got EOF.")
 		}
 	}
 }
