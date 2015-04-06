@@ -15,17 +15,21 @@ public struct ParserInput <Token> {
 	/** Return the next token and the rest of the input. */
 	public let next: () -> (head: Token, tail: ParserInput<Token>)?
 
-	init <C: CollectionType, I: ForwardIndexType where C.Generator.Element == Token, C.Index == I> (_ source: C, position: I) {
+	/** The number of tokens that have been read so far. */
+	public let position: () -> Int
+
+	init <C: CollectionType, I: ForwardIndexType where C.Generator.Element == Token, C.Index == I> (_ source: C, index: I) {
 		next = {
-			return position == source.endIndex
+			return index == source.endIndex
 				? nil
-				: ( source[position], ParserInput(source, position: position.successor()) )
+				: ( source[index], ParserInput(source, index: index.successor()) )
 		}
+		position = { distance(source.startIndex, index) as! Int }
 	}
 
 	/** Use a collection as input to a parser. */
 	public init <C: CollectionType where C.Generator.Element == Token> (_ source: C) {
-		self.init(source, position: source.startIndex)
+		self.init(source, index: source.startIndex)
 	}
 }
 

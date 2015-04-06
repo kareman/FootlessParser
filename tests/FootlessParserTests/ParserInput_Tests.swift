@@ -35,4 +35,15 @@ class ParserInput_Tests: XCTestCase {
 		XCTAssertEqual(head, 3)
 		XCTAssert(tail.next() == nil, "Input should be empty")
 	}
+
+	func testPosition () {
+		var sut = ParserInput("abcde")
+
+		XCTAssertEqual(sut.position(), 0)
+		(_, sut) = sut.next()!
+		XCTAssertEqual(sut.position(), 1)
+		(_, sut) = sut.next()!
+		(_, sut) = sut.next()!
+		XCTAssertEqual(sut.position(), 3)
+	}
 }
