@@ -46,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BABF32F01AD4223A007DC6AE /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = tests/Playground.playground; sourceTree = "<group>"; };
 		BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FootlessParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC6B2231A61D92B005643D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAC6B22A1A61D92B005643D9 /* FootlessParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootlessParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +86,7 @@
 		BAC6B2151A61D92B005643D9 = {
 			isa = PBXGroup;
 			children = (
+				BABF32F01AD4223A007DC6AE /* Playground.playground */,
 				BAC6B2211A61D92B005643D9 /* source */,
 				BAC6B23B1A61DF08005643D9 /* tests */,
 				BAC6CE621AC5B686002246E5 /* Frameworks */,
