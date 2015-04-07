@@ -46,4 +46,30 @@ class ParserInput_Tests: XCTestCase {
 		(_, sut) = sut.next()!
 		XCTAssertEqual(sut.position(), 3)
 	}
+
+	func testEqualityOfDifferentParserInputs () {
+		var sut1 = ParserInput([1,2,3])
+		var sut2 = ParserInput([1,2,3])
+
+		let parser = token(1)
+
+		XCTAssertNotEqual(sut1, sut2)
+		sut1 = parser.parse(sut1).value!.nextinput
+		XCTAssertNotEqual(sut1, sut2)
+		sut2 = parser.parse(sut2).value!.nextinput
+		XCTAssertNotEqual(sut1, sut2)
+	}
+
+	func testEqualityOfVersionsOfTheSameParserInput () {
+		var sut1 = ParserInput([1,2,3])
+		var sut2 = sut1
+
+		let parser = token(1)
+
+		XCTAssertEqual(sut1, sut2)
+		sut1 = parser.parse(sut1).value!.nextinput
+		XCTAssertNotEqual(sut1, sut2)
+		sut2 = parser.parse(sut2).value!.nextinput
+		XCTAssertEqual(sut1, sut2)
+	}
 }
