@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BABF32F21AD4561B007DC6AE /* Parser+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF32F11AD4561B007DC6AE /* Parser+Operators.swift */; };
+		BABF32F41AD4564A007DC6AE /* Parser+Operators_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF32F31AD4564A007DC6AE /* Parser+Operators_Tests.swift */; };
 		BAC6B22B1A61D92B005643D9 /* FootlessParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */; };
 		BAC6CE5B1AC5B51D002246E5 /* LlamaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6CE591AC5B51D002246E5 /* LlamaKit.framework */; };
 		BAC6CE5C1AC5B51D002246E5 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		BABF32F01AD4223A007DC6AE /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = tests/Playground.playground; sourceTree = "<group>"; };
+		BABF32F11AD4561B007DC6AE /* Parser+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parser+Operators.swift"; sourceTree = "<group>"; };
+		BABF32F31AD4564A007DC6AE /* Parser+Operators_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parser+Operators_Tests.swift"; sourceTree = "<group>"; };
 		BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FootlessParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC6B2231A61D92B005643D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAC6B22A1A61D92B005643D9 /* FootlessParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootlessParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +110,7 @@
 		BAC6B2211A61D92B005643D9 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				BABF32F11AD4561B007DC6AE /* Parser+Operators.swift */,
 				BAC6CE6C1AC5E935002246E5 /* Parser.swift */,
 				BAC6CE681AC5DC32002246E5 /* ParserInput.swift */,
 				BAC6CE651AC5BBB3002246E5 /* General */,
@@ -125,6 +130,7 @@
 		BAC6B22E1A61D92B005643D9 /* FootlessParserTests */ = {
 			isa = PBXGroup;
 			children = (
+				BABF32F31AD4564A007DC6AE /* Parser+Operators_Tests.swift */,
 				BAC6CE6E1AC5E9C3002246E5 /* Parser_Tests.swift */,
 				BAC6CE6A1AC5DF2F002246E5 /* ParserInput_Tests.swift */,
 				BAC6B22F1A61D92B005643D9 /* Supporting Files */,
@@ -280,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BABF32F21AD4561B007DC6AE /* Parser+Operators.swift in Sources */,
 				BAC6CE671AC5BBB3002246E5 /* Result+Operators.swift in Sources */,
 				BAC6CE691AC5DC32002246E5 /* ParserInput.swift in Sources */,
 				BAC6CE6D1AC5E935002246E5 /* Parser.swift in Sources */,
@@ -290,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BABF32F41AD4564A007DC6AE /* Parser+Operators_Tests.swift in Sources */,
 				BAC6CE6B1AC5DF2F002246E5 /* ParserInput_Tests.swift in Sources */,
 				BAC6CE6F1AC5E9C3002246E5 /* Parser_Tests.swift in Sources */,
 			);
