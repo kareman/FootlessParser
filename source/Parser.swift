@@ -29,3 +29,10 @@ public func token <T: Equatable> (token: T) -> Parser<T, T> {
 		}
 	}
 }
+
+/** Return whatever the next token is. */
+public func any <T> () -> Parser<T, T> {
+	return Parser { input in
+		return input.read(expect: "anything") >>- { .success(output:$0.head, nextinput:$0.tail) }
+	}
+}

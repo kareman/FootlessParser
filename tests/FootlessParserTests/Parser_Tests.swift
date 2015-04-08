@@ -49,4 +49,13 @@ class Parser_Tests: XCTestCase {
 		XCTAssertNotNil(result.error)
 		XCTAssertFalse(result.error!.isEmpty, "Should have an error message")
 	}
+
+	func testAnyParser () {
+		var input = ParserInput("abc")
+		let parser: Parser<Character, Character> = any()
+
+		let result = parser.parse(input)
+		XCTAssertEqual(result.value!.output, "a")
+		XCTAssertEqual(parser.parse(result.value!.nextinput).value!.output, "b")
+	}
 }
