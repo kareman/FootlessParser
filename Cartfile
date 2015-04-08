@@ -1,2 +1,2 @@
 github "thoughtbot/runes"
-github "LlamaKit/LlamaKit"
+github "antitypical/Result" "master"

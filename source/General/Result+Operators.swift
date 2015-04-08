@@ -3,7 +3,7 @@
 // From https://github.com/thoughtbot/Runes/blob/a2d22e2a761d4284deb30318930bd7ab3382c47f/Source/Result.swift
 //
 
-import LlamaKit
+import Result
 import Runes
 
 /**
@@ -38,26 +38,6 @@ public func <*><T, U, E>(f: Result<(T -> U), E>, a: Result<T, E>) -> Result<U, E
 }
 
 /**
-	flatMap a function over a result
-
-	- If the value is .Failure, the function will not be evaluated and this will return the failure
-	- If the value is .Success, the function will be applied to the unwrapped value
-
-	:param: f A transformation function from type T to type Result<U, E>
-	:param: a A value of type Result<T, E>
-
-	:returns: A value of type Result<U, E>
-*/
-public func >>-<T, U, E>(a: Result<T, E>, f: T -> Result<U, E>) -> Result<U, E> {
-	return a.flatMap(f)
-}
-
-@availability(*, unavailable, message="function (T -> U) does not return Result<U, E>, perhaps you meant f <^> val")
-public func >>-<T, U, E>(a: Result<T, E>, f: T -> U) -> Result<U, E> {
-	return a.map(f)
-}
-
-/**
 	Wrap a value in a minimal context of .Success
 
 	:param: a A value of type T
@@ -65,7 +45,7 @@ public func >>-<T, U, E>(a: Result<T, E>, f: T -> U) -> Result<U, E> {
 	:returns: The provided value wrapped in .Success
 */
 public func pure<T, E>(a: T) -> Result<T, E> {
-	return success(a)
+	return .success(a)
 }
 
 extension Result {
@@ -80,10 +60,7 @@ extension Result {
 
 		:returns: A value of type Result<U, E>
 	*/
-	func apply<U>(f: Result<(T -> U), E>) -> Result<U, E> {
-		switch f {
-		case let .Success(fx): return map(fx.unbox)
-		case let .Failure(e): return failure(e.unbox)
-		}
+	func apply<U>(f: Result<(T -> U), Error>) -> Result<U, Error> {
+		return f >>- { $0 <^> self }
 	}
 }

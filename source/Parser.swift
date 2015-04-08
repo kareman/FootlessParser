@@ -7,7 +7,7 @@
 // Copyright (c) 2015 NotTooBad Software. All rights reserved.
 //
 
-import LlamaKit
+import Result
 import Runes
 
 // TODO: Implement ParserError
@@ -22,9 +22,9 @@ public func token <T: Equatable> (token: T) -> Parser<T, T> {
 	return Parser { input in
 		return input.read(expect: toString(token)) >>- { next in
 			if next.head == token {
-				return success(output:token, nextinput:next.tail)
+				return .success(output:token, nextinput:next.tail)
 			} else {
-				return failure("expected '\(token)', got '\(next.head)'.")
+				return .failure("expected '\(token)', got '\(next.head)'.")
 			}
 		}
 	}

@@ -7,7 +7,7 @@
 // Copyright (c) 2015 NotTooBad Software. All rights reserved.
 //
 
-import LlamaKit
+import Result
 import Foundation
 
 /** Provide parser with tokens from the input. */
@@ -43,9 +43,9 @@ extension ParserInput {
 	/** Return the next token and the rest of the input, or an error message if the end has been reached. */
 	public func read (# expect: String) -> Result<(head: Token, tail: ParserInput<Token>), ParserError> {
 		if let next = self.next() {
-			return success(next)
+			return .success(next)
 		} else {
-			return failure("expected '\(expect)', got EOF.")
+			return .failure("expected '\(expect)', got EOF.")
 		}
 	}
 }

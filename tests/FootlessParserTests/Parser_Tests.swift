@@ -46,7 +46,7 @@ class Parser_Tests: XCTestCase {
 
 		let result = parser.parse(input)
 
-		XCTAssertFalse(result.isSuccess)
+		XCTAssertNotNil(result.error)
 		XCTAssertFalse(result.error!.isEmpty, "Should have an error message")
 	}
 }
