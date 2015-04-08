@@ -17,22 +17,25 @@ public struct Parser <Token, Output> {
 	public let parse: ParserInput<Token> -> Result<(output: Output, nextinput: ParserInput<Token>), ParserError>
 }
 
-/** Match a single token. */
-public func token <T: Equatable> (token: T) -> Parser<T, T> {
+/** Succeeds iff 'condition' is true. Returns the token it read. */
+public func satisfy <T> (# expect: String, condition: T -> Bool) -> Parser<T, T> {
 	return Parser { input in
-		return input.read(expect: toString(token)) >>- { next in
-			if next.head == token {
-				return .success(output:token, nextinput:next.tail)
+		return input.read(expect: expect) >>- { next in
+			if condition(next.head) {
+				return .success(output:next.head, nextinput:next.tail)
 			} else {
-				return .failure("expected '\(token)', got '\(next.head)'.")
+				return .failure("expected '\(expect)', got '\(next.head)'.")
 			}
 		}
 	}
 }
 
+/** Match a single token. */
+public func token <T: Equatable> (token: T) -> Parser<T, T> {
+	return satisfy(expect: toString(token)) { $0 == token }
+}
+
 /** Return whatever the next token is. */
 public func any <T> () -> Parser<T, T> {
-	return Parser { input in
-		return input.read(expect: "anything") >>- { .success(output:$0.head, nextinput:$0.tail) }
-	}
+	return satisfy(expect: "anything") { T in true }
 }
