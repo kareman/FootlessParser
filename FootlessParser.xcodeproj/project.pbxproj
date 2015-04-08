@@ -19,6 +19,8 @@
 		BABF33021AD482BB007DC6AE /* Either.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F61AD481B3007DC6AE /* Either.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BABF33031AD482BB007DC6AE /* Prelude.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F71AD481B3007DC6AE /* Prelude.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BABF33041AD482BB007DC6AE /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BAC1FDF91AD56E8B00B80A50 /* Parser+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */; };
+		BAC1FDFB1AD56F0300B80A50 /* Parser+Operators_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */; };
 		BAC6B22B1A61D92B005643D9 /* FootlessParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */; };
 		BAC6CE5C1AC5B51D002246E5 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; };
 		BAC6CE5E1AC5B621002246E5 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; };
@@ -63,6 +65,8 @@
 		BABF32F61AD481B3007DC6AE /* Either.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Either.framework; path = Carthage/Build/Mac/Either.framework; sourceTree = "<group>"; };
 		BABF32F71AD481B3007DC6AE /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = Carthage/Build/Mac/Prelude.framework; sourceTree = "<group>"; };
 		BABF32F81AD481B3007DC6AE /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/Mac/Box.framework; sourceTree = "<group>"; };
+		BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parser+Operators.swift"; sourceTree = "<group>"; };
+		BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parser+Operators_Tests.swift"; sourceTree = "<group>"; };
 		BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FootlessParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC6B2231A61D92B005643D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAC6B22A1A61D92B005643D9 /* FootlessParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootlessParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +131,7 @@
 		BAC6B2211A61D92B005643D9 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */,
 				BAC6CE6C1AC5E935002246E5 /* Parser.swift */,
 				BAC6CE681AC5DC32002246E5 /* ParserInput.swift */,
 				BAC6CE651AC5BBB3002246E5 /* General */,
@@ -146,6 +151,7 @@
 		BAC6B22E1A61D92B005643D9 /* FootlessParserTests */ = {
 			isa = PBXGroup;
 			children = (
+				BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */,
 				BAC6CE6E1AC5E9C3002246E5 /* Parser_Tests.swift */,
 				BAC6CE6A1AC5DF2F002246E5 /* ParserInput_Tests.swift */,
 				BAC6B22F1A61D92B005643D9 /* Supporting Files */,
@@ -304,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC1FDF91AD56E8B00B80A50 /* Parser+Operators.swift in Sources */,
 				BAC6CE671AC5BBB3002246E5 /* Result+Operators.swift in Sources */,
 				BAC6CE691AC5DC32002246E5 /* ParserInput.swift in Sources */,
 				BAC6CE6D1AC5E935002246E5 /* Parser.swift in Sources */,
@@ -314,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC1FDFB1AD56F0300B80A50 /* Parser+Operators_Tests.swift in Sources */,
 				BAC6CE6B1AC5DF2F002246E5 /* ParserInput_Tests.swift in Sources */,
 				BAC6CE6F1AC5E9C3002246E5 /* Parser_Tests.swift in Sources */,
 			);
