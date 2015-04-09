@@ -2,7 +2,8 @@
 // Parser+Operators.swift
 // FootlessParser
 //
-// Created by Kåre Morstøl on 31.03.15.
+// Released under the MIT License (MIT), http://opensource.org/licenses/MIT
+//
 // Copyright (c) 2015 NotTooBad Software. All rights reserved.
 //
 
