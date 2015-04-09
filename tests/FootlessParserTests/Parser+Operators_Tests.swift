@@ -29,12 +29,24 @@ public func != <R:Equatable, I:Equatable, E:Equatable> (lhs: Result<(output:R, n
 }
 
 extension XCTestCase {
-	/** Verifies that 2 parsers return the same given the same input, whether it be success or failure. */
-	func assertParsesEqually<T, R: Equatable>( # input: [T], _ p1: Parser<T,R>, _ p2: Parser<T,R>, file: String = __FILE__, line: UInt = __LINE__) {
+	/** 
+	Verifies that 2 parsers return the same given the same input, whether it be success or failure. 
+
+	:param: shouldSucceed? Optionally verifies success or failure.
+	*/
+	func assertParsesEqually<T, R: Equatable>( # input: [T], _ p1: Parser<T,R>, _ p2: Parser<T,R>, shouldSucceed: Bool? = nil, file: String = __FILE__, line: UInt = __LINE__) {
 		let i = ParserInput(input)
 		let (r1, r2) = (p1.parse(i), p2.parse(i))
 		if r1 != r2 {
-			XCTFail("with input '\(input): '\(r1)' != '\(r2)", file: file, line: line)
+			XCTFail("with input '\(input)': '\(r1)' != '\(r2)", file: file, line: line)
+		}
+		if let shouldSucceed = shouldSucceed {
+			if shouldSucceed && (r1.value == nil) {
+				XCTFail("parsing of '\(input)' failed, shoud have succeeded", file: file, line: line)
+			}
+			if !shouldSucceed && (r1.error == nil) {
+				XCTFail("parsing of '\(input)' succeeded, shoud have failed", file: file, line: line)
+			}
 		}
 	}
 }
@@ -46,8 +58,8 @@ class FlatMap_Tests: XCTestCase {
 		let leftside =	pure(1) >>- token
 		let rightside = token(1)
 
-		assertParsesEqually(input: [1], leftside, rightside)
-		assertParsesEqually(input: [9], leftside, rightside)
+		assertParsesEqually(input: [1], leftside, rightside, shouldSucceed: true)
+		assertParsesEqually(input: [9], leftside, rightside, shouldSucceed: false)
 	}
 
 	// m >>= return = m
@@ -55,7 +67,7 @@ class FlatMap_Tests: XCTestCase {
 		let leftside =	token(1) >>- pure
 		let rightside = token(1)
 
-		assertParsesEqually(input: [1], leftside, rightside)
-		assertParsesEqually(input: [9], leftside, rightside)
+		assertParsesEqually(input: [1], leftside, rightside, shouldSucceed: true)
+		assertParsesEqually(input: [9], leftside, rightside, shouldSucceed: false)
 	}
 }
