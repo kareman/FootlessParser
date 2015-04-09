@@ -15,7 +15,7 @@ public func == <T:Equatable, U:Equatable> (lhs: (output:T, nextinput:U), rhs: (o
 	return lhs.output == rhs.output && lhs.nextinput == rhs.nextinput
 }
 
-public func == <T:Equatable, U:Equatable, E:Equatable> (lhs: Result<(output:T, nextinput:U), E>, rhs: Result<(output:T, nextinput:U), E>) -> Bool {
+public func == <R:Equatable, I:Equatable, E:Equatable> (lhs: Result<(output:R, nextinput:I), E>, rhs: Result<(output:R, nextinput:I), E>) -> Bool {
 	if let leftvalue = lhs.value, rightvalue = rhs.value where leftvalue == rightvalue {
 		return true
 	} else if let lefterror = lhs.error, righterror = rhs.error where lefterror == righterror {
@@ -24,6 +24,20 @@ public func == <T:Equatable, U:Equatable, E:Equatable> (lhs: Result<(output:T, n
 	return false
 }
 
+public func != <R:Equatable, I:Equatable, E:Equatable> (lhs: Result<(output:R, nextinput:I), E>, rhs: Result<(output:R, nextinput:I), E>) -> Bool {
+	return !(lhs == rhs)
+}
+
+extension XCTestCase {
+	/** Verifies that 2 parsers return the same given the same input, whether it be success or failure. */
+	func assertParsesEqually<T, R: Equatable>( # input: [T], _ p1: Parser<T,R>, _ p2: Parser<T,R>, file: String = __FILE__, line: UInt = __LINE__) {
+		let i = ParserInput(input)
+		let (r1, r2) = (p1.parse(i), p2.parse(i))
+		if r1 != r2 {
+			XCTFail("with input '\(input): '\(r1)' != '\(r2)", file: file, line: line)
+		}
+	}
+}
 
 class FlatMap_Tests: XCTestCase {
 
@@ -32,10 +46,8 @@ class FlatMap_Tests: XCTestCase {
 		let leftside =	pure(1) >>- token
 		let rightside = token(1)
 
-		let correctinput = ParserInput([1])
-		XCTAssert(leftside.parse(correctinput) == rightside.parse(correctinput))
-		let wronginput = ParserInput([9])
-		XCTAssert(leftside.parse(wronginput) == rightside.parse(wronginput))
+		assertParsesEqually(input: [1], leftside, rightside)
+		assertParsesEqually(input: [9], leftside, rightside)
 	}
 
 	// m >>= return = m
@@ -43,9 +55,7 @@ class FlatMap_Tests: XCTestCase {
 		let leftside =	token(1) >>- pure
 		let rightside = token(1)
 
-		let correctinput = ParserInput([1])
-		XCTAssert(leftside.parse(correctinput) == rightside.parse(correctinput))
-		let wronginput = ParserInput([9])
-		XCTAssert(leftside.parse(wronginput) == rightside.parse(wronginput))
+		assertParsesEqually(input: [1], leftside, rightside)
+		assertParsesEqually(input: [9], leftside, rightside)
 	}
 }
