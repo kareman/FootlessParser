@@ -55,7 +55,7 @@ class FlatMap_Tests: XCTestCase {
 
 	// return a >>= f = f a
 	func testLeftIdentityLaw () {
-		let leftside =	pure(1) >>- token
+		let leftside = pure(1) >>- token
 		let rightside = token(1)
 
 		assertParsesEqually(input: [1], leftside, rightside, shouldSucceed: true)
@@ -64,7 +64,7 @@ class FlatMap_Tests: XCTestCase {
 
 	// m >>= return = m
 	func testRightIdentityLaw () {
-		let leftside =	token(1) >>- pure
+		let leftside = token(1) >>- pure
 		let rightside = token(1)
 
 		assertParsesEqually(input: [1], leftside, rightside, shouldSucceed: true)
