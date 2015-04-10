@@ -9,6 +9,7 @@
 import FootlessParser
 import Runes
 import XCTest
+import Prelude
 
 class FlatMap_Tests: XCTestCase {
 
@@ -46,5 +47,37 @@ class FlatMap_Tests: XCTestCase {
 		let noparens = any() >>- token >>- timesTwo
 		assertParsesEqually(input: [1,1,2], leftside, noparens, shouldSucceed: true)
 		assertParsesEqually(input: [9,9,9], leftside, noparens, shouldSucceed: false)
+	}
+}
+
+class Map_Tests: XCTestCase {
+
+	// map id = id
+	func testTheIdentityLaw () {
+		let leftside = id <^> token(1)
+		let rightside = token(1)
+
+		assertParsesEqually(input: [1], leftside, rightside, shouldSucceed: true)
+		assertParsesEqually(input: [9], leftside, rightside, shouldSucceed: false)
+	}
+
+	func testAppliesFunctionToResultOnSuccess () {
+		let parser = toString <^> token(1)
+
+		var input = ParserInput([1])
+
+		assertParseSucceeds(parser, &input, result: "1")
+		XCTAssert( input.next() == nil, "Input should be empty" )
+	}
+
+	func testReturnsErrorOnFailure () {
+		let parser = toString <^> token(1)
+
+		var input = ParserInput([9])
+		let result = parser.parse(input)
+
+		XCTAssertNotNil(result.error)
+		XCTAssertFalse(result.error!.isEmpty, "Should have an error message")
+		XCTAssert( input.next() != nil, "Input should _not_ be empty" )
 	}
 }
