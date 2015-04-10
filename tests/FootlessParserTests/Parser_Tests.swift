@@ -13,14 +13,12 @@ import XCTest
 class Parser_Tests: XCTestCase {
 
 	func testSingleTokenParser () {
-		let input = ParserInput([1])
 		let parser = token(1)
 
-		let result = parser.parse(input)
-		let (output, nextinput) = result.value!
+		var input = ParserInput([1])
 
-		XCTAssertEqual(output, 1)
-		XCTAssert( nextinput.next() == nil, "Input should be empty" )
+		assertParseSucceeds(parser, &input, result: 1)
+		XCTAssert( input.next() == nil, "Input should be empty" )
 	}
 
 	func testSeveralTokenParsers () {
@@ -28,14 +26,7 @@ class Parser_Tests: XCTestCase {
 
 		for character in "abc" {
 			let parser = token(character)
-			let result = parser.parse(input)
-			if let (output, nextinput) = result.value {
-				input = nextinput
-				XCTAssertEqual(output, character)
-			} else {
-				XCTFail("Parser failed with error message: " + result.error!)
-				return
-			}
+			assertParseSucceeds(parser, &input, result: character)
 		}
 		XCTAssert( input.next() == nil, "Input should be empty" )
 	}
@@ -51,11 +42,11 @@ class Parser_Tests: XCTestCase {
 	}
 
 	func testAnyParser () {
-		var input = ParserInput("abc")
 		let parser: Parser<Character, Character> = any()
 
-		let result = parser.parse(input)
-		XCTAssertEqual(result.value!.output, "a")
-		XCTAssertEqual(parser.parse(result.value!.nextinput).value!.output, "b")
+		var input = ParserInput("abc")
+
+		assertParseSucceeds(parser, &input, result: "a")
+		assertParseSucceeds(parser, &input, result: "b")
 	}
 }

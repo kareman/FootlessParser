@@ -34,7 +34,8 @@ extension XCTestCase {
 
 	:param: shouldSucceed? Optionally verifies success or failure.
 	*/
-	func assertParsesEqually<T, R: Equatable>( # input: [T], _ p1: Parser<T,R>, _ p2: Parser<T,R>, shouldSucceed: Bool? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+	func assertParsesEqually <T, R: Equatable> ( # input: [T], _ p1: Parser<T,R>, _ p2: Parser<T,R>, shouldSucceed: Bool? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+
 		let i = ParserInput(input)
 		let (r1, r2) = (p1.parse(i), p2.parse(i))
 		if r1 != r2 {
@@ -48,5 +49,19 @@ extension XCTestCase {
 				XCTFail("parsing of '\(input)' succeeded, shoud have failed", file: file, line: line)
 			}
 		}
+	}
+
+	/** Verifies the parse succeeds, and optionally checks the result. Updates the provided 'input' parameter to the remaining input. */
+	func assertParseSucceeds <T, R: Equatable> (p: Parser<T,R>, inout _ input: ParserInput<T>, result: R? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+
+		p.parse(input).analysis(
+			ifSuccess: { o, i in
+				if let result = result {
+					if o != result { XCTFail("with input '\(input)': '\(o)' != '\(result)'", file: file, line: line) }
+				}
+				input = i
+			},
+			ifFailure: { XCTFail("with input \(input): \($0)", file: file, line: line) }
+		)
 	}
 }
