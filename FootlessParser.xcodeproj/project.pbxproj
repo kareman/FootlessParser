@@ -219,9 +219,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		BAC6B21E1A61D92B005643D9 /* FootlessParser */ = {
+		BAC6B21E1A61D92B005643D9 /* FootlessParser-Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAC6B2351A61D92B005643D9 /* Build configuration list for PBXNativeTarget "FootlessParser" */;
+			buildConfigurationList = BAC6B2351A61D92B005643D9 /* Build configuration list for PBXNativeTarget "FootlessParser-Mac" */;
 			buildPhases = (
 				BAC6B21A1A61D92B005643D9 /* Sources */,
 				BAC6B21B1A61D92B005643D9 /* Frameworks */,
@@ -232,14 +232,14 @@
 			);
 			dependencies = (
 			);
-			name = FootlessParser;
+			name = "FootlessParser-Mac";
 			productName = FootlessParser;
 			productReference = BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BAC6B2291A61D92B005643D9 /* FootlessParserTests */ = {
+		BAC6B2291A61D92B005643D9 /* FootlessParser-MacTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAC6B2381A61D92B005643D9 /* Build configuration list for PBXNativeTarget "FootlessParserTests" */;
+			buildConfigurationList = BAC6B2381A61D92B005643D9 /* Build configuration list for PBXNativeTarget "FootlessParser-MacTests" */;
 			buildPhases = (
 				BAC6B2261A61D92B005643D9 /* Sources */,
 				BAC6B2271A61D92B005643D9 /* Frameworks */,
@@ -251,7 +251,7 @@
 			dependencies = (
 				BAC6B22D1A61D92B005643D9 /* PBXTargetDependency */,
 			);
-			name = FootlessParserTests;
+			name = "FootlessParser-MacTests";
 			productName = FootlessParserTests;
 			productReference = BAC6B22A1A61D92B005643D9 /* FootlessParserTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -285,8 +285,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BAC6B21E1A61D92B005643D9 /* FootlessParser */,
-				BAC6B2291A61D92B005643D9 /* FootlessParserTests */,
+				BAC6B21E1A61D92B005643D9 /* FootlessParser-Mac */,
+				BAC6B2291A61D92B005643D9 /* FootlessParser-MacTests */,
 			);
 		};
 /* End PBXProject section */
@@ -336,7 +336,7 @@
 /* Begin PBXTargetDependency section */
 		BAC6B22D1A61D92B005643D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BAC6B21E1A61D92B005643D9 /* FootlessParser */;
+			target = BAC6B21E1A61D92B005643D9 /* FootlessParser-Mac */;
 			targetProxy = BAC6B22C1A61D92B005643D9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -439,7 +439,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FootlessParser;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -460,7 +460,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FootlessParser;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -511,7 +511,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAC6B2351A61D92B005643D9 /* Build configuration list for PBXNativeTarget "FootlessParser" */ = {
+		BAC6B2351A61D92B005643D9 /* Build configuration list for PBXNativeTarget "FootlessParser-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAC6B2361A61D92B005643D9 /* Debug */,
@@ -520,7 +520,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAC6B2381A61D92B005643D9 /* Build configuration list for PBXNativeTarget "FootlessParserTests" */ = {
+		BAC6B2381A61D92B005643D9 /* Build configuration list for PBXNativeTarget "FootlessParser-MacTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAC6B2391A61D92B005643D9 /* Debug */,
