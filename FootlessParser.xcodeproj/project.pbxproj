@@ -133,8 +133,8 @@
 		BAC6B2211A61D92B005643D9 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */,
 				BAC6CE6C1AC5E935002246E5 /* Parser.swift */,
+				BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */,
 				BAC6CE681AC5DC32002246E5 /* ParserInput.swift */,
 				BAC6CE651AC5BBB3002246E5 /* General */,
 				BAC6B2221A61D92B005643D9 /* Supporting Files */,

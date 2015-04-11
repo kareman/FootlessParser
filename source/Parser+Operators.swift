@@ -45,6 +45,21 @@ public func <^> <T,A,B> (f: A -> B, p: Parser<T,A>) -> Parser<T,B> {
 }
 
 /**
+	Apply a parser returning a function to another parser.
+
+	- If the first parser fails, its error will be returned.
+	- If it succeeds, the resulting function will be applied to the 2nd parser.
+
+	:param: fp A parser with a function A->B as output
+	:param: p A parser of type Parser<T,A>
+
+	:returns: A parser of type Parser<T,B>
+*/
+public func <*> <T,A,B> (fp: Parser<T,A->B>, p: Parser<T,A>) -> Parser<T,B> {
+	return fp >>- { $0 <^> p }
+}
+
+/**
 	Wrap a value in a minimal context of Parser. Also known as 'return' in Haskell.
 
 	:param: a A value of type A

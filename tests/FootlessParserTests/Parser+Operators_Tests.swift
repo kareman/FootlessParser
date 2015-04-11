@@ -76,3 +76,15 @@ class Map_Tests: XCTestCase {
 		assertParseFails(parser, input: [9])
 	}
 }
+
+class Apply_Tests: XCTestCase {
+
+	func testWith2Parsers () {
+		func sum (a: Int)(b: Int) -> Int { return a + b }
+
+		let parser = sum <^> any() <*> any()
+
+		assertParseSucceeds(parser, [1,1], result: 2)
+		assertParseSucceeds(parser, [10,3], result: 13)
+	}
+}
