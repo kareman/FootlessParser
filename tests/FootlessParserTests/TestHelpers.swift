@@ -34,7 +34,7 @@ extension XCTestCase {
 
 	:param: shouldSucceed? Optionally verifies success or failure.
 	*/
-	func assertParsesEqually <T, R: Equatable> ( # input: [T], _ p1: Parser<T,R>, _ p2: Parser<T,R>, shouldSucceed: Bool? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+	func assertParsesEqually <T, R: Equatable> ( p1: Parser<T,R>, _ p2: Parser<T,R>, input: [T], shouldSucceed: Bool? = nil, file: String = __FILE__, line: UInt = __LINE__) {
 
 		let i = ParserInput(input)
 		let (r1, r2) = (p1.parse(i), p2.parse(i))

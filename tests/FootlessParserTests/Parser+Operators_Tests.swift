@@ -18,8 +18,8 @@ class FlatMap_Tests: XCTestCase {
 		let leftside = pure(1) >>- token
 		let rightside = token(1)
 
-		assertParsesEqually(input: [1], leftside, rightside, shouldSucceed: true)
-		assertParsesEqually(input: [9], leftside, rightside, shouldSucceed: false)
+		assertParsesEqually(leftside, rightside, input: [1], shouldSucceed: true)
+		assertParsesEqually(leftside, rightside, input: [9], shouldSucceed: false)
 	}
 
 	// m >>= return = m
@@ -27,8 +27,8 @@ class FlatMap_Tests: XCTestCase {
 		let leftside = token(1) >>- pure
 		let rightside = token(1)
 
-		assertParsesEqually(input: [1], leftside, rightside, shouldSucceed: true)
-		assertParsesEqually(input: [9], leftside, rightside, shouldSucceed: false)
+		assertParsesEqually(leftside, rightside, input: [1], shouldSucceed: true)
+		assertParsesEqually(leftside, rightside, input: [9], shouldSucceed: false)
 	}
 
 	// (m >>= f) >>= g = m >>= (\x -> f x >>= g)
@@ -41,12 +41,12 @@ class FlatMap_Tests: XCTestCase {
 		let leftside = (any() >>- token) >>- timesTwo
 		let rightside = any() >>- { token($0) >>- timesTwo }
 
-		assertParsesEqually(input: [1,1,2], leftside, rightside, shouldSucceed: true)
-		assertParsesEqually(input: [9,9,9], leftside, rightside, shouldSucceed: false)
+		assertParsesEqually(leftside, rightside, input: [1,1,2], shouldSucceed: true)
+		assertParsesEqually(leftside, rightside, input: [9,9,9], shouldSucceed: false)
 
 		let noparens = any() >>- token >>- timesTwo
-		assertParsesEqually(input: [1,1,2], leftside, noparens, shouldSucceed: true)
-		assertParsesEqually(input: [9,9,9], leftside, noparens, shouldSucceed: false)
+		assertParsesEqually(leftside, noparens, input: [1,1,2], shouldSucceed: true)
+		assertParsesEqually(leftside, noparens, input: [9,9,9], shouldSucceed: false)
 	}
 }
 
@@ -57,8 +57,8 @@ class Map_Tests: XCTestCase {
 		let leftside = id <^> token(1)
 		let rightside = token(1)
 
-		assertParsesEqually(input: [1], leftside, rightside, shouldSucceed: true)
-		assertParsesEqually(input: [9], leftside, rightside, shouldSucceed: false)
+		assertParsesEqually(leftside, rightside, input: [1], shouldSucceed: true)
+		assertParsesEqually(leftside, rightside, input: [9], shouldSucceed: false)
 	}
 
 	func testAppliesFunctionToResultOnSuccess () {
