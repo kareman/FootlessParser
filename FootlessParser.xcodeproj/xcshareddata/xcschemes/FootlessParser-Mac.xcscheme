@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BAC6B21E1A61D92B005643D9"
-               BuildableName = "FootlessParser-Mac.framework"
+               BuildableName = "FootlessParser.framework"
                BlueprintName = "FootlessParser-Mac"
                ReferencedContainer = "container:FootlessParser.xcodeproj">
             </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAC6B21E1A61D92B005643D9"
-            BuildableName = "FootlessParser-Mac.framework"
+            BuildableName = "FootlessParser.framework"
             BlueprintName = "FootlessParser-Mac"
             ReferencedContainer = "container:FootlessParser.xcodeproj">
          </BuildableReference>
@@ -81,7 +81,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAC6B21E1A61D92B005643D9"
-            BuildableName = "FootlessParser-Mac.framework"
+            BuildableName = "FootlessParser.framework"
             BlueprintName = "FootlessParser-Mac"
             ReferencedContainer = "container:FootlessParser.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAC6B21E1A61D92B005643D9"
-            BuildableName = "FootlessParser-Mac.framework"
+            BuildableName = "FootlessParser.framework"
             BlueprintName = "FootlessParser-Mac"
             ReferencedContainer = "container:FootlessParser.xcodeproj">
          </BuildableReference>
