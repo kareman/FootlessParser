@@ -32,13 +32,9 @@ class Parser_Tests: XCTestCase {
 	}
 
 	func testFailingParserReturnsError () {
-		let input = ParserInput([1])
 		let parser = token(2)
 
-		let result = parser.parse(input)
-
-		XCTAssertNotNil(result.error)
-		XCTAssertFalse(result.error!.isEmpty, "Should have an error message")
+		assertParseFails(parser, input: [1])
 	}
 
 	func testAnyParser () {

@@ -64,4 +64,19 @@ extension XCTestCase {
 			ifFailure: { XCTFail("with input \(input): \($0)", file: file, line: line) }
 		)
 	}
+
+	/** Verifies the parser fails with the given input. */
+	func assertParseFails <T, R> (p: Parser<T,R>, _ input: ParserInput<T>, file: String = __FILE__, line: UInt = __LINE__) {
+
+		p.parse(input).analysis(
+			ifSuccess: { XCTFail("Parsing succeeded with output '\($0.output)', should have failed.", file: file, line: line) },
+			ifFailure: { if $0.isEmpty { XCTFail("Should have an error message", file: file, line: line) } }
+		)
+	}
+
+	/** Verifies the parser fails with the given collection as input. */
+	func assertParseFails <T, R, C: CollectionType where C.Generator.Element == T> (p: Parser<T,R>, input: C, file: String = __FILE__, line: UInt = __LINE__) {
+
+		assertParseFails(p, ParserInput(input), file: file, line: line)
+	}
 }

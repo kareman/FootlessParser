@@ -73,11 +73,6 @@ class Map_Tests: XCTestCase {
 	func testReturnsErrorOnFailure () {
 		let parser = toString <^> token(1)
 
-		var input = ParserInput([9])
-		let result = parser.parse(input)
-
-		XCTAssertNotNil(result.error)
-		XCTAssertFalse(result.error!.isEmpty, "Should have an error message")
-		XCTAssert( input.next() != nil, "Input should _not_ be empty" )
+		assertParseFails(parser, input: [9])
 	}
 }
