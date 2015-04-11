@@ -10,9 +10,20 @@
 import Result
 import Runes
 
+/**
+	flatMap a function over a parser.
+
+	- If the parser fails, the function will not be evaluated and the error is returned.
+	- If the parser succeeds, the function will be applied to the output, and the resulting parser is run with the remaining input.
+
+	:param: p A parser of type Parser<T,A>
+	:param: f A transformation function from type A to Parser<T,B>
+
+	:returns: A parser of type Parser<T,B>
+*/
 public func >>- <T,A,B> (p: Parser<T,A>, f: A -> Parser<T,B>) -> Parser<T,B> {
 	return Parser { input in
-		p.parse(input) >>- { f($0.output).parse($0.nextinput) }
+	p.parse(input) >>- { f($0.output).parse($0.nextinput) }
 	}
 }
 
