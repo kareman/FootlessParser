@@ -28,7 +28,7 @@ public func != <R:Equatable, I:Equatable, E:Equatable> (lhs: Result<(output:R, n
 }
 
 extension XCTestCase {
-	
+
 	/**
 	Verifies that 2 parsers return the same given the same input, whether it be success or failure.
 
@@ -65,7 +65,15 @@ extension XCTestCase {
 		)
 	}
 
-	/** Verifies the parser fails with the given input. */
+	/** Verifies the parse succeeds, and optionally checks the result. */
+	func assertParseSucceeds <T, R: Equatable, C: CollectionType where C.Generator.Element == T> (p: Parser<T,R>, _ input: C, result: R? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+
+		var parserinput = ParserInput(input)
+		assertParseSucceeds(p, &parserinput, result: result, file: file, line: line)
+	}
+
+
+	/** Verifies the parse fails with the given input. */
 	func assertParseFails <T, R> (p: Parser<T,R>, _ input: ParserInput<T>, file: String = __FILE__, line: UInt = __LINE__) {
 
 		p.parse(input).analysis(
@@ -74,7 +82,7 @@ extension XCTestCase {
 		)
 	}
 
-	/** Verifies the parser fails with the given collection as input. */
+	/** Verifies the parse fails with the given collection as input. */
 	func assertParseFails <T, R, C: CollectionType where C.Generator.Element == T> (p: Parser<T,R>, input: C, file: String = __FILE__, line: UInt = __LINE__) {
 
 		assertParseFails(p, ParserInput(input), file: file, line: line)
