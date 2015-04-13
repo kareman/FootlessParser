@@ -77,14 +77,53 @@ class Map_Tests: XCTestCase {
 	}
 }
 
+func sum (a: Int)(b: Int) -> Int { return a + b }
+
 class Apply_Tests: XCTestCase {
 
 	func testWith2Parsers () {
-		func sum (a: Int)(b: Int) -> Int { return a + b }
-
 		let parser = sum <^> any() <*> any()
 
 		assertParseSucceeds(parser, [1,1], result: 2)
 		assertParseSucceeds(parser, [10,3], result: 13)
+	}
+}
+
+class Choice_Tests: XCTestCase {
+
+	func testParsesOneOrTheOther () {
+		let parser = token(1) <|> token(2)
+
+		assertParseSucceeds(parser, [1])
+		assertParseSucceeds(parser, [2])
+		assertParseFails(parser, input: [3])
+	}
+
+	func testWithApplyOperator () {
+		let parser = sum <^> token(1) <*> token(2) <|> sum <^> token(3) <*> token(4)
+
+		assertParseSucceeds(parser, [1,2], result: 3)
+		assertParseSucceeds(parser, [3,4], result: 7)
+		assertParseFails(parser, input: [1,3])
+	}
+
+	func testWithApplyAndIdenticalBeginning () {
+		let parser = sum <^> token(1) <*> token(2) <|> sum <^> token(1) <*> token(4)
+
+		assertParseSucceeds(parser, [1,2], result: 3)
+		assertParseSucceeds(parser, [1,4], result: 5)
+		assertParseFails(parser, input: [1,1])
+	}
+
+	func test2ChoicesWithApplyAndIdenticalBeginning () {
+		let parser =
+			sum <^> token(1) <*> token(2)	<|>
+			sum <^> token(1) <*> token(3) <|>
+			sum <^> token(1) <*> token(4)
+
+		assertParseSucceeds(parser, [1,2], result: 3)
+		assertParseSucceeds(parser, [1,3], result: 4)
+		assertParseSucceeds(parser, [1,4], result: 5)
+		assertParseFails(parser, input: [1,5])
 	}
 }

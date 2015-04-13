@@ -69,3 +69,19 @@ public func <*> <T,A,B> (fp: Parser<T,A->B>, p: Parser<T,A>) -> Parser<T,B> {
 public func pure <A> (a: A) -> Parser<A,A> {
 	return Parser { input in .success(output:a, nextinput: input) }
 }
+
+
+infix operator <|> { associativity right precedence 80 }
+
+/** 
+	Choice operator for parsers.
+
+	- If the first parser succeeds, return its results.
+	- Else if the 2nd parser succeeds, return its results.
+	- If they both fail, return the failure from the last parser.
+
+	Has infinite lookahead. The 2nd parser starts from the same position in the input as the first one.
+*/
+public func <|> <T,A> (l: Parser<T,A>, r: Parser<T,A>) -> Parser<T,A> {
+	return Parser { input in l.parse(input) ?? r.parse(input) }
+}
