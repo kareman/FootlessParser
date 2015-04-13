@@ -16,7 +16,11 @@ public struct ParserInput <Token> {
 	/** Return the next token and the rest of the input. */
 	public let next: () -> (head: Token, tail: ParserInput<Token>)?
 
-	/** The number of tokens that have been read so far. */
+	/** 
+	The number of tokens that have been read so far.
+	
+	Warning! Will be slow on long strings.
+	*/
 	public let position: () -> Int
 
 	/** Unique ID for every manually created ParserInput. Those returned from other ParserInputs inherit their IDs. */
@@ -28,6 +32,7 @@ public struct ParserInput <Token> {
 				? nil
 				: ( source[index], ParserInput(source, index: index.successor(), id: id) )
 		}
+		// Heartbreakingly inefficient on long strings. Will have to be replaced if it is going to be called frequently.
 		position = { distance(source.startIndex, index) as! Int }
 		self.id = id
 	}
