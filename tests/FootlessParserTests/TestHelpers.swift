@@ -57,7 +57,7 @@ extension XCTestCase {
 		p.parse(input).analysis(
 			ifSuccess: { o, i in
 				if let result = result {
-					if o != result { XCTFail("with input '\(input)': '\(o)' != '\(result)'", file: file, line: line) }
+					if o != result { XCTFail("with input '\(input)': output should be '\(result)', was '\(o)'. ", file: file, line: line) }
 				}
 				input = i
 			},
