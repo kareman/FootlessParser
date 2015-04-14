@@ -78,6 +78,7 @@ class Map_Tests: XCTestCase {
 }
 
 func sum (a: Int)(b: Int) -> Int { return a + b }
+func product (a: Int)(b: Int) -> Int { return a * b }
 
 class Apply_Tests: XCTestCase {
 
@@ -126,4 +127,11 @@ class Choice_Tests: XCTestCase {
 		assertParseSucceeds(parser, [1,4], result: 5)
 		assertParseFails(parser, input: [1,5])
 	}
+
+	func testLeftSideIsTriedFirst () {
+		let parser = product <^> token(1) <*> token(2) <|> sum <^> token(1) <*> token(2)
+
+		assertParseSucceeds(parser, [1,2], result: 2)
+	}
+	
 }
