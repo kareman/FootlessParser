@@ -11,6 +11,23 @@ import Runes
 import XCTest
 import Prelude
 
+class Pure_Tests: XCTestCase {
+
+	func testPureReturnsInput () {
+		let parser: Parser<Int,Int> = pure(1)
+
+		assertParseSucceeds(parser, [2, 3, 4], result: 1)
+	}
+
+	func testPureDoesNotConsume () {
+		let parser: Parser<Int,Int> = pure(1)
+		var input = ParserInput([2, 3, 4])
+
+		assertParseSucceeds(parser, &input, result: 1)
+		XCTAssertEqual(input.position(), 0)
+	}
+}
+
 class FlatMap_Tests: XCTestCase {
 
 	// return a >>= f = f a

@@ -66,7 +66,7 @@ public func <*> <T,A,B> (fp: Parser<T,A->B>, p: Parser<T,A>) -> Parser<T,B> {
 
 	:returns: A parser which ignores the input and returns 'a'.
 */
-public func pure <A> (a: A) -> Parser<A,A> {
+public func pure <T,A> (a: A) -> Parser<T,A> {
 	return Parser { input in .success(output:a, nextinput: input) }
 }
 
