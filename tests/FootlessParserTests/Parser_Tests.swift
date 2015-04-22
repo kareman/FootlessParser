@@ -45,4 +45,14 @@ class Parser_Tests: XCTestCase {
 		assertParseSucceeds(parser, &input, result: "a")
 		assertParseSucceeds(parser, &input, result: "b")
 	}
+
+	func testOptionalParser () {
+		let parser = optional( token("a" as Character), otherwise: "x" )
+
+		var input = ParserInput("abc")
+
+		assertParseSucceeds(parser, &input, result: "a")
+		assertParseSucceeds(parser, &input, result: "x")
+		assertParseSucceeds( token("b" as Character), &input )
+	}
 }

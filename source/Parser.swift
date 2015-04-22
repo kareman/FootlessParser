@@ -39,3 +39,8 @@ public func token <T: Equatable> (token: T) -> Parser<T, T> {
 public func any <T> () -> Parser<T, T> {
 	return satisfy(expect: "anything") { T in true }
 }
+
+/** Try parser, if it fails return 'otherwise' without consuming input. */
+public func optional <T,A> (p: Parser<T,A>, # otherwise: A) -> Parser<T,A> {
+	return p <|> pure(otherwise)
+}
