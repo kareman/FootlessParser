@@ -23,7 +23,7 @@ import Runes
 */
 public func >>- <T,A,B> (p: Parser<T,A>, f: A -> Parser<T,B>) -> Parser<T,B> {
 	return Parser { input in
-	p.parse(input) >>- { f($0.output).parse($0.nextinput) }
+		p.parse(input) >>- { f($0.output).parse($0.nextinput) }
 	}
 }
 
