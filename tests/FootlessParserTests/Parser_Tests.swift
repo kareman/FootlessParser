@@ -55,4 +55,12 @@ class Parser_Tests: XCTestCase {
 		assertParseSucceeds(parser, &input, result: "x")
 		assertParseSucceeds( token("b" as Character), &input )
 	}
+
+	func testOneOrMoreParser () {
+		let parser = oneOrMore(token(1))
+
+		XCTAssertEqual( parser.parse(ParserInput([1])).value!.output, [1] )
+		XCTAssertEqual( parser.parse(ParserInput([1,1,1])).value!.output, [1,1,1] )
+		XCTAssertEqual( parser.parse(ParserInput([1,1,1,9])).value!.output, [1,1,1] )
+	}
 }
