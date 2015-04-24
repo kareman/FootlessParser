@@ -71,4 +71,21 @@ class Parser_Tests: XCTestCase {
 		XCTAssertEqual( parser.parse(ParserInput("aaa")).value!.output, "aaa" )
 		XCTAssertEqual( parser.parse(ParserInput("aaab")).value!.output, "aaa" )
 	}
+
+	func testZeroOrMoreParser () {
+		let parser = zeroOrMore(token(1))
+
+		XCTAssertEqual( parser.parse(ParserInput([9])).value!.output, [] )
+		XCTAssertEqual( parser.parse(ParserInput([1])).value!.output, [1] )
+		XCTAssertEqual( parser.parse(ParserInput([1,1,1])).value!.output, [1,1,1] )
+		XCTAssertEqual( parser.parse(ParserInput([1,1,1,9])).value!.output, [1,1,1] )
+	}
+
+	func testZeroOrMoreParserForCharacters () {
+		let parser = zeroOrMore(token("a" as Character))
+
+		XCTAssertEqual( parser.parse(ParserInput("a")).value!.output, "a" )
+		XCTAssertEqual( parser.parse(ParserInput("aaa")).value!.output, "aaa" )
+		XCTAssertEqual( parser.parse(ParserInput("aaab")).value!.output, "aaa" )
+	}
 }
