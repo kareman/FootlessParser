@@ -64,19 +64,9 @@ public func oneOrMore <T,A> (p: Parser<T,A>) -> Parser<T,[A]> {
 	return extend <^> p <*> optional( lazy(oneOrMore(p)), otherwise: [] )
 }
 
-/** Apply character parser once, then repeat until it fails. Returns a string. */
-public func oneOrMore <T> (p: Parser<T,Character>) -> Parser<T,String> {
-	return extend <^> p <*> optional( lazy(oneOrMore(p)), otherwise: "" )
-}
-
 /** Repeat parser until it fails. Returns an array of the results. */
 public func zeroOrMore <T,A> (p: Parser<T,A>) -> Parser<T,[A]> {
 	return optional( oneOrMore(p), otherwise: [] )
-}
-
-/** Repeat character parser until it fails. Returns a string. */
-public func zeroOrMore <T> (p: Parser<T,Character>) -> Parser<T,String> {
-	return optional( oneOrMore(p), otherwise: "" )
 }
 
 /** Verify that input is empty. */

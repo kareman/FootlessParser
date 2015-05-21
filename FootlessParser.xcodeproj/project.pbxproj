@@ -19,6 +19,8 @@
 		BABF33021AD482BB007DC6AE /* Either.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F61AD481B3007DC6AE /* Either.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BABF33031AD482BB007DC6AE /* Prelude.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F71AD481B3007DC6AE /* Prelude.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BABF33041AD482BB007DC6AE /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BABFB5B81B0E99D100CACEA5 /* StringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFB5B71B0E99D100CACEA5 /* StringParser.swift */; };
+		BABFB5BA1B0EA8A700CACEA5 /* StringParser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFB5B91B0EA8A700CACEA5 /* StringParser_Tests.swift */; };
 		BAC1FDF91AD56E8B00B80A50 /* Parser+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */; };
 		BAC1FDFB1AD56F0300B80A50 /* Parser+Operators_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */; };
 		BAC4F29F1AD6F2B50098638A /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */; };
@@ -66,6 +68,8 @@
 		BABF32F61AD481B3007DC6AE /* Either.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Either.framework; path = Carthage/Build/Mac/Either.framework; sourceTree = "<group>"; };
 		BABF32F71AD481B3007DC6AE /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = Carthage/Build/Mac/Prelude.framework; sourceTree = "<group>"; };
 		BABF32F81AD481B3007DC6AE /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/Mac/Box.framework; sourceTree = "<group>"; };
+		BABFB5B71B0E99D100CACEA5 /* StringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringParser.swift; sourceTree = "<group>"; };
+		BABFB5B91B0EA8A700CACEA5 /* StringParser_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringParser_Tests.swift; sourceTree = "<group>"; };
 		BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parser+Operators.swift"; sourceTree = "<group>"; };
 		BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parser+Operators_Tests.swift"; sourceTree = "<group>"; };
 		BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				BAC6CE6C1AC5E935002246E5 /* Parser.swift */,
+				BABFB5B71B0E99D100CACEA5 /* StringParser.swift */,
 				BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */,
 				BAC6CE681AC5DC32002246E5 /* ParserInput.swift */,
 				BAC6CE651AC5BBB3002246E5 /* General */,
@@ -156,6 +161,7 @@
 				BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */,
 				BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */,
 				BAC6CE6E1AC5E9C3002246E5 /* Parser_Tests.swift */,
+				BABFB5B91B0EA8A700CACEA5 /* StringParser_Tests.swift */,
 				BAC6CE6A1AC5DF2F002246E5 /* ParserInput_Tests.swift */,
 				BAC6B22F1A61D92B005643D9 /* Supporting Files */,
 			);
@@ -317,6 +323,7 @@
 				BAC6CE671AC5BBB3002246E5 /* Result+Operators.swift in Sources */,
 				BAC6CE691AC5DC32002246E5 /* ParserInput.swift in Sources */,
 				BAC6CE6D1AC5E935002246E5 /* Parser.swift in Sources */,
+				BABFB5B81B0E99D100CACEA5 /* StringParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAC1FDFB1AD56F0300B80A50 /* Parser+Operators_Tests.swift in Sources */,
+				BABFB5BA1B0EA8A700CACEA5 /* StringParser_Tests.swift in Sources */,
 				BAC6CE6B1AC5DF2F002246E5 /* ParserInput_Tests.swift in Sources */,
 				BAC6CE6F1AC5E9C3002246E5 /* Parser_Tests.swift in Sources */,
 				BAC4F29F1AD6F2B50098638A /* TestHelpers.swift in Sources */,
