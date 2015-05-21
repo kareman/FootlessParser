@@ -113,6 +113,14 @@ class Apply_Tests: XCTestCase {
 		assertParseFails(	parser, input: [1,3] )
 		assertParseFails(	parser, input: [2,2] )
 	}
+
+	func testingDiscardingLeftParser () {
+		let parser = token(1) *> token(2)
+
+		assertParseSucceeds( parser, [1,2], result: 2 )
+		assertParseFails(	parser, input: [2,2] )
+		assertParseFails(	parser, input: [1,3] )
+	}
 }
 
 class Choice_Tests: XCTestCase {

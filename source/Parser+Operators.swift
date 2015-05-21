@@ -73,6 +73,20 @@ public func <* <T,A,B> (p1: Parser<T,A>, p2: Parser<T,B>) -> Parser<T,A> {
 	return { x in { _ in x } } <^> p1 <*> p2
 }
 
+infix operator *> { associativity left precedence 155 }
+
+/**
+Apply both parsers, but only return the output from the 2nd one.
+
+	- If the first parser fails, its error will be returned.
+	- If the 2nd parser fails, its error will be returned.
+
+	:returns: A parser of the same type as the 2nd parser.
+*/
+public func *> <T,A,B> (p1: Parser<T,A>, p2: Parser<T,B>) -> Parser<T,B> {
+	return { _ in { x in x } } <^> p1 <*> p2
+}
+
 
 /**
 	Wrap a value in a minimal context of Parser. Also known as 'return' in Haskell.
