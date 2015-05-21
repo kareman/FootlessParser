@@ -78,3 +78,14 @@ public func zeroOrMore <T,A> (p: Parser<T,A>) -> Parser<T,[A]> {
 public func zeroOrMore <T> (p: Parser<T,Character>) -> Parser<T,String> {
 	return optional( oneOrMore(p), otherwise: "" )
 }
+
+/** Verify that input is empty. */
+public func eof <T> () -> Parser<T,()> {
+	return Parser { input in
+		if let next = input.next() {
+			return .failure("expected EOF, got '\(next.head)'.")
+		} else {
+			return .success(output:(), nextinput:input)
+		}
+	}
+}

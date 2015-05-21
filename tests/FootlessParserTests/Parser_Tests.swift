@@ -88,4 +88,12 @@ class Parser_Tests: XCTestCase {
 		XCTAssertEqual( parser.parse(ParserInput("aaa")).value!.output, "aaa" )
 		XCTAssertEqual( parser.parse(ParserInput("aaab")).value!.output, "aaa" )
 	}
+
+	func testEofParser () {
+		let parser = token(1) <* eof()
+
+		assertParseSucceeds( parser, [1], result: 1 )
+		assertParseFails( parser, input: [1,2] )
+		assertParseSucceeds( token(1), [1,2] )
+	}
 }
