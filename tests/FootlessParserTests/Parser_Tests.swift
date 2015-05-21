@@ -96,4 +96,12 @@ class Parser_Tests: XCTestCase {
 		assertParseFails( parser, input: [1,2] )
 		assertParseSucceeds( token(1), [1,2] )
 	}
+
+	func testParsingAString () {
+		let parser = zeroOrMore(token("a" as Character))
+
+		XCTAssertEqual( parse(parser, "a").value!, "a" )
+		XCTAssertEqual( parse(parser, "aaaa").value!, "aaaa" )
+		XCTAssertNotNil( parse(parser, "aaab").error )
+	}
 }
