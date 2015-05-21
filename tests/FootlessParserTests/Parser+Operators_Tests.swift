@@ -105,6 +105,14 @@ class Apply_Tests: XCTestCase {
 		assertParseSucceeds(parser, [1,1], result: 2)
 		assertParseSucceeds(parser, [10,3], result: 13)
 	}
+
+	func testDiscardingRightParser () {
+		let parser = token(1) <* token(2)
+
+		assertParseSucceeds( parser, [1,2], result: 1 )
+		assertParseFails(	parser, input: [1,3] )
+		assertParseFails(	parser, input: [2,2] )
+	}
 }
 
 class Choice_Tests: XCTestCase {
