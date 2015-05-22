@@ -47,13 +47,13 @@ class Parser_Tests: XCTestCase {
 	}
 
 	func testOptionalParser () {
-		let parser = optional( token("a" as Character), otherwise: "x" )
+		let parser = optional( char("a"), otherwise: "x" )
 
 		var input = ParserInput("abc")
 
 		assertParseSucceeds(parser, &input, result: "a")
 		assertParseSucceeds(parser, &input, result: "x")
-		assertParseSucceeds( token("b" as Character), &input )
+		assertParseSucceeds( char("b"), &input )
 	}
 
 	func testOneOrMoreParser () {
@@ -82,7 +82,7 @@ class Parser_Tests: XCTestCase {
 	}
 
 	func testParsingAString () {
-		let parser = zeroOrMore(token("a" as Character))
+		let parser = zeroOrMore(char("a"))
 
 		XCTAssertEqual( parse(parser, "a").value!, "a" )
 		XCTAssertEqual( parse(parser, "aaaa").value!, "aaaa" )

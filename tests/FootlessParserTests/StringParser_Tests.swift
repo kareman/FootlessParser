@@ -12,8 +12,18 @@ import XCTest
 
 class StringParser_Tests: XCTestCase {
 
+	func testCharParser () {
+		let parser = char("a")
+
+		var input = ParserInput("a")
+
+		assertParseFails(parser, input: "b")
+		assertParseSucceeds(parser, &input, result: "a")
+		XCTAssert( input.next() == nil, "Input should be empty" )
+	}
+
 	func testOneOrMoreParserForCharacters () {
-		let parser = oneOrMore(token("a" as Character))
+		let parser = oneOrMore(char("a"))
 
 		XCTAssertEqual( parser.parse(ParserInput("a")).value!.output, "a" )
 		XCTAssertEqual( parser.parse(ParserInput("aaa")).value!.output, "aaa" )
@@ -21,7 +31,7 @@ class StringParser_Tests: XCTestCase {
 	}
 
 	func testZeroOrMoreParserForCharacters () {
-		let parser = zeroOrMore(token("a" as Character))
+		let parser = zeroOrMore(char("a"))
 
 		XCTAssertEqual( parser.parse(ParserInput("a")).value!.output, "a" )
 		XCTAssertEqual( parser.parse(ParserInput("aaa")).value!.output, "aaa" )

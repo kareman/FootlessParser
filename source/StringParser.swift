@@ -10,6 +10,10 @@
 import Result
 import Runes
 
+/** Match a single character. */
+public func char (c: Character) -> Parser<Character, Character> {
+	return satisfy(expect: String(c)) { $0 == c }
+}
 
 /** Apply character parser once, then repeat until it fails. Returns a string. */
 public func oneOrMore <T> (p: Parser<T,Character>) -> Parser<T,String> {
