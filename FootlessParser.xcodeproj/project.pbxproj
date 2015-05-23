@@ -8,16 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BABF32F91AD481B3007DC6AE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; };
-		BABF32FA1AD481B3007DC6AE /* Either.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F61AD481B3007DC6AE /* Either.framework */; };
-		BABF32FB1AD481B3007DC6AE /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F71AD481B3007DC6AE /* Prelude.framework */; };
 		BABF32FC1AD481B3007DC6AE /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; };
 		BABF32FD1AD4825F007DC6AE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; };
-		BABF32FE1AD4825F007DC6AE /* Either.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F61AD481B3007DC6AE /* Either.framework */; };
-		BABF32FF1AD4825F007DC6AE /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F71AD481B3007DC6AE /* Prelude.framework */; };
 		BABF33001AD4825F007DC6AE /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; };
 		BABF33011AD482BB007DC6AE /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BABF33021AD482BB007DC6AE /* Either.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F61AD481B3007DC6AE /* Either.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BABF33031AD482BB007DC6AE /* Prelude.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F71AD481B3007DC6AE /* Prelude.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BABF33041AD482BB007DC6AE /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BABFB5B81B0E99D100CACEA5 /* StringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFB5B71B0E99D100CACEA5 /* StringParser.swift */; };
 		BABFB5BA1B0EA8A700CACEA5 /* StringParser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFB5B91B0EA8A700CACEA5 /* StringParser_Tests.swift */; };
@@ -53,8 +47,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BABF33011AD482BB007DC6AE /* Result.framework in CopyFiles */,
-				BABF33021AD482BB007DC6AE /* Either.framework in CopyFiles */,
-				BABF33031AD482BB007DC6AE /* Prelude.framework in CopyFiles */,
 				BABF33041AD482BB007DC6AE /* Box.framework in CopyFiles */,
 				BAC6CE611AC5B669002246E5 /* Runes.framework in CopyFiles */,
 			);
@@ -65,8 +57,6 @@
 /* Begin PBXFileReference section */
 		BABF32F01AD4223A007DC6AE /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = tests/Playground.playground; sourceTree = "<group>"; };
 		BABF32F51AD481B3007DC6AE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
-		BABF32F61AD481B3007DC6AE /* Either.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Either.framework; path = Carthage/Build/Mac/Either.framework; sourceTree = "<group>"; };
-		BABF32F71AD481B3007DC6AE /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = Carthage/Build/Mac/Prelude.framework; sourceTree = "<group>"; };
 		BABF32F81AD481B3007DC6AE /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/Mac/Box.framework; sourceTree = "<group>"; };
 		BABFB5B71B0E99D100CACEA5 /* StringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringParser.swift; sourceTree = "<group>"; };
 		BABFB5B91B0EA8A700CACEA5 /* StringParser_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringParser_Tests.swift; sourceTree = "<group>"; };
@@ -91,8 +81,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BABF32F91AD481B3007DC6AE /* Result.framework in Frameworks */,
-				BABF32FA1AD481B3007DC6AE /* Either.framework in Frameworks */,
-				BABF32FB1AD481B3007DC6AE /* Prelude.framework in Frameworks */,
 				BABF32FC1AD481B3007DC6AE /* Box.framework in Frameworks */,
 				BAC6CE5C1AC5B51D002246E5 /* Runes.framework in Frameworks */,
 			);
@@ -103,8 +91,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BABF32FD1AD4825F007DC6AE /* Result.framework in Frameworks */,
-				BABF32FE1AD4825F007DC6AE /* Either.framework in Frameworks */,
-				BABF32FF1AD4825F007DC6AE /* Prelude.framework in Frameworks */,
 				BABF33001AD4825F007DC6AE /* Box.framework in Frameworks */,
 				BAC6CE5E1AC5B621002246E5 /* Runes.framework in Frameworks */,
 				BAC6B22B1A61D92B005643D9 /* FootlessParser.framework in Frameworks */,
@@ -188,8 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				BABF32F51AD481B3007DC6AE /* Result.framework */,
-				BABF32F61AD481B3007DC6AE /* Either.framework */,
-				BABF32F71AD481B3007DC6AE /* Prelude.framework */,
 				BABF32F81AD481B3007DC6AE /* Box.framework */,
 				BAC6CE631AC5B6B0002246E5 /* Mac */,
 			);

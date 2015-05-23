@@ -9,7 +9,6 @@
 import FootlessParser
 import Runes
 import XCTest
-import Prelude
 
 class Pure_Tests: XCTestCase {
 
@@ -65,6 +64,11 @@ class FlatMap_Tests: XCTestCase {
 		assertParsesEqually(leftside, noparens, input: [1,1,2], shouldSucceed: true)
 		assertParsesEqually(leftside, noparens, input: [9,9,9], shouldSucceed: false)
 	}
+}
+
+/** The identity function; returns its argument. */
+public func id <A> (x: A) -> A {
+	return x
 }
 
 class Map_Tests: XCTestCase {
