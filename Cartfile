@@ -1,2 +1,2 @@
 github "thoughtbot/runes"
-github "kareman/Result" "flatmap-operator-precedence"
+github "antitypical/Result" "master"
