@@ -95,7 +95,7 @@
 
 /* Begin PBXFileReference section */
 		BA4246B91B1E2F2B00D85BB6 /* FootlessParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FootlessParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA4246C31B1E2F2B00D85BB6 /* FootlessParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootlessParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA4246C31B1E2F2B00D85BB6 /* FootlessParser-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FootlessParser-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4246D71B1E640F00D85BB6 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
 		BA4246D81B1E640F00D85BB6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		BA4246D91B1E640F00D85BB6 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 				BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */,
 				BAC6B22A1A61D92B005643D9 /* FootlessParser-MacTests.xctest */,
 				BA4246B91B1E2F2B00D85BB6 /* FootlessParser.framework */,
-				BA4246C31B1E2F2B00D85BB6 /* FootlessParserTests.xctest */,
+				BA4246C31B1E2F2B00D85BB6 /* FootlessParser-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 			);
 			name = "FootlessParser-iOSTests";
 			productName = FootlessParserTests;
-			productReference = BA4246C31B1E2F2B00D85BB6 /* FootlessParserTests.xctest */;
+			productReference = BA4246C31B1E2F2B00D85BB6 /* FootlessParser-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		BAC6B21E1A61D92B005643D9 /* FootlessParser-Mac */ = {
