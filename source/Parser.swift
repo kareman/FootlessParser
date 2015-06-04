@@ -18,7 +18,7 @@ public struct Parser <Token, Output> {
 }
 
 /** Succeeds iff 'condition' is true. Returns the token it read. */
-public func satisfy <T> (# expect: String, condition: T -> Bool) -> Parser<T, T> {
+public func satisfy <T> (# expect: String, condition: T -> Bool) -> Parser<T,T> {
 	return Parser { input in
 		return input.read(expect: expect) >>- { next in
 			if condition(next.head) {
@@ -31,12 +31,12 @@ public func satisfy <T> (# expect: String, condition: T -> Bool) -> Parser<T, T>
 }
 
 /** Match a single token. */
-public func token <T: Equatable> (token: T) -> Parser<T, T> {
+public func token <T: Equatable> (token: T) -> Parser<T,T> {
 	return satisfy(expect: toString(token)) { $0 == token }
 }
 
 /** Return whatever the next token is. */
-public func any <T> () -> Parser<T, T> {
+public func any <T> () -> Parser<T,T> {
 	return satisfy(expect: "anything") { T in true }
 }
 
