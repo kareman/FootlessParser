@@ -26,7 +26,7 @@ public struct ParserInput <Token> {
 	/** Unique ID for every manually created ParserInput. Those returned from other ParserInputs inherit their IDs. */
 	private let id: Int
 
-	private init <C: CollectionType, I: ForwardIndexType where C.Generator.Element == Token, C.Index == I> (_ source: C, index: I, id: Int) {
+	private init <C: CollectionType where C.Generator.Element == Token> (_ source: C, index: C.Index, id: Int) {
 		next = {
 			return index == source.endIndex
 				? nil
