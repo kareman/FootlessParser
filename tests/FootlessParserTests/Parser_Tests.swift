@@ -73,6 +73,15 @@ class Parser_Tests: XCTestCase {
 		XCTAssertEqual( parser.parse(ParserInput([1,1,1,9])).value!.output, [1,1,1] )
 	}
 
+	func testOneOfParser () {
+		let parser = oneOf("abc")
+
+		assertParseSucceeds( parser, "a", result: "a" )
+		assertParseSucceeds( parser, "b", result: "b" )
+		assertParseSucceeds( parser, "c", result: "c" )
+		assertParseFails( parser, input: "d" )
+	}
+
 	func testEofParser () {
 		let parser = token(1) <* eof()
 
