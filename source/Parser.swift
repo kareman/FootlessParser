@@ -24,7 +24,8 @@ public func satisfy <T> (# expect: String, condition: T -> Bool) -> Parser<T,T> 
 			if condition(next.head) {
 				return .success(output:next.head, nextinput:next.tail)
 			} else {
-				return .failure("expected '\(expect)', got '\(next.head)'.")
+				let quote = contains(expect, "'") ? "" : "'" // avoid double quoting 
+				return .failure("expected \(quote + expect + quote), got '\(next.head)'.")
 			}
 		}
 	}
