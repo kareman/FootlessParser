@@ -70,12 +70,12 @@ public func zeroOrMore <T,A> (p: Parser<T,A>) -> Parser<T,[A]> {
 	return optional( oneOrMore(p), otherwise: [] )
 }
 
-/** Succeeds if the next token is in the provided collection. */
+/** Succeed if the next token is in the provided collection. */
 public func oneOf <T: Equatable, C: CollectionType where C.Generator.Element == T> (collection: C) -> Parser<T,T> {
 	return satisfy(expect: "one of '\(toString(collection))'") { contains(collection, $0) }
 }
 
-/** Succeeds if the next token is _not_ in the provided collection. */
+/** Succeed if the next token is _not_ in the provided collection. */
 public func noneOf <T: Equatable, C: CollectionType where C.Generator.Element == T> (collection: C) -> Parser<T,T> {
 	return satisfy(expect: "something not in '\(toString(collection))'") { !contains(collection, $0) }
 }
