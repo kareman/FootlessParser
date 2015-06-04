@@ -74,6 +74,11 @@ public func oneOf <T: Equatable, C: CollectionType where C.Generator.Element == 
 	return satisfy(expect: "one of '\(toString(collection))'") { contains(collection, $0) }
 }
 
+/** Succeeds if the next token is _not_ in the provided collection. */
+public func noneOf <T: Equatable, C: CollectionType where C.Generator.Element == T> (collection: C) -> Parser<T,T> {
+	return satisfy(expect: "something not in '\(toString(collection))'") { !contains(collection, $0) }
+}
+
 /** Verify that input is empty. */
 public func eof <T> () -> Parser<T,()> {
 	return Parser { input in
