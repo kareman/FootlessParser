@@ -64,5 +64,5 @@ public func == <T> (lhs: ParserInput<T>, rhs: ParserInput<T>) -> Bool {
 }
 
 extension ParserInput: DebugPrintable {
-	public var debugDescription: String { return "ID: \(id), position:\(position())" }
+	public var debugDescription: String { return "position:\(position())" }
 }
