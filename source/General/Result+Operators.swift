@@ -4,7 +4,6 @@
 //
 
 import Result
-import Runes
 
 /**
 	map a function over a result

@@ -7,7 +7,6 @@
 //
 
 import FootlessParser
-import Runes
 import XCTest
 
 class Pure_Tests: XCTestCase {

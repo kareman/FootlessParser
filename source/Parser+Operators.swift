@@ -8,7 +8,8 @@
 //
 
 import Result
-import Runes
+
+infix operator >>- { associativity left precedence 100 }
 
 /**
 	flatMap a function over a parser.
@@ -27,6 +28,8 @@ public func >>- <T,A,B> (p: Parser<T,A>, f: A -> Parser<T,B>) -> Parser<T,B> {
 	}
 }
 
+infix operator <^> { associativity left precedence 130 }
+
 /**
 	map a function over a parser
 
@@ -44,6 +47,8 @@ public func <^> <T,A,B> (f: A -> B, p: Parser<T,A>) -> Parser<T,B> {
 	}
 }
 
+infix operator <*> { associativity left precedence 130 }
+
 /**
 	Apply a parser returning a function to another parser.
 
@@ -59,7 +64,7 @@ public func <*> <T,A,B> (fp: Parser<T,A->B>, p: Parser<T,A>) -> Parser<T,B> {
 	return fp >>- { $0 <^> p }
 }
 
-infix operator <* { associativity left precedence 155 }
+infix operator <* { associativity left precedence 130 }
 
 /**
 Apply both parsers, but only return the output from the first one.
@@ -73,7 +78,7 @@ public func <* <T,A,B> (p1: Parser<T,A>, p2: Parser<T,B>) -> Parser<T,A> {
 	return { x in { _ in x } } <^> p1 <*> p2
 }
 
-infix operator *> { associativity left precedence 155 }
+infix operator *> { associativity left precedence 130 }
 
 /**
 Apply both parsers, but only return the output from the 2nd one.

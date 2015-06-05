@@ -8,7 +8,6 @@
 //
 
 import Result
-import Runes
 
 /** Match a single character. */
 public func char (c: Character) -> Parser<Character, Character> {
