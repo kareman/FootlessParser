@@ -46,7 +46,7 @@ public func optional <T,A> (p: Parser<T,A>, # otherwise: A) -> Parser<T,A> {
 }
 
 /** Return a collection containing x and all elements of xs. Works with strings and arrays. */
-func extend <A, C: ExtensibleCollectionType where C.Generator.Element == A> (x: A)(xs: C) -> C {
+public func extend <A, C: ExtensibleCollectionType where C.Generator.Element == A> (x: A)(xs: C) -> C {
 	// not satisfied with this way of doing it, but ExtensibleCollectionType has only mutable methods.
 	var result = C()
 	result.append(x)

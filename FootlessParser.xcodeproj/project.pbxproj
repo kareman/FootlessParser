@@ -16,6 +16,12 @@
 		BA4246DA1B1E640F00D85BB6 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246D71B1E640F00D85BB6 /* Box.framework */; };
 		BA4246DB1B1E640F00D85BB6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246D81B1E640F00D85BB6 /* Result.framework */; };
 		BA4246DC1B1E640F00D85BB6 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246D91B1E640F00D85BB6 /* Runes.framework */; };
+		BA4E91991B22328000D185A5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */; };
+		BA4E919A1B2232B100D185A5 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; };
+		BA4E919B1B2232B100D185A5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; };
+		BA4E919D1B2232D900D185A5 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BA4E919E1B2232D900D185A5 /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BA4E919F1B22331F00D185A5 /* Runes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA69E9E11B1E667A00D73C3A /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */; };
 		BA69E9E21B1E667A00D73C3A /* Parser+Operators_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */; };
 		BA69E9E31B1E667A00D73C3A /* Parser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE6E1AC5E9C3002246E5 /* Parser_Tests.swift */; };
@@ -47,6 +53,8 @@
 		BAC6CE6B1AC5DF2F002246E5 /* ParserInput_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE6A1AC5DF2F002246E5 /* ParserInput_Tests.swift */; };
 		BAC6CE6D1AC5E935002246E5 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE6C1AC5E935002246E5 /* Parser.swift */; };
 		BAC6CE6F1AC5E9C3002246E5 /* Parser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE6E1AC5E9C3002246E5 /* Parser_Tests.swift */; };
+		BAC9BAA21B22303400ED31C1 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC9BAA11B22303400ED31C1 /* CSV.swift */; };
+		BAC9BAA31B22303400ED31C1 /* FootlessParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,9 +72,28 @@
 			remoteGlobalIDString = BAC6B21E1A61D92B005643D9;
 			remoteInfo = FootlessParser;
 		};
+		BAC9BAA41B22303400ED31C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAC6B2161A61D92B005643D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BAC6B21E1A61D92B005643D9;
+			remoteInfo = "FootlessParser-Mac";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		BA4E919C1B2232C200D185A5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BA4E919F1B22331F00D185A5 /* Runes.framework in CopyFiles */,
+				BA4E919D1B2232D900D185A5 /* Result.framework in CopyFiles */,
+				BA4E919E1B2232D900D185A5 /* Box.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BA69E9E91B1E672300D73C3A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -117,6 +144,9 @@
 		BAC6CE6A1AC5DF2F002246E5 /* ParserInput_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserInput_Tests.swift; sourceTree = "<group>"; };
 		BAC6CE6C1AC5E935002246E5 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BAC6CE6E1AC5E9C3002246E5 /* Parser_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser_Tests.swift; sourceTree = "<group>"; };
+		BAC9BA9D1B22303400ED31C1 /* Grammar_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Grammar_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC9BAA01B22303400ED31C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAC9BAA11B22303400ED31C1 /* CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +192,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BAC9BA9A1B22303400ED31C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA4E919A1B2232B100D185A5 /* Box.framework in Frameworks */,
+				BA4E919B1B2232B100D185A5 /* Result.framework in Frameworks */,
+				BAC9BAA31B22303400ED31C1 /* FootlessParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -193,6 +233,7 @@
 				BAC6B22A1A61D92B005643D9 /* FootlessParser-MacTests.xctest */,
 				BA4246B91B1E2F2B00D85BB6 /* FootlessParser.framework */,
 				BA4246C31B1E2F2B00D85BB6 /* FootlessParser-iOSTests.xctest */,
+				BAC9BA9D1B22303400ED31C1 /* Grammar_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				BAC6B22E1A61D92B005643D9 /* FootlessParserTests */,
+				BAC9BA9E1B22303400ED31C1 /* Grammar_Tests */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -272,6 +314,23 @@
 				BAC6CE661AC5BBB3002246E5 /* Result+Operators.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		BAC9BA9E1B22303400ED31C1 /* Grammar_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BAC9BAA11B22303400ED31C1 /* CSV.swift */,
+				BAC9BA9F1B22303400ED31C1 /* Supporting Files */,
+			);
+			path = Grammar_Tests;
+			sourceTree = "<group>";
+		};
+		BAC9BA9F1B22303400ED31C1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BAC9BAA01B22303400ED31C1 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +427,25 @@
 			productReference = BAC6B22A1A61D92B005643D9 /* FootlessParser-MacTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		BAC9BA9C1B22303400ED31C1 /* Grammar_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAC9BAA81B22303400ED31C1 /* Build configuration list for PBXNativeTarget "Grammar_Tests" */;
+			buildPhases = (
+				BAC9BA991B22303400ED31C1 /* Sources */,
+				BAC9BA9A1B22303400ED31C1 /* Frameworks */,
+				BAC9BA9B1B22303400ED31C1 /* Resources */,
+				BA4E919C1B2232C200D185A5 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BAC9BAA51B22303400ED31C1 /* PBXTargetDependency */,
+			);
+			name = Grammar_Tests;
+			productName = Grammar_Tests;
+			productReference = BAC9BA9D1B22303400ED31C1 /* Grammar_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -389,6 +467,9 @@
 					BAC6B2291A61D92B005643D9 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
+					BAC9BA9C1B22303400ED31C1 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 				};
 			};
 			buildConfigurationList = BAC6B2191A61D92B005643D9 /* Build configuration list for PBXProject "FootlessParser" */;
@@ -407,6 +488,7 @@
 				BAC6B2291A61D92B005643D9 /* FootlessParser-MacTests */,
 				BA4246B81B1E2F2B00D85BB6 /* FootlessParser-iOS */,
 				BA4246C21B1E2F2B00D85BB6 /* FootlessParser-iOSTests */,
+				BAC9BA9C1B22303400ED31C1 /* Grammar_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -434,6 +516,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BAC6B2281A61D92B005643D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAC9BA9B1B22303400ED31C1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -491,6 +580,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BAC9BA991B22303400ED31C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA4E91991B22328000D185A5 /* TestHelpers.swift in Sources */,
+				BAC9BAA21B22303400ED31C1 /* CSV.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -503,6 +601,11 @@
 			isa = PBXTargetDependency;
 			target = BAC6B21E1A61D92B005643D9 /* FootlessParser-Mac */;
 			targetProxy = BAC6B22C1A61D92B005643D9 /* PBXContainerItemProxy */;
+		};
+		BAC9BAA51B22303400ED31C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BAC6B21E1A61D92B005643D9 /* FootlessParser-Mac */;
+			targetProxy = BAC9BAA41B22303400ED31C1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -762,6 +865,44 @@
 			};
 			name = Release;
 		};
+		BAC9BAA61B22303400ED31C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = tests/Grammar_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BAC9BAA71B22303400ED31C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = tests/Grammar_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -806,6 +947,15 @@
 			buildConfigurations = (
 				BAC6B2391A61D92B005643D9 /* Debug */,
 				BAC6B23A1A61D92B005643D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAC9BAA81B22303400ED31C1 /* Build configuration list for PBXNativeTarget "Grammar_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAC9BAA61B22303400ED31C1 /* Debug */,
+				BAC9BAA71B22303400ED31C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
