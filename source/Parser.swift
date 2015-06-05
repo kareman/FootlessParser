@@ -80,6 +80,11 @@ public func noneOf <T: Equatable, C: CollectionType where C.Generator.Element ==
 	return satisfy(expect: "something not in '\(toString(collection))'") { !contains(collection, $0) }
 }
 
+/** Match anything but this. */
+public func not <T: Equatable> (token: T) -> Parser<T,T> {
+	return satisfy(expect: "anything but '\(token)'") { $0 != token }
+}
+
 /** Verify that input is empty. */
 public func eof <T> () -> Parser<T,()> {
 	return Parser { input in

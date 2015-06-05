@@ -88,7 +88,16 @@ class Parser_Tests: XCTestCase {
 		assertParseFails( parser, input: "a" )
 		assertParseFails( parser, input: "b" )
 		assertParseFails( parser, input: "c" )
-		assertParseSucceeds( parser, "d", result: "d")	}
+		assertParseSucceeds( parser, "d", result: "d")
+	}
+
+	func testNotParser () {
+		let parser = not("a" as Character)
+
+		assertParseSucceeds( parser, "b", result: "b" )
+		assertParseSucceeds( parser, "c", result: "c" )
+		assertParseFails( parser, input: "a" )
+	}
 
 	func testEofParser () {
 		let parser = token(1) <* eof()
