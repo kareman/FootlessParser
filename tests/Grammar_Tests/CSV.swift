@@ -22,12 +22,12 @@ let row = extend <^> cell <*> zeroOrMore( char(delimiter) *> cell ) <* char(newl
 class CSV: XCTestCase {
 
 	func testCell () {
-		assertParseSucceeds (cell, "row", result: "row")
-		assertParseSucceeds (cell, "\"quoted row\"", result: "quoted row")
+		assertParseSucceeds(cell, "row", result: "row")
+		assertParseSucceeds(cell, "\"quoted row\"", result: "quoted row")
 	}
 
 	func testRow () {
-		XCTAssertEqual(parse (row, "alpha,bravo,\"charlie\",delta\n").value! , ["alpha", "bravo", "charlie", "delta"])
+		XCTAssertEqual(parse(row, "alpha,bravo,\"charlie\",delta\n").value!, ["alpha", "bravo", "charlie", "delta"])
 	}
 
 	func testParseCSVQuotesReturningArray () {
