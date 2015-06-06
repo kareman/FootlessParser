@@ -101,13 +101,13 @@ public func eof <T> () -> Parser<T,()> {
 	Failure to consume all of input will result in a ParserError.
 
 	:param: p A parser.
-	:param: input A collection with a forward index, like a string or an array.
+	:param: input A collection, like a string or an array.
 
 	:returns: Output from the parser, or a ParserError.
 */
 public func parse
-	<A,T,C: CollectionType, I: ForwardIndexType where C.Generator.Element == T, C.Index == I>
-	(p: Parser<T,A>, input: C) -> Result<A,ParserError> {
+	<A,T,C: CollectionType where C.Generator.Element == T>
+	(p: Parser<T,A>, c: C) -> Result<A,ParserError> {
 
-	return ( p <* eof() ).parse(ParserInput(input)) >>- { .success($0.output) }
+	return ( p <* eof() ).parse(ParserInput(c)) >>- { .success($0.output) }
 }
