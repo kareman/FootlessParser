@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA3052C91B2339EE0022CEE6 /* CSV-quotes.csv in Resources */ = {isa = PBXBuildFile; fileRef = BA3052C81B2339EE0022CEE6 /* CSV-quotes.csv */; };
 		BA4246C41B1E2F2B00D85BB6 /* FootlessParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246B91B1E2F2B00D85BB6 /* FootlessParser.framework */; };
 		BA4246D21B1E63D300D85BB6 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE6C1AC5E935002246E5 /* Parser.swift */; };
 		BA4246D31B1E63D300D85BB6 /* StringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFB5B71B0E99D100CACEA5 /* StringParser.swift */; };
@@ -22,6 +23,7 @@
 		BA4E919D1B2232D900D185A5 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA4E919E1B2232D900D185A5 /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA4E919F1B22331F00D185A5 /* Runes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BA4E91A11B223A6700D185A5 /* CSV-quotes-large.csv in Resources */ = {isa = PBXBuildFile; fileRef = BA4E91A01B223A6700D185A5 /* CSV-quotes-large.csv */; };
 		BA69E9E11B1E667A00D73C3A /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */; };
 		BA69E9E21B1E667A00D73C3A /* Parser+Operators_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */; };
 		BA69E9E31B1E667A00D73C3A /* Parser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE6E1AC5E9C3002246E5 /* Parser_Tests.swift */; };
@@ -121,11 +123,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BA3052C81B2339EE0022CEE6 /* CSV-quotes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CSV-quotes.csv"; sourceTree = "<group>"; };
 		BA4246B91B1E2F2B00D85BB6 /* FootlessParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FootlessParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4246C31B1E2F2B00D85BB6 /* FootlessParser-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FootlessParser-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4246D71B1E640F00D85BB6 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
 		BA4246D81B1E640F00D85BB6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		BA4246D91B1E640F00D85BB6 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
+		BA4E91A01B223A6700D185A5 /* CSV-quotes-large.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CSV-quotes-large.csv"; sourceTree = "<group>"; };
 		BABF32F01AD4223A007DC6AE /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = tests/Playground.playground; sourceTree = "<group>"; };
 		BABF32F51AD481B3007DC6AE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		BABF32F81AD481B3007DC6AE /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/Mac/Box.framework; sourceTree = "<group>"; };
@@ -328,6 +332,8 @@
 		BAC9BA9F1B22303400ED31C1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BA3052C81B2339EE0022CEE6 /* CSV-quotes.csv */,
+				BA4E91A01B223A6700D185A5 /* CSV-quotes-large.csv */,
 				BAC9BAA01B22303400ED31C1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -526,6 +532,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA3052C91B2339EE0022CEE6 /* CSV-quotes.csv in Resources */,
+				BA4E91A11B223A6700D185A5 /* CSV-quotes-large.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -828,6 +836,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = FootlessParser;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Release;
 		};
@@ -900,6 +910,7 @@
 				INFOPLIST_FILE = tests/Grammar_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
 			};
 			name = Release;
 		};

@@ -29,4 +29,18 @@ class CSV: XCTestCase {
 	func testRow () {
 		XCTAssertEqual(parse (row, "alpha,bravo,\"charlie\",delta\n").value! , ["alpha", "bravo", "charlie", "delta"])
 	}
+
+	func testParseCSVQuotesReturningArray () {
+		let filepath = pathForTestResource("CSV-quotes", type: "csv")
+		let movieratings = String(contentsOfFile: filepath, encoding: NSUTF8StringEncoding, error: nil)!
+
+		measureBlock {
+			let result = parse(zeroOrMore(row),movieratings)
+			if let success = result.value {
+				XCTAssertEqual(success.count, 100)
+			} else if let failure = result.error {
+				XCTFail(failure)
+			}
+		}
+	}
 }
