@@ -142,21 +142,65 @@
             
             <a href='#footlessparser' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='footlessparser'>FootlessParser</h1>
 
-<p>FootlessParser is a simple and pretty naive implementation of a parser combinator in Swift. It is a work in progress and not very useful at the moment. More info about the development can be found <a href="http://blog.nottoobadsoftware.com/footlessparser/">here</a>.</p>
-<a href='#setup' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='setup'>Setup</h3>
+<p>FootlessParser is a simple and pretty naive implementation of a parser combinator in Swift. It enables infinite lookahead, non-ambiguous parsing with error reporting.</p>
 
-<ol>
-<li><a href="https://github.com/Carthage/Carthage#installing-carthage">Install Carthage</a> if not already installed.</li>
-<li>Download/clone FootlessParser.</li>
-<li>Run <code>carthage bootstrap --platform Mac</code> from the root folder. *</li>
-</ol>
+<p>Also check out <a href="http://blog.nottoobadsoftware.com/footlessparser/">a series of blog posts about the development</a> and <a href="http://kareman.github.io/FootlessParser/">documentation from the source code</a>.</p>
+<a href='#introduction' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='introduction'>Introduction</h3>
 
-<p>*<em>Several of the frameworks FootlessParser uses will not compile for iOS at the moment, support for iOS will be added when that has been fixed.</em></p>
+<p>In short, FootlessParser lets you define parsers like this:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">parser</span> <span class="o">=</span> <span class="n">function1</span> <span class="o">&lt;^&gt;</span> <span class="n">parser1</span> <span class="o">&lt;*&gt;</span> <span class="n">parser2</span> <span class="o">&lt;|&gt;</span> <span class="n">parser3</span>
+</code></pre>
+
+<p><code>function1</code> and <code>parser3</code> return the same type.</p>
+
+<p><code>parser</code> will pass the input to <code>parser1</code> followed by <code>parser2</code>, pass their results to <code>function1</code> and return its result. If that fails it will pass the original input to <code>parser3</code> and return its result.</p>
+<a href='#example' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='example'>Example</h3>
+<a href='#a_href_http_www_computerhope_com_jargon_c_csv_htm_csv_a_parser' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='a_href_http_www_computerhope_com_jargon_c_csv_htm_csv_a_parser'><a href="http://www.computerhope.com/jargon/c/csv.htm">CSV</a> parser</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">delimiter</span> <span class="o">=</span> <span class="s">","</span> <span class="k">as</span> <span class="kt">Character</span>
+<span class="k">let</span> <span class="nv">quote</span> <span class="o">=</span> <span class="s">"</span><span class="se">\"</span><span class="s">"</span> <span class="k">as</span> <span class="kt">Character</span>
+<span class="k">let</span> <span class="nv">newline</span> <span class="o">=</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span> <span class="k">as</span> <span class="kt">Character</span>
+
+<span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="nf">char</span><span class="p">(</span><span class="n">quote</span><span class="p">)</span> <span class="o">*&gt;</span> <span class="nf">zeroOrMore</span><span class="p">(</span><span class="nf">not</span><span class="p">(</span><span class="n">quote</span><span class="p">))</span> <span class="o">&lt;*</span> <span class="nf">char</span><span class="p">(</span><span class="n">quote</span><span class="p">)</span>
+    <span class="o">&lt;|&gt;</span> <span class="nf">zeroOrMore</span><span class="p">(</span><span class="nf">noneOf</span><span class="p">([</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">newline</span><span class="p">]))</span>
+
+<span class="k">let</span> <span class="nv">row</span> <span class="o">=</span> <span class="n">extend</span> <span class="o">&lt;^&gt;</span> <span class="n">cell</span> <span class="o">&lt;*&gt;</span> <span class="nf">zeroOrMore</span><span class="p">(</span> <span class="nf">char</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span> <span class="o">*&gt;</span> <span class="n">cell</span> <span class="p">)</span> <span class="o">&lt;*</span> <span class="nf">char</span><span class="p">(</span><span class="n">newline</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">csvparser</span> <span class="o">=</span> <span class="nf">zeroOrMore</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre>
+
+<p>Here a cell (or field) either:</p>
+
+<ul>
+<li>begins with a <q>, then contains anything, including commas, tabs and newlines, and ends with a</q> (both quotes are discarded) </li>
+<li>or is unquoted and contains anything but a comma or a newline.</li>
+</ul>
+
+<p>Each row then consists of one or more cells, separated by commas and ended by a newline. The <code>extend</code> function joins the cells together into an array. 
+Finally the <code>csvparser</code> collects zero or more rows into an array.</p>
+
+<p>To perform the actual parsing:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="nf">parse</span><span class="p">(</span><span class="n">csvparser</span><span class="p">,</span> <span class="n">csvtext</span><span class="p">)</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">output</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">value</span> <span class="p">{</span>
+    <span class="c1">// output is an array of all the rows, </span>
+    <span class="c1">// where each row is an array of all its cells.</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">error</span> <span class="p">{</span>
+    <span class="nf">println</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>The <code>parse</code> function returns a <a href="https://github.com/antitypical/Result">Result</a> which if successful contains the output from the parser, or in case of failure contains the error.</p>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='installation'>Installation</h3>
+<a href='#using_a_href_https_github_com_carthage_carthage_carthage_a' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='using_a_href_https_github_com_carthage_carthage_carthage_a'>Using <a href="https://github.com/Carthage/Carthage">Carthage</a></h4>
+<pre class="highlight plaintext"><code>github "kareman/FootlessParser"
+</code></pre>
+
+<p>Then run <code>carthage update</code>.</p>
+
+<p>Follow the current instructions in <a href="https://github.com/Carthage/Carthage#adding-frameworks-to-an-application">Carthage&rsquo;s README</a> for up to date installation instructions.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-06-07)</p>
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-06-08)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
