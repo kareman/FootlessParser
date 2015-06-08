@@ -37,7 +37,7 @@ class CSV: XCTestCase {
 		measureBlock {
 			let result = parse(zeroOrMore(row),movieratings)
 			if let success = result.value {
-				XCTAssertEqual(success.count, 100)
+				XCTAssertEqual(success.count, 101)
 			} else if let failure = result.error {
 				XCTFail(failure)
 			}

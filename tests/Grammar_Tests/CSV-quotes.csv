@@ -1,7 +1,10 @@
 "position","const","created","modified","description","Title","Title type","Directors","You rated","IMDb Rating","Runtime (mins)","Year","Genres","Num. Votes","Release Date (month/day/year)","URL"
-"1","tt2562232","Tue Jun  2 00:00:00 2015","","","Birdman: Or (The Unexpected Virtue of Ignorance)","Feature Film","Alejandro G. Iñárritu","5","7.9","119","2014","comedy, drama","266756","2014-08-27","http://www.imdb.com/title/tt2562232/"
-"2","tt0837562","Sat May 30 00:00:00 2015","","","Hotel Transylvania","Feature Film","Genndy Tartakovsky","7","7.1","91","2012","animation, comedy, family, fantasy","127594","2012-09-08","http://www.imdb.com/title/tt0837562/"
-"3","tt0082869","Tue May 26 00:00:00 2015","","","Outland","Feature Film","Peter Hyams","5","6.6","112","1981","action, crime, sci_fi, thriller, western","19727","1981-05-22","http://www.imdb.com/title/tt0082869/"
+"1","tt2562232","Tue Jun  2 00:00:00 2015","","","Birdman: Or (The Unexpected Virtue of Ignorance)","Feature Film","Alejandro G. Iñárritu","5","7.9","119","2014","comedy,
+
+ drama","266756","2014-08-27","http://www.imdb.com/title/tt2562232/"
+"2",tt0837562,"Sat May 30 00:00:00 2015",,"","Hotel Transylvania","Feature Film","Genndy Tartakovsky","7","7.1","91","2012","animation, comedy, family, fantasy","127594","2012-09-08","http://www.imdb.com/title/tt0837562/"
+
+3,"tt0082869","Tue May 26 00:00:00 2015","","","Outland","Feature Film","Peter Hyams","5","6.6","112","1981","action, crime, sci_fi, thriller, western","19727","1981-05-22","http://www.imdb.com/title/tt0082869/"
 "4","tt1792647","Mon May 25 00:00:00 2015","","","Cirque du Soleil: Worlds Away","Feature Film","Andrew Adamson","6","6.7","91","2012","fantasy","6742","2012-10-20","http://www.imdb.com/title/tt1792647/"
 "5","tt2960930","Mon May 25 00:00:00 2015","","","Extraterrestrial","Feature Film","Colin Minihan","6","5.0","101","2014","horror, sci_fi","8513","2014-04-18","http://www.imdb.com/title/tt2960930/"
 "6","tt0787474","Sat May 23 00:00:00 2015","","","The Boxtrolls","Feature Film","Graham Annable, Anthony Stacchi","7","6.8","96","2014","animation, adventure, comedy, family, fantasy","29781","2014-08-31","http://www.imdb.com/title/tt0787474/"
