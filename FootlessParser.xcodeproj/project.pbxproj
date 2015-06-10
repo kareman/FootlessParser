@@ -123,19 +123,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BA3052C81B2339EE0022CEE6 /* CSV-quotes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CSV-quotes.csv"; sourceTree = "<group>"; };
+		BA3052C81B2339EE0022CEE6 /* CSV-quotes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = "CSV-quotes.csv"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		BA4246B91B1E2F2B00D85BB6 /* FootlessParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FootlessParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4246C31B1E2F2B00D85BB6 /* FootlessParser-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FootlessParser-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4246D71B1E640F00D85BB6 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
 		BA4246D81B1E640F00D85BB6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		BA4246D91B1E640F00D85BB6 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
-		BA4E91A01B223A6700D185A5 /* CSV-quotes-large.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CSV-quotes-large.csv"; sourceTree = "<group>"; };
+		BA4E91A01B223A6700D185A5 /* CSV-quotes-large.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = "CSV-quotes-large.csv"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		BABF32F01AD4223A007DC6AE /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = tests/Playground.playground; sourceTree = "<group>"; };
 		BABF32F51AD481B3007DC6AE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		BABF32F81AD481B3007DC6AE /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/Mac/Box.framework; sourceTree = "<group>"; };
 		BABFB5B71B0E99D100CACEA5 /* StringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringParser.swift; sourceTree = "<group>"; };
 		BABFB5B91B0EA8A700CACEA5 /* StringParser_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringParser_Tests.swift; sourceTree = "<group>"; };
-		BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parser+Operators.swift"; sourceTree = "<group>"; };
+		BAC1FDF81AD56E8B00B80A50 /* Parser+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Parser+Operators.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parser+Operators_Tests.swift"; sourceTree = "<group>"; };
 		BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FootlessParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,7 +150,7 @@
 		BAC6CE6E1AC5E9C3002246E5 /* Parser_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser_Tests.swift; sourceTree = "<group>"; };
 		BAC9BA9D1B22303400ED31C1 /* Grammar_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Grammar_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC9BAA01B22303400ED31C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAC9BAA11B22303400ED31C1 /* CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		BAC9BAA11B22303400ED31C1 /* CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CSV.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
