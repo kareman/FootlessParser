@@ -69,6 +69,11 @@ public func zeroOrMore <T,A> (p: Parser<T,A>) -> Parser<T,[A]> {
 	return optional( oneOrMore(p), otherwise: [] )
 }
 
+/** Repeat parser 'n' times. */
+public func count <T,A> (n: UInt, p: Parser<T,A>) -> Parser<T,[A]> {
+	return n == 0 ? pure([]) : extend <^> p <*> count(n-1, p)
+}
+
 /** Succeed if the next token is in the provided collection. */
 public func oneOf <T: Equatable, C: CollectionType where C.Generator.Element == T> (collection: C) -> Parser<T,T> {
 	return satisfy(expect: "one of '\(toString(collection))'") { contains(collection, $0) }

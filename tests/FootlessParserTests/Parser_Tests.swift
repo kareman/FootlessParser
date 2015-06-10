@@ -74,6 +74,25 @@ class Parser_Tests: XCTestCase {
 		assertParseSucceeds( parser,[1,1,1,9], result: [1,1,1] )
 	}
 
+	func testCountParser () {
+		let parser = count(3, token(1))
+
+		assertParseSucceeds( parser, [1,1,1,1], result: [1,1,1] )
+		assertParseFails( parser, input: [1, 1])
+		assertParseFails( parser, input: [1, 2, 1])
+		assertParseFails( parser, input: [])
+	}
+
+	func testCountParser0TimesWithoutConsumingInput () {
+		let parser = count(0, token(1))
+		var input = ParserInput ([1,2])
+
+		assertParseSucceeds(parser, &input, result: [])
+		assertParseSucceeds(token(1), &input)
+
+		assertParseSucceeds( parser, [], result: [] )
+	}
+
 	func testOneOfParser () {
 		let parser = oneOf("abc")
 
@@ -89,7 +108,7 @@ class Parser_Tests: XCTestCase {
 		assertParseFails( parser, input: "a" )
 		assertParseFails( parser, input: "b" )
 		assertParseFails( parser, input: "c" )
-		assertParseSucceeds( parser, "d", result: "d")
+		assertParseSucceeds( parser, "d", result: "d" )
 	}
 
 	func testNotParser () {
