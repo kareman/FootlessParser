@@ -59,18 +59,19 @@ class Parser_Tests: XCTestCase {
 	func testOneOrMoreParser () {
 		let parser = oneOrMore(token(1))
 
-		XCTAssertEqual( parser.parse(ParserInput([1])).value!.output, [1] )
-		XCTAssertEqual( parser.parse(ParserInput([1,1,1])).value!.output, [1,1,1] )
-		XCTAssertEqual( parser.parse(ParserInput([1,1,1,9])).value!.output, [1,1,1] )
+		assertParseSucceeds( parser,[1], result: [1] )
+		assertParseSucceeds( parser,[1,1,1], result: [1,1,1] )
+		assertParseSucceeds( parser,[1,1,1,9], result: [1,1,1] )
 	}
 
 	func testZeroOrMoreParser () {
 		let parser = zeroOrMore(token(1))
 
-		XCTAssertEqual( parser.parse(ParserInput([9])).value!.output, [] )
-		XCTAssertEqual( parser.parse(ParserInput([1])).value!.output, [1] )
-		XCTAssertEqual( parser.parse(ParserInput([1,1,1])).value!.output, [1,1,1] )
-		XCTAssertEqual( parser.parse(ParserInput([1,1,1,9])).value!.output, [1,1,1] )
+		assertParseSucceeds( parser,[], result: [] )
+		assertParseSucceeds( parser,[9], result: [] )
+		assertParseSucceeds( parser,[1], result: [1] )
+		assertParseSucceeds( parser,[1,1,1], result: [1,1,1] )
+		assertParseSucceeds( parser,[1,1,1,9], result: [1,1,1] )
 	}
 
 	func testOneOfParser () {

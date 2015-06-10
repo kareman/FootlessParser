@@ -25,16 +25,18 @@ class StringParser_Tests: XCTestCase {
 	func testOneOrMoreParserForCharacters () {
 		let parser = oneOrMore(char("a"))
 
-		XCTAssertEqual( parser.parse(ParserInput("a")).value!.output, "a" )
-		XCTAssertEqual( parser.parse(ParserInput("aaa")).value!.output, "aaa" )
-		XCTAssertEqual( parser.parse(ParserInput("aaab")).value!.output, "aaa" )
+		assertParseSucceeds( parser, "a", result: "a" )
+		assertParseSucceeds( parser, "aaa", result: "aaa" )
+		assertParseSucceeds( parser, "aaab", result: "aaa" )
 	}
 
 	func testZeroOrMoreParserForCharacters () {
 		let parser = zeroOrMore(char("a"))
 
-		XCTAssertEqual( parser.parse(ParserInput("a")).value!.output, "a" )
-		XCTAssertEqual( parser.parse(ParserInput("aaa")).value!.output, "aaa" )
-		XCTAssertEqual( parser.parse(ParserInput("aaab")).value!.output, "aaa" )
+		assertParseSucceeds( parser, "", result: "" )
+		assertParseSucceeds( parser, "b", result: "" )
+		assertParseSucceeds( parser, "a", result: "a" )
+		assertParseSucceeds( parser, "aaa", result: "aaa" )
+		assertParseSucceeds( parser, "aaab", result: "aaa" )
 	}
 }
