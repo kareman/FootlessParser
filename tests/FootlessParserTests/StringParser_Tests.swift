@@ -27,7 +27,7 @@ class StringParser_Tests: XCTestCase {
 
 		assertParseSucceeds( parser, "a", result: "a" )
 		assertParseSucceeds( parser, "aaa", result: "aaa" )
-		assertParseSucceeds( parser, "aaab", result: "aaa" )
+		assertParseSucceeds( parser, "aaab", result: "aaa", consumed: 3 )
 	}
 
 	func testZeroOrMoreParserForCharacters () {
@@ -37,6 +37,6 @@ class StringParser_Tests: XCTestCase {
 		assertParseSucceeds( parser, "b", result: "" )
 		assertParseSucceeds( parser, "a", result: "a" )
 		assertParseSucceeds( parser, "aaa", result: "aaa" )
-		assertParseSucceeds( parser, "aaab", result: "aaa" )
+		assertParseSucceeds( parser, "aaab", result: "aaa", consumed: 3 )
 	}
 }
