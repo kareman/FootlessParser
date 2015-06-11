@@ -69,7 +69,7 @@ public func zeroOrMore <T,A> (p: Parser<T,A>) -> Parser<T,[A]> {
 	return optional( oneOrMore(p), otherwise: [] )
 }
 
-/** Repeat parser 'n' times. */
+/** Repeat parser 'n' times. If 'n' == 0 it always succeeds and returns []. */
 public func count <T,A> (n: UInt, p: Parser<T,A>) -> Parser<T,[A]> {
 	return n == 0 ? pure([]) : extend <^> p <*> count(n-1, p)
 }
