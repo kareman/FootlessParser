@@ -12,7 +12,7 @@ import Result
 infix operator >>- { associativity left precedence 100 }
 
 /**
-	flatMap a function over a parser.
+	FlatMap a function over a parser.
 
 	- If the parser fails, the function will not be evaluated and the error is returned.
 	- If the parser succeeds, the function will be applied to the output, and the resulting parser is run with the remaining input.
@@ -31,12 +31,12 @@ public func >>- <T,A,B> (p: Parser<T,A>, f: A -> Parser<T,B>) -> Parser<T,B> {
 infix operator <^> { associativity left precedence 130 }
 
 /**
-	map a function over a parser
+	Map a function over a parser
 
 	- If the parser fails, the function will not be evaluated and the parser error is returned.
 	- If the parser succeeds, the function will be applied to the output.
 
-	:param: f A transformation function from type A to type B
+	:param: f A function from type A to type B
 	:param: p A parser of type Parser<T,A>
 
 	:returns: A parser of type Parser<T,B>
@@ -67,7 +67,7 @@ public func <*> <T,A,B> (fp: Parser<T,A->B>, p: Parser<T,A>) -> Parser<T,B> {
 infix operator <* { associativity left precedence 130 }
 
 /**
-Apply both parsers, but only return the output from the first one.
+	Apply both parsers, but only return the output from the first one.
 
 	- If the first parser fails, its error will be returned.
 	- If the 2nd parser fails, its error will be returned.
@@ -81,7 +81,7 @@ public func <* <T,A,B> (p1: Parser<T,A>, p2: Parser<T,B>) -> Parser<T,A> {
 infix operator *> { associativity left precedence 130 }
 
 /**
-Apply both parsers, but only return the output from the 2nd one.
+	Apply both parsers, but only return the output from the 2nd one.
 
 	- If the first parser fails, its error will be returned.
 	- If the 2nd parser fails, its error will be returned.
@@ -94,11 +94,9 @@ public func *> <T,A,B> (p1: Parser<T,A>, p2: Parser<T,B>) -> Parser<T,B> {
 
 
 /**
-	Wrap a value in a minimal context of Parser. Also known as 'return' in Haskell.
+	Create a parser which ignores input and returns this parameter.
 
 	:param: a A value of type A
-
-	:returns: A parser which ignores the input and returns 'a'.
 */
 public func pure <T,A> (a: A) -> Parser<T,A> {
 	return Parser { input in .success(output:a, nextinput: input) }
@@ -108,7 +106,7 @@ public func pure <T,A> (a: A) -> Parser<T,A> {
 infix operator <|> { associativity right precedence 80 }
 
 /** 
-	Choice operator for parsers.
+	Apply one of 2 parsers.
 
 	- If the first parser succeeds, return its results.
 	- Else if the 2nd parser succeeds, return its results.
