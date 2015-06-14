@@ -37,6 +37,30 @@ class Parser_Tests: XCTestCase {
 		assertParseFails(parser, input: [1])
 	}
 
+	func testTokensParser () {
+		let parser = tokens([1,2,3,4])
+
+		assertParseSucceeds( parser,[1,2,3,4,5], result: [1,2,3,4], consumed: 4 )
+		assertParseFails( parser, input: [] )
+		assertParseFails( parser, input: [1,2,3] )
+		assertParseFails( parser, input: [1,2,3,5] )
+	}
+
+	func testStringTokensParser () {
+		let parser = tokens("abc")
+
+		assertParseSucceeds( parser, "abcde", result: "abc", consumed: 3 )
+		assertParseFails( parser, input: "" )
+		assertParseFails( parser, input: "ab" )
+		assertParseFails( parser, input: "abx" )
+	}
+
+	func testEmptyStringTokensParser () {
+		let parser = tokens("")
+
+		assertParseSucceeds( parser, "abcde", result: "", consumed: 0 )
+	}
+
 	func testAnyParser () {
 		let parser: Parser<Character, Character> = any()
 
@@ -102,7 +126,7 @@ class Parser_Tests: XCTestCase {
 		let parser = count(2...4, token(1))
 
 		assertParseFails( parser, input: [])
-		assertParseFails( parser, input: [1, 2])
+		assertParseFails( parser, input: [1])
 		assertParseSucceeds( parser, [1,1], result: [1,1], consumed: 2 )
 		assertParseSucceeds( parser, [1,1,1,2], result: [1,1,1], consumed: 3 )
 		assertParseSucceeds( parser, [1,1,1,1,1,1], result: [1,1,1,1], consumed: 4 )

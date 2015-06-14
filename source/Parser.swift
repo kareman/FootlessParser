@@ -35,6 +35,14 @@ public func token <T: Equatable> (token: T) -> Parser<T,T> {
 	return satisfy(expect: toString(token)) { $0 == token }
 }
 
+/** Match several tokens in a row, like e.g. a string. */
+public func tokens <T: Equatable, C: CollectionType where C.Generator.Element == T> (xs: C) -> Parser<T,C> {
+	let length = Swift.count(xs) as! Int
+	return count(0...length, any()) >>- { parsedtokens in
+		return equal(parsedtokens, xs) ? pure(xs) : fail("Expected '\(xs)', got '\(parsedtokens)'")
+	}
+}
+
 /** Return whatever the next token is. */
 public func any <T> () -> Parser<T,T> {
 	return satisfy(expect: "anything") { T in true }
@@ -76,7 +84,7 @@ public func zeroOrMore <T,A> (p: Parser<T,A>) -> Parser<T,[A]> {
 }
 
 /** Repeat parser 'n' times. If 'n' == 0 it always succeeds and returns []. */
-public func count <T,A> (n: UInt, p: Parser<T,A>) -> Parser<T,[A]> {
+public func count <T,A> (n: Int, p: Parser<T,A>) -> Parser<T,[A]> {
 	return n == 0 ? pure([]) : extend <^> p <*> count(n-1, p)
 }
 
