@@ -39,4 +39,13 @@ class StringParser_Tests: XCTestCase {
 		assertParseSucceeds( parser, "aaa", result: "aaa" )
 		assertParseSucceeds( parser, "aaab", result: "aaa", consumed: 3 )
 	}
+
+	func testStringCountParser () {
+		let parser = count(3, char("a"))
+
+		assertParseSucceeds( parser, "aaaa", result: "aaa", consumed: 3 )
+		assertParseFails( parser, input: "aa")
+		assertParseFails( parser, input: "axa")
+		assertParseFails( parser, input: "")
+	}
 }
