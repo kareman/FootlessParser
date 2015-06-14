@@ -100,6 +100,11 @@ public func eof <T> () -> Parser<T,()> {
 	}
 }
 
+/** Fail with the given error message. Ignores input. */
+public func fail <T,A> (message: String) -> Parser<T,A> {
+	return Parser { _ in .failure(message) }
+}
+
 /** 
 	Parse all of input with parser.
 
