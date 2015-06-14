@@ -98,6 +98,53 @@ class Parser_Tests: XCTestCase {
 		assertParseSucceeds( parser, [], result: [], consumed: 0 )
 	}
 
+	func testCountRangeOfLength3 () {
+		let parser = count(2...4, token(1))
+
+		assertParseFails( parser, input: [])
+		assertParseFails( parser, input: [1, 2])
+		assertParseSucceeds( parser, [1,1], result: [1,1], consumed: 2 )
+		assertParseSucceeds( parser, [1,1,1,2], result: [1,1,1], consumed: 3 )
+		assertParseSucceeds( parser, [1,1,1,1,1,1], result: [1,1,1,1], consumed: 4 )
+	}
+
+	func testCountRangeOfLength2 () {
+		let parser = count(2...3, token(1))
+
+		assertParseFails( parser, input: [])
+		assertParseFails( parser, input: [1, 2])
+		assertParseSucceeds( parser, [1,1], result: [1,1], consumed: 2 )
+		assertParseSucceeds( parser, [1,1,1,2], result: [1,1,1], consumed: 3 )
+		assertParseSucceeds( parser, [1,1,1,1,1,1], result: [1,1,1], consumed: 3 )
+	}
+
+	func testCountRangeOfLength1 () {
+		let parser = count(2...2, token(1))
+
+		assertParseFails( parser, input: [])
+		assertParseFails( parser, input: [1, 2])
+		assertParseSucceeds( parser, [1,1], result: [1,1], consumed: 2 )
+		assertParseSucceeds( parser, [1,1,1], result: [1,1], consumed: 2 )
+	}
+
+	func testCountRangeFrom0 () {
+		let parser = count(0...2, token(1))
+
+		assertParseSucceeds( parser, [])
+		assertParseSucceeds( parser, [2, 2])
+		assertParseSucceeds( parser, [1, 2])
+		assertParseSucceeds( parser, [1,1], result: [1,1], consumed: 2 )
+		assertParseSucceeds( parser, [1,1,1,2], result: [1,1], consumed: 2 )
+	}
+
+	func testCountNegativeRangeYieldsFailure () {
+		let parser = count(-1...2, token(1))
+
+		assertParseFails( parser, input: [])
+		assertParseFails( parser, input: [1])
+		assertParseFails( parser, input: [1, 1])
+	}
+
 	func testOneOfParser () {
 		let parser = oneOf("abc")
 
@@ -105,7 +152,6 @@ class Parser_Tests: XCTestCase {
 		assertParseSucceeds( parser, "b", result: "b" )
 		assertParseSucceeds( parser, "c", result: "c" )
 		assertParseFails( parser, input: "d" )
-
 		assertParseSucceeds( parser, "ax", result: "a", consumed: 1 )
 	}
 

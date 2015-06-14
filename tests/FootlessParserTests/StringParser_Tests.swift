@@ -48,4 +48,13 @@ class StringParser_Tests: XCTestCase {
 		assertParseFails( parser, input: "axa")
 		assertParseFails( parser, input: "")
 	}
+
+	func testStringCountRangeParser () {
+		let parser = count(2...4, char("a"))
+
+		assertParseFails( parser, input: "" )
+		assertParseFails( parser, input: "ab" )
+		assertParseSucceeds( parser, "aab", result: "aa", consumed: 2 )
+		assertParseSucceeds( parser, "aaaaa", result: "aaaa", consumed: 4 )
+	}
 }

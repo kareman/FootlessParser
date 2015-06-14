@@ -80,6 +80,18 @@ public func count <T,A> (n: UInt, p: Parser<T,A>) -> Parser<T,[A]> {
 	return n == 0 ? pure([]) : extend <^> p <*> count(n-1, p)
 }
 
+/** 
+	Repeat parser as many times as possible within the given range.
+	
+	count(2...2, p) is identical to count(2, p)
+
+	:param: r A positive integer range.
+*/
+public func count <T,A> (r: Range<Int>, p: Parser<T,A>) -> Parser<T,[A]> {
+	if r.startIndex < 0 { return fail("count(\(r)): range cannot be negative.") }
+	return extend <^> count(r.startIndex, p) <*> ( count(count(r)-1, p) <|> zeroOrMore(p) )
+}
+
 /** Succeed if the next token is in the provided collection. */
 public func oneOf <T: Equatable, C: CollectionType where C.Generator.Element == T> (collection: C) -> Parser<T,T> {
 	return satisfy(expect: "one of '\(toString(collection))'") { contains(collection, $0) }

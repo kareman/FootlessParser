@@ -28,3 +28,15 @@ public func zeroOrMore <T> (p: Parser<T,Character>) -> Parser<T,String> {
 public func count <T> (n: Int, p: Parser<T,Character>) -> Parser<T,String> {
 	return n == 0 ? pure("") : extend <^> p <*> count(n-1, p)
 }
+
+/**
+	Repeat parser as many times as possible within the given range.
+
+	count(2...2, p) is identical to count(2, p)
+
+	:param: r A positive integer range.
+*/
+public func count <T> (r: Range<Int>, p: Parser<T,Character>) -> Parser<T,String> {
+	if r.startIndex < 0 { return fail("count(\(r)): range cannot be negative.") }
+	return extend <^> count(r.startIndex, p) <*> ( count(count(r)-1, p) <|> zeroOrMore(p) )
+}
