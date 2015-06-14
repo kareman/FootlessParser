@@ -54,6 +54,12 @@ public func extend <A, C: ExtensibleCollectionType where C.Generator.Element == 
 	return result
 }
 
+/** Join 2 collections together. */
+public func extend <A, C: ExtensibleCollectionType where C.Generator.Element == A> (var xs1: C)(xs2: C) -> C {
+	xs1.extend(xs2)
+	return xs1
+}
+
 /** Delay creation of parser until it is needed. */
 func lazy <T,A> (@autoclosure(escaping) f: () -> Parser<T,A>) -> Parser<T,A> {
 	return Parser { input in f().parse(input) }
