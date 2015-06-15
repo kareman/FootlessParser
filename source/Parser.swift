@@ -63,7 +63,7 @@ public func extend <A, C: ExtensibleCollectionType where C.Generator.Element == 
 }
 
 /** Join 2 collections together. */
-public func extend <A, C: ExtensibleCollectionType where C.Generator.Element == A> (var xs1: C)(xs2: C) -> C {
+public func extend <C1: ExtensibleCollectionType, C2: CollectionType where C1.Generator.Element == C2.Generator.Element> (var xs1: C1)(xs2: C2) -> C1 {
 	xs1.extend(xs2)
 	return xs1
 }
