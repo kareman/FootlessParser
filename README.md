@@ -57,7 +57,15 @@ The same as the <*> above, except it discards the result of the parser to its ri
 
 ##### *>
 
-The same as <* , but discards the result of the parser to its left instead.
+The same as <* , but discards the result of the parser to its left.
+
+##### <|> (choice)
+
+```
+parser1 <|> parser2 <|> parser3
+```
+
+This operator tries all the parsers in order and returns the result of the first one that succeeds.
 
 ### Example
 
