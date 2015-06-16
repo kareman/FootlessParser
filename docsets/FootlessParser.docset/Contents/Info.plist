@@ -3,9 +3,9 @@
 <plist version="1.0">
   <dict>
     <key>CFBundleIdentifier</key>
-      <string>com.jazzy.</string>
+      <string>com.jazzy.footlessparser</string>
     <key>CFBundleName</key>
-      <string></string>
+      <string>FootlessParser</string>
     <key>DocSetPlatformFamily</key>
       <string>jazzy</string>
     <key>isDashDocset</key>

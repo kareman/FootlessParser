@@ -12,13 +12,13 @@
     <a title="Functions  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (89% documented)</p>
+        <p><a href="index.html">FootlessParser Docs</a> (93% documented)</p>
         <p class="header-right"><a href="https://github.com/kareman/FootlessParser"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="index.html"> Reference</a>
+        <a href="index.html">FootlessParser Reference</a>
         <img id="carat" src="img/carat.png" />
         Functions  Reference
       </p>
@@ -74,10 +74,28 @@
                 <a href="Functions.html#/s:F14FootlessParser4charFVSs9CharacterGVS_6ParserS0_S0__">char(_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:F14FootlessParser5countU__FTSiGVS_6ParserQ_VSs9Character__GS0_Q_SS_">count(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F14FootlessParser5countU___FTSiGVS_6ParserQ_Q0___GS0_Q_GSaQ0___">count(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F14FootlessParser5countU___FTGVSs5RangeSi_GVS_6ParserQ_Q0___GS1_Q_GSaQ0___">count(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F14FootlessParser5countU__FTGVSs5RangeSi_GVS_6ParserQ_VSs9Character__GS1_Q_SS_">count(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:F14FootlessParser3eofU__FT_GVS_6ParserQ_T__">eof()</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:F14FootlessParser6extendU_Ss24ExtensibleCollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FQ_FT2xsQ0__Q0_">extend(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F14FootlessParser6extendUSs24ExtensibleCollectionType_Ss14CollectionType_USs13GeneratorType__Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible___S2__S3__S4__S5_____FQ_FT3xs2Q0__Q_">extend(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F14FootlessParser4failU___FSSGVS_6ParserQ_Q0__">fail(_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:F14FootlessParser6noneOfUSs9Equatable_Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FQ0_GVS_6ParserQ_Q__">noneOf(_:)</a>
@@ -101,9 +119,6 @@
                 <a href="Functions.html#/s:F14FootlessParser5parseU__Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FTGVS_6ParserQ0_Q__Q1__GO6Result6ResultQ_SS_">parse(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F14FootlessParser11parseLazilyU__Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FTGVS_6ParserQ0_Q__Q1__GVSs10SequenceOfGO6Result6ResultQ_SS__">parseLazily(_:_:)</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Functions.html#/s:F14FootlessParser4pureU___FQ_GO6Result6ResultQ_Q0__">pure(_:)</a>
               </li>
               <li class="nav-group-task">
@@ -114,6 +129,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:F14FootlessParser5tokenUSs9Equatable__FQ_GVS_6ParserQ_Q__">token(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F14FootlessParser6tokensUSs9Equatable_Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FQ0_GVS_6ParserQ_Q0__">tokens(_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:F14FootlessParser10zeroOrMoreU___FGVS_6ParserQ_Q0__GS0_Q_GSaQ0___">zeroOrMore(_:)</a>
@@ -159,7 +177,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>flatMap a function over a parser.</p>
+                        <p>FlatMap a function over a parser.</p>
 
 <ul>
 <li>If the parser fails, the function will not be evaluated and the error is returned.</li>
@@ -229,7 +247,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>map a function over a parser</p>
+                        <p>Map a function over a parser</p>
 
 <ul>
 <li>If the parser fails, the function will not be evaluated and the parser error is returned.</li>
@@ -295,9 +313,10 @@
                       <div class="abstract">
                         <p>Apply both parsers, but only return the output from the first one.</p>
 
-<pre class="highlight plaintext"><code>- If the first parser fails, its error will be returned.
-- If the 2nd parser fails, its error will be returned.
-</code></pre>
+<ul>
+<li>If the first parser fails, its error will be returned.</li>
+<li>If the 2nd parser fails, its error will be returned.</li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -326,9 +345,10 @@
                       <div class="abstract">
                         <p>Apply both parsers, but only return the output from the 2nd one.</p>
 
-<pre class="highlight plaintext"><code>- If the first parser fails, its error will be returned.
-- If the 2nd parser fails, its error will be returned.
-</code></pre>
+<ul>
+<li>If the first parser fails, its error will be returned.</li>
+<li>If the 2nd parser fails, its error will be returned.</li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -338,6 +358,11 @@
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*&gt;</span> <span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="p">,</span><span class="kt">B</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">p1</span><span class="p">:</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">p2</span><span class="p">:</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">B</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">B</span><span class="o">&gt;</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A parser of the same type as the 2nd parser.</p>
+
                       </div>
                     </section>
                   </div>
@@ -355,7 +380,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Wrap a value in a minimal context of Parser. Also known as &lsquo;return&rsquo; in Haskell.</p>
+                        <p>Create a parser which ignores input and returns this parameter.</p>
 
                       </div>
                       <div class="declaration">
@@ -386,11 +411,6 @@
                           </tbody>
                         </table>
                       </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>A parser which ignores the input and returns &lsquo;a&rsquo;.</p>
-
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -407,7 +427,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Choice operator for parsers.</p>
+                        <p>Apply one of 2 parsers.</p>
 
 <ul>
 <li>If the first parser succeeds, return its results.</li>
@@ -642,6 +662,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:F14FootlessParser6tokensUSs9Equatable_Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FQ0_GVS_6ParserQ_Q0__"></a>
+                    <a name="//apple_ref/swift/Function/tokens(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F14FootlessParser6tokensUSs9Equatable_Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FQ0_GVS_6ParserQ_Q0__">tokens(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Match several tokens in a row, like e.g. a string.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">tokens</span> <span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">C</span><span class="p">:</span> <span class="kt">CollectionType</span> <span class="k">where</span> <span class="kt">C</span><span class="o">.</span><span class="kt">Generator</span><span class="o">.</span><span class="kt">Element</span> <span class="o">==</span> <span class="kt">T</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">xs</span><span class="p">:</span> <span class="kt">C</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">C</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:F14FootlessParser3anyU__FT_GVS_6ParserQ_Q__"></a>
                     <a name="//apple_ref/swift/Function/any()" class="dashAnchor"></a>
                     <a class="token" href="#/s:F14FootlessParser3anyU__FT_GVS_6ParserQ_Q__">any()</a>
@@ -723,6 +770,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:F14FootlessParser6extendUSs24ExtensibleCollectionType_Ss14CollectionType_USs13GeneratorType__Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible___S2__S3__S4__S5_____FQ_FT3xs2Q0__Q_"></a>
+                    <a name="//apple_ref/swift/Function/extend(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F14FootlessParser6extendUSs24ExtensibleCollectionType_Ss14CollectionType_USs13GeneratorType__Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible___S2__S3__S4__S5_____FQ_FT3xs2Q0__Q_">extend(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Join 2 collections together.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">extend</span> <span class="o">&lt;</span><span class="kt">C1</span><span class="p">:</span> <span class="kt">ExtensibleCollectionType</span><span class="p">,</span> <span class="kt">C2</span><span class="p">:</span> <span class="kt">CollectionType</span> <span class="k">where</span> <span class="kt">C1</span><span class="o">.</span><span class="kt">Generator</span><span class="o">.</span><span class="kt">Element</span> <span class="o">==</span> <span class="kt">C2</span><span class="o">.</span><span class="kt">Generator</span><span class="o">.</span><span class="kt">Element</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">var</span> <span class="nv">xs1</span><span class="p">:</span> <span class="kt">C1</span><span class="p">)(</span><span class="nv">xs2</span><span class="p">:</span> <span class="kt">C2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">C1</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:F14FootlessParser9oneOrMoreU___FGVS_6ParserQ_Q0__GS0_Q_GSaQ0___"></a>
                     <a name="//apple_ref/swift/Function/oneOrMore(_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:F14FootlessParser9oneOrMoreU___FGVS_6ParserQ_Q0__GS0_Q_GSaQ0___">oneOrMore(_:)</a>
@@ -770,6 +844,82 @@
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">zeroOrMore</span> <span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">p</span><span class="p">:</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,[</span><span class="kt">A</span><span class="p">]</span><span class="o">&gt;</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F14FootlessParser5countU___FTSiGVS_6ParserQ_Q0___GS0_Q_GSaQ0___"></a>
+                    <a name="//apple_ref/swift/Function/count(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F14FootlessParser5countU___FTSiGVS_6ParserQ_Q0___GS0_Q_GSaQ0___">count(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Repeat parser &lsquo;n&rsquo; times. If &lsquo;n&rsquo; == 0 it always succeeds and returns [].</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">count</span> <span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">n</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">p</span><span class="p">:</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,[</span><span class="kt">A</span><span class="p">]</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F14FootlessParser5countU___FTGVSs5RangeSi_GVS_6ParserQ_Q0___GS1_Q_GSaQ0___"></a>
+                    <a name="//apple_ref/swift/Function/count(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F14FootlessParser5countU___FTGVSs5RangeSi_GVS_6ParserQ_Q0___GS1_Q_GSaQ0___">count(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Repeat parser as many times as possible within the given range.</p>
+
+<p>count(2&hellip;2, p) is identical to count(2, p)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">count</span> <span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">r</span><span class="p">:</span> <span class="kt">Range</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">p</span><span class="p">:</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,[</span><span class="kt">A</span><span class="p">]</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>r</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A positive integer range.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -885,6 +1035,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:F14FootlessParser4failU___FSSGVS_6ParserQ_Q0__"></a>
+                    <a name="//apple_ref/swift/Function/fail(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F14FootlessParser4failU___FSSGVS_6ParserQ_Q0__">fail(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fail with the given error message. Ignores input.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">fail</span> <span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">A</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:F14FootlessParser5parseU__Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FTGVS_6ParserQ0_Q__Q1__GO6Result6ResultQ_SS_"></a>
                     <a name="//apple_ref/swift/Function/parse(_:_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:F14FootlessParser5parseU__Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FTGVS_6ParserQ0_Q__Q1__GO6Result6ResultQ_SS_">parse(_:_:)</a>
@@ -946,25 +1123,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>Output from the parser, or a ParserError.</p>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:F14FootlessParser11parseLazilyU__Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FTGVS_6ParserQ0_Q__Q1__GVSs10SequenceOfGO6Result6ResultQ_SS__"></a>
-                    <a name="//apple_ref/swift/Function/parseLazily(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:F14FootlessParser11parseLazilyU__Ss14CollectionType_USs13GeneratorType_Ss16ForwardIndexType_Ss18_SignedIntegerType_Ss33_BuiltinIntegerLiteralConvertible____FTGVS_6ParserQ0_Q__Q1__GVSs10SequenceOfGO6Result6ResultQ_SS__">parseLazily(_:_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
 
                       </div>
                     </section>
@@ -1055,12 +1213,88 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F14FootlessParser5countU__FTSiGVS_6ParserQ_VSs9Character__GS0_Q_SS_"></a>
+                    <a name="//apple_ref/swift/Function/count(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F14FootlessParser5countU__FTSiGVS_6ParserQ_VSs9Character__GS0_Q_SS_">count(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Repeat character parser &lsquo;n&rsquo; times and return as string. If &lsquo;n&rsquo; == 0 it always succeeds and returns &ldquo;&rdquo;.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">count</span> <span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">n</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">p</span><span class="p">:</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">Character</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">String</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F14FootlessParser5countU__FTGVSs5RangeSi_GVS_6ParserQ_VSs9Character__GS1_Q_SS_"></a>
+                    <a name="//apple_ref/swift/Function/count(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F14FootlessParser5countU__FTGVSs5RangeSi_GVS_6ParserQ_VSs9Character__GS1_Q_SS_">count(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Repeat parser as many times as possible within the given range.</p>
+
+<p>count(2&hellip;2, p) is identical to count(2, p)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">count</span> <span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">r</span><span class="p">:</span> <span class="kt">Range</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">p</span><span class="p">:</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">Character</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Parser</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span><span class="kt">String</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>r</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A positive integer range.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-06-08)</p>
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external">kareman</a>. All rights reserved. (Last updated: 2015-06-16)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -3,6 +3,3 @@ ParserInput.swift
 Parser.swift
 	public struct Parser <Token, Output>
 	public let parse: ParserInput<Token> -> Result<(output: Output, nextinput: ParserInput<Token>), ParserError>
-	public func parseLazily
-	<A,T,C: CollectionType where C.Generator.Element == T>
-	(p: Parser<T,A>, c: C) -> SequenceOf<Result<A,ParserError>>
