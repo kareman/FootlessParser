@@ -1,2 +1,2 @@
 github "thoughtbot/runes"
-github "antitypical/Result" "master"
+github "antitypical/Result" == 0.4.4
