@@ -23,7 +23,7 @@ public func satisfy <T> (# expect: String, condition: T -> Bool) -> Parser<T,T> 
 			if condition(next.head) {
 				return .success(output:next.head, nextinput:next.tail)
 			} else {
-				let quote = contains(expect, "'") ? "" : "'" // avoid double quoting 
+				let quote = contains(expect, "'") ? "" : "'" // avoid double quoting
 				return .failure("expected \(quote + expect + quote), got '\(next.head)'.")
 			}
 		}
@@ -116,7 +116,7 @@ public func fail <T,A> (message: String) -> Parser<T,A> {
 	return Parser { _ in .failure(message) }
 }
 
-/** 
+/**
 	Parse all of input with parser.
 
 	Failure to consume all of input will result in a ParserError.

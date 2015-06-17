@@ -14,7 +14,9 @@ public func == <T:Equatable, U:Equatable> (lhs: (output:T, nextinput:U), rhs: (o
 	return lhs.output == rhs.output && lhs.nextinput == rhs.nextinput
 }
 
-public func == <R:Equatable, I:Equatable, E:Equatable> (lhs: Result<(output:R, nextinput:I), E>, rhs: Result<(output:R, nextinput:I), E>) -> Bool {
+public func == <R:Equatable, I:Equatable, E:Equatable>
+	(lhs: Result<(output:R, nextinput:I), E>, rhs: Result<(output:R, nextinput:I), E>) -> Bool {
+
 	if let leftvalue = lhs.value, rightvalue = rhs.value where leftvalue == rightvalue {
 		return true
 	} else if let lefterror = lhs.error, righterror = rhs.error where lefterror == righterror {
@@ -23,7 +25,9 @@ public func == <R:Equatable, I:Equatable, E:Equatable> (lhs: Result<(output:R, n
 	return false
 }
 
-public func != <R:Equatable, I:Equatable, E:Equatable> (lhs: Result<(output:R, nextinput:I), E>, rhs: Result<(output:R, nextinput:I), E>) -> Bool {
+public func != <R:Equatable, I:Equatable, E:Equatable>
+	(lhs: Result<(output:R, nextinput:I), E>, rhs: Result<(output:R, nextinput:I), E>) -> Bool {
+
 	return !(lhs == rhs)
 }
 
@@ -52,16 +56,21 @@ extension XCTestCase {
 	}
 
 	/** Verifies the parse succeeds, and optionally checks the result and how many tokens were consumed. Updates the provided 'input' parameter to the remaining input. */
-	func assertParseSucceeds <T, R: Equatable> (p: Parser<T,R>, inout _ input: ParserInput<T>, result: R? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+	func assertParseSucceeds <T, R: Equatable>
+		(p: Parser<T,R>, inout _ input: ParserInput<T>, result: R? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
 
 		p.parse(input).analysis(
 			ifSuccess: { o, i in
 				if let result = result {
-					if o != result { XCTFail("with input '\(input)': output should be '\(result)', was '\(o)'. ", file: file, line: line) }
+					if o != result {
+						XCTFail("with input '\(input)': output should be '\(result)', was '\(o)'. ", file: file, line: line)
+					}
 				}
 				if let consumed = consumed {
 					let actuallyconsumed = i.position() - input.position()
-					if actuallyconsumed != consumed { XCTFail("should have consumed \(consumed), took \(actuallyconsumed)", file: file, line: line) }
+					if actuallyconsumed != consumed {
+						XCTFail("should have consumed \(consumed), took \(actuallyconsumed)", file: file, line: line)
+					}
 				}
 				input = i
 			},
@@ -70,16 +79,21 @@ extension XCTestCase {
 	}
 
 	/** Verifies the parse succeeds, and optionally checks the result and how many tokens were consumed. Updates the provided 'input' parameter to the remaining input. */
-	func assertParseSucceeds <T, R: Equatable> (p: Parser<T,[R]>, inout _ input: ParserInput<T>, result: [R]? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+	func assertParseSucceeds <T, R: Equatable>
+		(p: Parser<T,[R]>, inout _ input: ParserInput<T>, result: [R]? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
 
 		p.parse(input).analysis(
 			ifSuccess: { o, i in
 				if let result = result {
-					if o != result { XCTFail("with input '\(input)': output should be '\(result)', was '\(o)'. ", file: file, line: line) }
+					if o != result {
+						XCTFail("with input '\(input)': output should be '\(result)', was '\(o)'. ", file: file, line: line)
+					}
 				}
 				if let consumed = consumed {
 					let actuallyconsumed = i.position() - input.position()
-					if actuallyconsumed != consumed { XCTFail("should have consumed \(consumed), took \(actuallyconsumed)", file: file, line: line) }
+					if actuallyconsumed != consumed {
+						XCTFail("should have consumed \(consumed), took \(actuallyconsumed)", file: file, line: line)
+					}
 				}
 				input = i
 			},
@@ -88,14 +102,16 @@ extension XCTestCase {
 	}
 
 	/** Verifies the parse succeeds, and optionally checks the result and how many tokens were consumed. */
-	func assertParseSucceeds <T, R: Equatable, C: CollectionType where C.Generator.Element == T> (p: Parser<T,R>, _ input: C, result: R? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+	func assertParseSucceeds <T, R: Equatable, C: CollectionType where C.Generator.Element == T>
+		(p: Parser<T,R>, _ input: C, result: R? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
 
 		var parserinput = ParserInput(input)
 		assertParseSucceeds(p, &parserinput, result: result, consumed: consumed, file: file, line: line)
 	}
 
 	/** Verifies the parse succeeds, and optionally checks the result and how many tokens were consumed. */
-	func assertParseSucceeds <T, R: Equatable, C: CollectionType where C.Generator.Element == T> (p: Parser<T,[R]>, _ input: C, result: [R]? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+	func assertParseSucceeds <T, R: Equatable, C: CollectionType where C.Generator.Element == T>
+		(p: Parser<T,[R]>, _ input: C, result: [R]? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
 
 		var parserinput = ParserInput(input)
 		assertParseSucceeds(p, &parserinput, result: result, consumed: consumed, file: file, line: line)
@@ -103,7 +119,8 @@ extension XCTestCase {
 
 
 	/** Verifies the parse fails with the given input. */
-	func assertParseFails <T, R> (p: Parser<T,R>, _ input: ParserInput<T>, file: String = __FILE__, line: UInt = __LINE__) {
+	func assertParseFails <T, R>
+		(p: Parser<T,R>, _ input: ParserInput<T>, file: String = __FILE__, line: UInt = __LINE__) {
 
 		p.parse(input).analysis(
 			ifSuccess: { XCTFail("Parsing succeeded with output '\($0.output)', should have failed.", file: file, line: line) },
@@ -112,7 +129,8 @@ extension XCTestCase {
 	}
 
 	/** Verifies the parse fails with the given collection as input. */
-	func assertParseFails <T, R, C: CollectionType where C.Generator.Element == T> (p: Parser<T,R>, _ input: C, file: String = __FILE__, line: UInt = __LINE__) {
+	func assertParseFails <T, R, C: CollectionType where C.Generator.Element == T>
+		(p: Parser<T,R>, _ input: C, file: String = __FILE__, line: UInt = __LINE__) {
 
 		assertParseFails(p, ParserInput(input), file: file, line: line)
 	}
@@ -126,7 +144,7 @@ extension XCTestCase {
 	func pathForTestResource (filename: String, type: String) -> String {
 		let path = NSBundle(forClass: self.dynamicType).pathForResource(filename, ofType: type)
 		assert(path != nil, "resource \(filename).\(type) not found")
-		
+
 		return path!
 	}
 }

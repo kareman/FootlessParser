@@ -16,9 +16,9 @@ public struct ParserInput <Token> {
 	/** Return the next token and the rest of the input. */
 	public let next: () -> (head: Token, tail: ParserInput<Token>)?
 
-	/** 
+	/**
 	The number of tokens that have been read so far.
-	
+
 	Warning! Will be slow on long strings.
 	*/
 	public let position: () -> Int

@@ -40,25 +40,25 @@ class Parser_Tests: XCTestCase {
 	func testTokensParser () {
 		let parser = tokens([1,2,3,4])
 
-		assertParseSucceeds( parser,[1,2,3,4,5], result: [1,2,3,4], consumed: 4 )
-		assertParseFails( parser, [] )
-		assertParseFails( parser, [1,2,3] )
-		assertParseFails( parser, [1,2,3,5] )
+		assertParseSucceeds(parser,[1,2,3,4,5], result: [1,2,3,4], consumed: 4)
+		assertParseFails(parser, [])
+		assertParseFails(parser, [1,2,3])
+		assertParseFails(parser, [1,2,3,5])
 	}
 
 	func testStringTokensParser () {
 		let parser = tokens("abc")
 
-		assertParseSucceeds( parser, "abcde", result: "abc", consumed: 3 )
-		assertParseFails( parser, "" )
-		assertParseFails( parser, "ab" )
-		assertParseFails( parser, "abx" )
+		assertParseSucceeds(parser, "abcde", result: "abc", consumed: 3)
+		assertParseFails(parser, "")
+		assertParseFails(parser, "ab")
+		assertParseFails(parser, "abx")
 	}
 
 	func testEmptyStringTokensParser () {
 		let parser = tokens("")
 
-		assertParseSucceeds( parser, "abcde", result: "", consumed: 0 )
+		assertParseSucceeds(parser, "abcde", result: "", consumed: 0)
 	}
 
 	func testAnyParser () {
@@ -82,134 +82,134 @@ class Parser_Tests: XCTestCase {
 	func testOneOrMoreParser () {
 		let parser = oneOrMore(token(1))
 
-		assertParseSucceeds( parser, [1], result: [1], consumed: 1 )
-		assertParseSucceeds( parser, [1,1,1], result: [1,1,1], consumed: 3 )
-		assertParseSucceeds( parser, [1,1,1,9], result: [1,1,1], consumed: 3 )
+		assertParseSucceeds(parser, [1], result: [1], consumed: 1)
+		assertParseSucceeds(parser, [1,1,1], result: [1,1,1], consumed: 3)
+		assertParseSucceeds(parser, [1,1,1,9], result: [1,1,1], consumed: 3)
 	}
 
 	func testZeroOrMoreParser () {
 		let parser = zeroOrMore(token(1))
 
-		assertParseSucceeds( parser, [], result: [] )
-		assertParseSucceeds( parser, [9], result: [], consumed: 0 )
-		assertParseSucceeds( parser, [1], result: [1] )
-		assertParseSucceeds( parser, [1,1,1], result: [1,1,1] )
-		assertParseSucceeds( parser, [1,1,1,9], result: [1,1,1], consumed: 3 )
+		assertParseSucceeds(parser, [], result: [])
+		assertParseSucceeds(parser, [9], result: [], consumed: 0)
+		assertParseSucceeds(parser, [1], result: [1])
+		assertParseSucceeds(parser, [1,1,1], result: [1,1,1])
+		assertParseSucceeds(parser, [1,1,1,9], result: [1,1,1], consumed: 3)
 	}
 
 	func testCountParser () {
 		let parser = count(3, token(1))
 
-		assertParseSucceeds( parser, [1,1,1,1], result: [1,1,1], consumed: 3 )
-		assertParseFails( parser, [1, 1])
-		assertParseFails( parser, [1, 2, 1])
-		assertParseFails( parser, [])
+		assertParseSucceeds(parser, [1,1,1,1], result: [1,1,1], consumed: 3)
+		assertParseFails(parser, [1,1])
+		assertParseFails(parser, [1,2,1])
+		assertParseFails(parser, [])
 	}
 
 	func testCount1Parser () {
 		let parser = count(1, token(1))
 
-		assertParseSucceeds( parser, [1,1,1,1], result: [1], consumed: 1 )
-		assertParseFails( parser, [2, 2])
-		assertParseFails( parser, [])
+		assertParseSucceeds(parser, [1,1,1,1], result: [1], consumed: 1)
+		assertParseFails(parser, [2,2])
+		assertParseFails(parser, [])
 	}
-	
+
 	func testCountParser0TimesWithoutConsumingInput () {
 		let parser = count(0, token(1))
 
-		assertParseSucceeds( parser, [1,1,1,1], result: [], consumed: 0 )
-		assertParseSucceeds( parser, [2,2,2,2], result: [], consumed: 0 )
-		assertParseSucceeds( parser, [], result: [], consumed: 0 )
+		assertParseSucceeds(parser, [1,1,1,1], result: [], consumed: 0)
+		assertParseSucceeds(parser, [2,2,2,2], result: [], consumed: 0)
+		assertParseSucceeds(parser, [], result: [], consumed: 0)
 	}
 
 	func testCountRangeOfLength3 () {
 		let parser = count(2...4, token(1))
 
-		assertParseFails( parser, [])
-		assertParseFails( parser, [1])
-		assertParseSucceeds( parser, [1,1], result: [1,1], consumed: 2 )
-		assertParseSucceeds( parser, [1,1,1,2], result: [1,1,1], consumed: 3 )
-		assertParseSucceeds( parser, [1,1,1,1,1,1], result: [1,1,1,1], consumed: 4 )
+		assertParseFails(parser, [])
+		assertParseFails(parser, [1])
+		assertParseSucceeds(parser, [1,1], result: [1,1], consumed: 2)
+		assertParseSucceeds(parser, [1,1,1,2], result: [1,1,1], consumed: 3)
+		assertParseSucceeds(parser, [1,1,1,1,1,1], result: [1,1,1,1], consumed: 4)
 	}
 
 	func testCountRangeOfLength2 () {
 		let parser = count(2...3, token(1))
 
-		assertParseFails( parser, [])
-		assertParseFails( parser, [1, 2])
-		assertParseSucceeds( parser, [1,1], result: [1,1], consumed: 2 )
-		assertParseSucceeds( parser, [1,1,1,2], result: [1,1,1], consumed: 3 )
-		assertParseSucceeds( parser, [1,1,1,1,1,1], result: [1,1,1], consumed: 3 )
+		assertParseFails(parser, [])
+		assertParseFails(parser, [1,2])
+		assertParseSucceeds(parser, [1,1], result: [1,1], consumed: 2)
+		assertParseSucceeds(parser, [1,1,1,2], result: [1,1,1], consumed: 3)
+		assertParseSucceeds(parser, [1,1,1,1,1,1], result: [1,1,1], consumed: 3)
 	}
 
 	func testCountRangeOfLength1 () {
 		let parser = count(2...2, token(1))
 
-		assertParseFails( parser, [])
-		assertParseFails( parser, [1, 2])
-		assertParseSucceeds( parser, [1,1], result: [1,1], consumed: 2 )
-		assertParseSucceeds( parser, [1,1,1], result: [1,1], consumed: 2 )
+		assertParseFails(parser, [])
+		assertParseFails(parser, [1,2])
+		assertParseSucceeds(parser, [1,1], result: [1,1], consumed: 2)
+		assertParseSucceeds(parser, [1,1,1], result: [1,1], consumed: 2)
 	}
 
 	func testCountRangeFrom0 () {
 		let parser = count(0...2, token(1))
 
-		assertParseSucceeds( parser, [])
-		assertParseSucceeds( parser, [2, 2])
-		assertParseSucceeds( parser, [1, 2])
-		assertParseSucceeds( parser, [1,1], result: [1,1], consumed: 2 )
-		assertParseSucceeds( parser, [1,1,1,2], result: [1,1], consumed: 2 )
+		assertParseSucceeds(parser, [])
+		assertParseSucceeds(parser, [2,2])
+		assertParseSucceeds(parser, [1,2])
+		assertParseSucceeds(parser, [1,1], result: [1,1], consumed: 2)
+		assertParseSucceeds(parser, [1,1,1,2], result: [1,1], consumed: 2)
 	}
 
 	func testCountNegativeRangeYieldsFailure () {
 		let parser = count(-1...2, token(1))
 
-		assertParseFails( parser, [])
-		assertParseFails( parser, [1])
-		assertParseFails( parser, [1, 1])
+		assertParseFails(parser, [])
+		assertParseFails(parser, [1])
+		assertParseFails(parser, [1, 1])
 	}
 
 	func testOneOfParser () {
 		let parser = oneOf("abc")
 
-		assertParseSucceeds( parser, "a", result: "a" )
-		assertParseSucceeds( parser, "b", result: "b" )
-		assertParseSucceeds( parser, "c", result: "c" )
-		assertParseFails( parser, "d" )
-		assertParseSucceeds( parser, "ax", result: "a", consumed: 1 )
+		assertParseSucceeds(parser, "a", result: "a")
+		assertParseSucceeds(parser, "b", result: "b")
+		assertParseSucceeds(parser, "c", result: "c")
+		assertParseFails(parser, "d")
+		assertParseSucceeds(parser, "ax", result: "a", consumed: 1)
 	}
 
 	func testNoneOfParser () {
 		let parser = noneOf("abc")
 
-		assertParseFails( parser, "a" )
-		assertParseFails( parser, "b" )
-		assertParseFails( parser, "c" )
-		assertParseSucceeds( parser, "d", result: "d" )
-		assertParseSucceeds( parser, "da", result: "d", consumed: 1 )
+		assertParseFails(parser, "a")
+		assertParseFails(parser, "b")
+		assertParseFails(parser, "c")
+		assertParseSucceeds(parser, "d", result: "d")
+		assertParseSucceeds(parser, "da", result: "d", consumed: 1)
 	}
 
 	func testNotParser () {
 		let parser = not("a" as Character)
 
-		assertParseSucceeds( parser, "b", result: "b" )
-		assertParseSucceeds( parser, "c", result: "c" )
-		assertParseFails( parser, "a" )
+		assertParseSucceeds(parser, "b", result: "b")
+		assertParseSucceeds(parser, "c", result: "c")
+		assertParseFails(parser, "a")
 	}
 
 	func testEofParser () {
 		let parser = token(1) <* eof()
 
-		assertParseSucceeds( parser, [1], result: 1 )
-		assertParseFails( parser, [1,2] )
-		assertParseSucceeds( token(1), [1,2] )
+		assertParseSucceeds(parser, [1], result: 1)
+		assertParseFails(parser, [1,2])
+		assertParseSucceeds(token(1), [1,2])
 	}
 
 	func testParsingAString () {
 		let parser = zeroOrMore(char("a"))
 
-		XCTAssertEqual( parse(parser, "a").value!, "a" )
-		XCTAssertEqual( parse(parser, "aaaa").value!, "aaaa" )
-		XCTAssertNotNil( parse(parser, "aaab").error )
+		XCTAssertEqual(parse(parser, "a").value!, "a")
+		XCTAssertEqual(parse(parser, "aaaa").value!, "aaaa")
+		XCTAssertNotNil(parse(parser, "aaab").error)
 	}
 }

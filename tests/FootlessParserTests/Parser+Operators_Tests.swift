@@ -14,12 +14,12 @@ class Pure_Tests: XCTestCase {
 	func testPureReturnsInput () {
 		let parser: Parser<Int,Int> = pure(1)
 
-		assertParseSucceeds(parser, [2, 3, 4], result: 1)
+		assertParseSucceeds(parser, [2,3,4], result: 1)
 	}
 
 	func testPureDoesNotConsume () {
 		let parser: Parser<Int,Int> = pure(1)
-		var input = ParserInput([2, 3, 4])
+		var input = ParserInput([2,3,4])
 
 		assertParseSucceeds(parser, &input, result: 1)
 		XCTAssertEqual(input.position(), 0)
@@ -112,17 +112,17 @@ class Apply_Tests: XCTestCase {
 	func testDiscardingRightParser () {
 		let parser = token(1) <* token(2)
 
-		assertParseSucceeds( parser, [1,2], result: 1 )
-		assertParseFails(	parser, [1,3] )
-		assertParseFails(	parser, [2,2] )
+		assertParseSucceeds(parser, [1,2], result: 1)
+		assertParseFails(parser, [1,3])
+		assertParseFails(parser, [2,2])
 	}
 
 	func testingDiscardingLeftParser () {
 		let parser = token(1) *> token(2)
 
-		assertParseSucceeds( parser, [1,2], result: 2 )
-		assertParseFails(	parser, [2,2] )
-		assertParseFails(	parser, [1,3] )
+		assertParseSucceeds( parser, [1,2], result: 2)
+		assertParseFails(parser, [2,2])
+		assertParseFails(parser, [1,3])
 	}
 }
 
@@ -169,5 +169,5 @@ class Choice_Tests: XCTestCase {
 
 		assertParseSucceeds(parser, [1,2], result: 2)
 	}
-	
+
 }

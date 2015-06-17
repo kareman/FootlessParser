@@ -105,7 +105,7 @@ public func pure <T,A> (a: A) -> Parser<T,A> {
 
 infix operator <|> { associativity right precedence 80 }
 
-/** 
+/**
 	Apply one of 2 parsers.
 
 	- If the first parser succeeds, return its results.

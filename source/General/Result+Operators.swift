@@ -16,7 +16,7 @@ import Result
 
 	:returns: A value of type Result<U, E>
 */
-public func <^><T, U, E>(f: T -> U, a: Result<T, E>) -> Result<U, E> {
+public func <^> <T, U, E> (f: T -> U, a: Result<T, E>) -> Result<U, E> {
 	return a.map(f)
 }
 
@@ -32,7 +32,7 @@ public func <^><T, U, E>(f: T -> U, a: Result<T, E>) -> Result<U, E> {
 
 	:returns: A value of type Result<U, E>
 */
-public func <*><T, U, E>(f: Result<(T -> U), E>, a: Result<T, E>) -> Result<U, E> {
+public func <*> <T, U, E> (f: Result<(T -> U), E>, a: Result<T, E>) -> Result<U, E> {
 	return a.apply(f)
 }
 
@@ -43,7 +43,7 @@ public func <*><T, U, E>(f: Result<(T -> U), E>, a: Result<T, E>) -> Result<U, E
 
 	:returns: The provided value wrapped in .Success
 */
-public func pure<T, E>(a: T) -> Result<T, E> {
+public func pure <T, E> (a: T) -> Result<T, E> {
 	return .success(a)
 }
 
@@ -59,7 +59,7 @@ extension Result {
 
 		:returns: A value of type Result<U, E>
 	*/
-	func apply<U>(f: Result<(T -> U), Error>) -> Result<U, Error> {
+	func apply <U> (f: Result<(T -> U), Error>) -> Result<U, Error> {
 		return f >>- { $0 <^> self }
 	}
 }
