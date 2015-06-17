@@ -28,8 +28,8 @@ class Examples: XCTestCase {
 			},
 			ifFailure: { XCTFail($0) }
 		)
-		assertParseFails(tag, input: "<a>content<b/>")
-		assertParseFails(tag, input: "a content<a/>")
-		assertParseFails(tag, input: "<a><a/>")
+		assertParseFails(tag, "<a>content<b/>")
+		assertParseFails(tag, "a content<a/>")
+		assertParseFails(tag, "<a><a/>")
 	}
 }
