@@ -7,8 +7,6 @@
 // Copyright (c) 2015 NotTooBad Software. All rights reserved.
 //
 
-import FootlessParser
-
 /** Return a collection containing x and all elements of xs. Works with strings and arrays. */
 public func extend
 	<A, C: ExtensibleCollectionType where C.Generator.Element == A>
