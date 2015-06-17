@@ -37,6 +37,11 @@
                BlueprintName = "Grammar_Tests"
                ReferencedContainer = "container:FootlessParser.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "CSV/testParseCSVQuotesReturningArray()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
