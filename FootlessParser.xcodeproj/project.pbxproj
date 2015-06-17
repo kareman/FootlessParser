@@ -16,13 +16,11 @@
 		BA4246D61B1E63D300D85BB6 /* Result+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE661AC5BBB3002246E5 /* Result+Operators.swift */; };
 		BA4246DA1B1E640F00D85BB6 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246D71B1E640F00D85BB6 /* Box.framework */; };
 		BA4246DB1B1E640F00D85BB6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246D81B1E640F00D85BB6 /* Result.framework */; };
-		BA4246DC1B1E640F00D85BB6 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246D91B1E640F00D85BB6 /* Runes.framework */; };
 		BA4E91991B22328000D185A5 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */; };
 		BA4E919A1B2232B100D185A5 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; };
 		BA4E919B1B2232B100D185A5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; };
 		BA4E919D1B2232D900D185A5 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA4E919E1B2232D900D185A5 /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BA4E919F1B22331F00D185A5 /* Runes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA4E91A11B223A6700D185A5 /* CSV-quotes-large.csv in Resources */ = {isa = PBXBuildFile; fileRef = BA4E91A01B223A6700D185A5 /* CSV-quotes-large.csv */; };
 		BA69E9E11B1E667A00D73C3A /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */; };
 		BA69E9E21B1E667A00D73C3A /* Parser+Operators_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */; };
@@ -31,10 +29,8 @@
 		BA69E9E51B1E667A00D73C3A /* ParserInput_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE6A1AC5DF2F002246E5 /* ParserInput_Tests.swift */; };
 		BA69E9E61B1E66D100D73C3A /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246D71B1E640F00D85BB6 /* Box.framework */; };
 		BA69E9E71B1E66D100D73C3A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246D81B1E640F00D85BB6 /* Result.framework */; };
-		BA69E9E81B1E66D100D73C3A /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4246D91B1E640F00D85BB6 /* Runes.framework */; };
 		BA69E9EA1B1E682F00D73C3A /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA4246D71B1E640F00D85BB6 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA69E9EB1B1E682F00D73C3A /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA4246D81B1E640F00D85BB6 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BA69E9EC1B1E682F00D73C3A /* Runes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA4246D91B1E640F00D85BB6 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BABF32F91AD481B3007DC6AE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; };
 		BABF32FC1AD481B3007DC6AE /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F81AD481B3007DC6AE /* Box.framework */; };
 		BABF32FD1AD4825F007DC6AE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABF32F51AD481B3007DC6AE /* Result.framework */; };
@@ -47,9 +43,6 @@
 		BAC1FDFB1AD56F0300B80A50 /* Parser+Operators_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC1FDFA1AD56F0300B80A50 /* Parser+Operators_Tests.swift */; };
 		BAC4F29F1AD6F2B50098638A /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4F29E1AD6F2B50098638A /* TestHelpers.swift */; };
 		BAC6B22B1A61D92B005643D9 /* FootlessParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */; };
-		BAC6CE5C1AC5B51D002246E5 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; };
-		BAC6CE5E1AC5B621002246E5 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; };
-		BAC6CE611AC5B669002246E5 /* Runes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAC6CE5A1AC5B51D002246E5 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BAC6CE671AC5BBB3002246E5 /* Result+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE661AC5BBB3002246E5 /* Result+Operators.swift */; };
 		BAC6CE691AC5DC32002246E5 /* ParserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE681AC5DC32002246E5 /* ParserInput.swift */; };
 		BAC6CE6B1AC5DF2F002246E5 /* ParserInput_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC6CE6A1AC5DF2F002246E5 /* ParserInput_Tests.swift */; };
@@ -93,7 +86,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BA4E919F1B22331F00D185A5 /* Runes.framework in CopyFiles */,
 				BA4E919D1B2232D900D185A5 /* Result.framework in CopyFiles */,
 				BA4E919E1B2232D900D185A5 /* Box.framework in CopyFiles */,
 			);
@@ -107,7 +99,6 @@
 			files = (
 				BA69E9EA1B1E682F00D73C3A /* Box.framework in CopyFiles */,
 				BA69E9EB1B1E682F00D73C3A /* Result.framework in CopyFiles */,
-				BA69E9EC1B1E682F00D73C3A /* Runes.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +110,6 @@
 			files = (
 				BABF33011AD482BB007DC6AE /* Result.framework in CopyFiles */,
 				BABF33041AD482BB007DC6AE /* Box.framework in CopyFiles */,
-				BAC6CE611AC5B669002246E5 /* Runes.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +121,6 @@
 		BA4246C31B1E2F2B00D85BB6 /* FootlessParser-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FootlessParser-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4246D71B1E640F00D85BB6 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
 		BA4246D81B1E640F00D85BB6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
-		BA4246D91B1E640F00D85BB6 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		BA4E91A01B223A6700D185A5 /* CSV-quotes-large.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = "CSV-quotes-large.csv"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		BABF32F01AD4223A007DC6AE /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = tests/Playground.playground; sourceTree = "<group>"; };
 		BABF32F51AD481B3007DC6AE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
@@ -145,7 +134,6 @@
 		BAC6B2231A61D92B005643D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAC6B22A1A61D92B005643D9 /* FootlessParser-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FootlessParser-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC6B2301A61D92B005643D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAC6CE5A1AC5B51D002246E5 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/Mac/Runes.framework; sourceTree = "<group>"; };
 		BAC6CE661AC5BBB3002246E5 /* Result+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Result+Operators.swift"; sourceTree = "<group>"; };
 		BAC6CE681AC5DC32002246E5 /* ParserInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ParserInput.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BAC6CE6A1AC5DF2F002246E5 /* ParserInput_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserInput_Tests.swift; sourceTree = "<group>"; };
@@ -165,7 +153,6 @@
 			files = (
 				BA4246DA1B1E640F00D85BB6 /* Box.framework in Frameworks */,
 				BA4246DB1B1E640F00D85BB6 /* Result.framework in Frameworks */,
-				BA4246DC1B1E640F00D85BB6 /* Runes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +162,6 @@
 			files = (
 				BA69E9E61B1E66D100D73C3A /* Box.framework in Frameworks */,
 				BA69E9E71B1E66D100D73C3A /* Result.framework in Frameworks */,
-				BA69E9E81B1E66D100D73C3A /* Runes.framework in Frameworks */,
 				BA4246C41B1E2F2B00D85BB6 /* FootlessParser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,7 +172,6 @@
 			files = (
 				BABF32F91AD481B3007DC6AE /* Result.framework in Frameworks */,
 				BABF32FC1AD481B3007DC6AE /* Box.framework in Frameworks */,
-				BAC6CE5C1AC5B51D002246E5 /* Runes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +181,6 @@
 			files = (
 				BABF32FD1AD4825F007DC6AE /* Result.framework in Frameworks */,
 				BABF33001AD4825F007DC6AE /* Box.framework in Frameworks */,
-				BAC6CE5E1AC5B621002246E5 /* Runes.framework in Frameworks */,
 				BAC6B22B1A61D92B005643D9 /* FootlessParser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,7 +203,6 @@
 			children = (
 				BA4246D71B1E640F00D85BB6 /* Box.framework */,
 				BA4246D81B1E640F00D85BB6 /* Result.framework */,
-				BA4246D91B1E640F00D85BB6 /* Runes.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -312,7 +295,6 @@
 			children = (
 				BABF32F51AD481B3007DC6AE /* Result.framework */,
 				BABF32F81AD481B3007DC6AE /* Box.framework */,
-				BAC6CE5A1AC5B51D002246E5 /* Runes.framework */,
 			);
 			name = Mac;
 			sourceTree = "<group>";
