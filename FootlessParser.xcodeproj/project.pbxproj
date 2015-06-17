@@ -58,6 +58,8 @@
 		BAC9BAA21B22303400ED31C1 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC9BAA11B22303400ED31C1 /* CSV.swift */; };
 		BAC9BAA31B22303400ED31C1 /* FootlessParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6B21F1A61D92B005643D9 /* FootlessParser.framework */; };
 		BADFA8A01B31A73800B30953 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA89F1B31A73800B30953 /* Examples.swift */; };
+		BADFA8A21B31B53A00B30953 /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA8A11B31B53A00B30953 /* Converters.swift */; };
+		BADFA8A31B31B53A00B30953 /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA8A11B31B53A00B30953 /* Converters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +155,7 @@
 		BAC9BAA01B22303400ED31C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAC9BAA11B22303400ED31C1 /* CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CSV.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BADFA89F1B31A73800B30953 /* Examples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
+		BADFA8A11B31B53A00B30953 /* Converters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +320,7 @@
 		BAC6CE651AC5BBB3002246E5 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				BADFA8A11B31B53A00B30953 /* Converters.swift */,
 				BAC6CE661AC5BBB3002246E5 /* Result+Operators.swift */,
 			);
 			path = General;
@@ -549,6 +553,7 @@
 			files = (
 				BA4246D21B1E63D300D85BB6 /* Parser.swift in Sources */,
 				BA4246D31B1E63D300D85BB6 /* StringParser.swift in Sources */,
+				BADFA8A31B31B53A00B30953 /* Converters.swift in Sources */,
 				BA4246D41B1E63D300D85BB6 /* Parser+Operators.swift in Sources */,
 				BA4246D51B1E63D300D85BB6 /* ParserInput.swift in Sources */,
 				BA4246D61B1E63D300D85BB6 /* Result+Operators.swift in Sources */,
@@ -573,6 +578,7 @@
 			files = (
 				BAC1FDF91AD56E8B00B80A50 /* Parser+Operators.swift in Sources */,
 				BAC6CE671AC5BBB3002246E5 /* Result+Operators.swift in Sources */,
+				BADFA8A21B31B53A00B30953 /* Converters.swift in Sources */,
 				BAC6CE691AC5DC32002246E5 /* ParserInput.swift in Sources */,
 				BAC6CE6D1AC5E935002246E5 /* Parser.swift in Sources */,
 				BABFB5B81B0E99D100CACEA5 /* StringParser.swift in Sources */,

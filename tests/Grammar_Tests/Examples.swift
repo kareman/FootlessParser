@@ -13,10 +13,6 @@ class Examples: XCTestCase {
 
 	func testXMLTagParser () {
 
-		func tuple <A,B> (a: A)(b: B) -> (A,B) {
-			return (a, b)
-		}
-
 		let opentag = char("<") *> oneOrMore(not(">")) <* char(">")
 		let closetag = { (tagname: String) in char("<") *> tokens(tagname) <* tokens("/>") }
 
