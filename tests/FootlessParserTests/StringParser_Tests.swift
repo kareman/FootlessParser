@@ -17,7 +17,7 @@ class StringParser_Tests: XCTestCase {
 
 		var input = ParserInput("a")
 
-		assertParseFails(parser, input: "b")
+		assertParseFails(parser, "b")
 		assertParseSucceeds(parser, &input, result: "a")
 		XCTAssert( input.next() == nil, "Input should be empty" )
 	}
@@ -44,16 +44,16 @@ class StringParser_Tests: XCTestCase {
 		let parser = count(3, char("a"))
 
 		assertParseSucceeds( parser, "aaaa", result: "aaa", consumed: 3 )
-		assertParseFails( parser, input: "aa")
-		assertParseFails( parser, input: "axa")
-		assertParseFails( parser, input: "")
+		assertParseFails( parser, "aa")
+		assertParseFails( parser, "axa")
+		assertParseFails( parser, "")
 	}
 
 	func testStringCountRangeParser () {
 		let parser = count(2...4, char("a"))
 
-		assertParseFails( parser, input: "" )
-		assertParseFails( parser, input: "ab" )
+		assertParseFails( parser, "" )
+		assertParseFails( parser, "ab" )
 		assertParseSucceeds( parser, "aab", result: "aa", consumed: 2 )
 		assertParseSucceeds( parser, "aaaaa", result: "aaaa", consumed: 4 )
 	}

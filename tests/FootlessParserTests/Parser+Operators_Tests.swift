@@ -93,7 +93,7 @@ class Map_Tests: XCTestCase {
 	func testReturnsErrorOnFailure () {
 		let parser = toString <^> token(1)
 
-		assertParseFails(parser, input: [9])
+		assertParseFails(parser, [9])
 	}
 }
 
@@ -113,16 +113,16 @@ class Apply_Tests: XCTestCase {
 		let parser = token(1) <* token(2)
 
 		assertParseSucceeds( parser, [1,2], result: 1 )
-		assertParseFails(	parser, input: [1,3] )
-		assertParseFails(	parser, input: [2,2] )
+		assertParseFails(	parser, [1,3] )
+		assertParseFails(	parser, [2,2] )
 	}
 
 	func testingDiscardingLeftParser () {
 		let parser = token(1) *> token(2)
 
 		assertParseSucceeds( parser, [1,2], result: 2 )
-		assertParseFails(	parser, input: [2,2] )
-		assertParseFails(	parser, input: [1,3] )
+		assertParseFails(	parser, [2,2] )
+		assertParseFails(	parser, [1,3] )
 	}
 }
 
@@ -133,7 +133,7 @@ class Choice_Tests: XCTestCase {
 
 		assertParseSucceeds(parser, [1])
 		assertParseSucceeds(parser, [2])
-		assertParseFails(parser, input: [3])
+		assertParseFails(parser, [3])
 	}
 
 	func testWithApplyOperator () {
@@ -141,7 +141,7 @@ class Choice_Tests: XCTestCase {
 
 		assertParseSucceeds(parser, [1,2], result: 3)
 		assertParseSucceeds(parser, [3,4], result: 7)
-		assertParseFails(parser, input: [1,3])
+		assertParseFails(parser, [1,3])
 	}
 
 	func testWithApplyAndIdenticalBeginning () {
@@ -149,7 +149,7 @@ class Choice_Tests: XCTestCase {
 
 		assertParseSucceeds(parser, [1,2], result: 3)
 		assertParseSucceeds(parser, [1,4], result: 5)
-		assertParseFails(parser, input: [1,1])
+		assertParseFails(parser, [1,1])
 	}
 
 	func test2ChoicesWithApplyAndIdenticalBeginning () {
@@ -161,7 +161,7 @@ class Choice_Tests: XCTestCase {
 		assertParseSucceeds(parser, [1,2], result: 3)
 		assertParseSucceeds(parser, [1,3], result: 4)
 		assertParseSucceeds(parser, [1,4], result: 5)
-		assertParseFails(parser, input: [1,5])
+		assertParseFails(parser, [1,5])
 	}
 
 	func testLeftSideIsTriedFirst () {
