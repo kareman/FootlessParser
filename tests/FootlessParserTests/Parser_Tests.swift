@@ -24,7 +24,7 @@ class Parser_Tests: XCTestCase {
 	func testSeveralTokenParsers () {
 		var input = ParserInput("abc")
 
-		for character in "abc" {
+		for character in "abc".characters {
 			let parser = token(character)
 			assertParseSucceeds(parser, &input, result: character, consumed: 1)
 		}

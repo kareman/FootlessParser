@@ -10,21 +10,30 @@
 import Result
 
 // TODO: Implement ParserError
-public typealias ParserError = String
+public struct ParserError : ErrorType {
+	public let _domain: String = "FootlessParser.ParserError"
+	public let _code: Int = 1
+
+	let message: String
+
+	public init (_ message: String) {
+		self.message = message
+	}
+}
 
 public struct Parser <Token, Output> {
 	public let parse: ParserInput<Token> -> Result<(output: Output, nextinput: ParserInput<Token>), ParserError>
 }
 
 /** Succeeds iff 'condition' is true. Returns the token it read. */
-public func satisfy <T> (# expect: String, condition: T -> Bool) -> Parser<T,T> {
+public func satisfy <T> (expect  expect: String, condition: T -> Bool) -> Parser<T,T> {
 	return Parser { input in
 		return input.read(expect: expect) >>- { next in
 			if condition(next.head) {
-				return .success(output:next.head, nextinput:next.tail)
+				return .Success(output:next.head, nextinput:next.tail)
 			} else {
-				let quote = contains(expect, "'") ? "" : "'" // avoid double quoting
-				return .failure("expected \(quote + expect + quote), got '\(next.head)'.")
+				let quote = expect.characters.contains("'") ? "" : "'" // avoid double quoting
+				return .Failure(ParserError("expected \(quote + expect + quote), got '\(next.head)'."))
 			}
 		}
 	}
@@ -32,14 +41,14 @@ public func satisfy <T> (# expect: String, condition: T -> Bool) -> Parser<T,T> 
 
 /** Match a single token. */
 public func token <T: Equatable> (token: T) -> Parser<T,T> {
-	return satisfy(expect: toString(token)) { $0 == token }
+	return satisfy(expect: String(token)) { $0 == token }
 }
 
 /** Match several tokens in a row, like e.g. a string. */
 public func tokens <T: Equatable, C: CollectionType where C.Generator.Element == T> (xs: C) -> Parser<T,C> {
-	let length = Swift.count(xs) as! Int
+	let length = xs.count as! Int
 	return count(0...length, any()) >>- { parsedtokens in
-		return equal(parsedtokens, xs) ? pure(xs) : fail("Expected '\(xs)', got '\(parsedtokens)'")
+		return parsedtokens.elementsEqual(xs) ? pure(xs) : fail("Expected '\(xs)', got '\(parsedtokens)'")
 	}
 }
 
@@ -49,7 +58,7 @@ public func any <T> () -> Parser<T,T> {
 }
 
 /** Try parser, if it fails return 'otherwise' without consuming input. */
-public func optional <T,A> (p: Parser<T,A>, # otherwise: A) -> Parser<T,A> {
+public func optional <T,A> (p: Parser<T,A>, otherwise: A) -> Parser<T,A> {
 	return p <|> pure(otherwise)
 }
 
@@ -69,7 +78,7 @@ public func zeroOrMore <T,A> (p: Parser<T,A>) -> Parser<T,[A]> {
 }
 
 /** Repeat parser 'n' times. If 'n' == 0 it always succeeds and returns []. */
-public func count <T,A> (n: Int, p: Parser<T,A>) -> Parser<T,[A]> {
+public func count <T,A> (n: Int, _ p: Parser<T,A>) -> Parser<T,[A]> {
 	return n == 0 ? pure([]) : extend <^> p <*> count(n-1, p)
 }
 
@@ -78,21 +87,21 @@ public func count <T,A> (n: Int, p: Parser<T,A>) -> Parser<T,[A]> {
 	
 	count(2...2, p) is identical to count(2, p)
 
-	:param: r A positive integer range.
+	- parameter r: A positive integer range.
 */
-public func count <T,A> (r: Range<Int>, p: Parser<T,A>) -> Parser<T,[A]> {
+public func count <T,A> (r: Range<Int>, _ p: Parser<T,A>) -> Parser<T,[A]> {
 	if r.startIndex < 0 { return fail("count(\(r)): range cannot be negative.") }
-	return extend <^> count(r.startIndex, p) <*> ( count(count(r)-1, p) <|> zeroOrMore(p) )
+	return extend <^> count(r.startIndex, p) <*> ( count(r.count-1, p) <|> zeroOrMore(p) )
 }
 
 /** Succeed if the next token is in the provided collection. */
 public func oneOf <T: Equatable, C: CollectionType where C.Generator.Element == T> (collection: C) -> Parser<T,T> {
-	return satisfy(expect: "one of '\(toString(collection))'") { contains(collection, $0) }
+	return satisfy(expect: "one of '\(String(collection))'") { collection.contains($0) }
 }
 
 /** Succeed if the next token is _not_ in the provided collection. */
 public func noneOf <T: Equatable, C: CollectionType where C.Generator.Element == T> (collection: C) -> Parser<T,T> {
-	return satisfy(expect: "something not in '\(toString(collection))'") { !contains(collection, $0) }
+	return satisfy(expect: "something not in '\(String(collection))'") { !collection.contains($0) }
 }
 
 /** Match anything but this. */
@@ -104,16 +113,16 @@ public func not <T: Equatable> (token: T) -> Parser<T,T> {
 public func eof <T> () -> Parser<T,()> {
 	return Parser { input in
 		if let next = input.next() {
-			return .failure("expected EOF, got '\(next.head)'.")
+			return .Failure(ParserError("expected EOF, got '\(next.head)'."))
 		} else {
-			return .success(output:(), nextinput:input)
+			return .Success(output:(), nextinput:input)
 		}
 	}
 }
 
 /** Fail with the given error message. Ignores input. */
 public func fail <T,A> (message: String) -> Parser<T,A> {
-	return Parser { _ in .failure(message) }
+	return Parser { _ in .Failure(ParserError(message)) }
 }
 
 /**
@@ -121,14 +130,14 @@ public func fail <T,A> (message: String) -> Parser<T,A> {
 
 	Failure to consume all of input will result in a ParserError.
 
-	:param: p A parser.
-	:param: input A collection, like a string or an array.
+	- parameter p: A parser.
+	- parameter input: A collection, like a string or an array.
 
-	:returns: Output from the parser, or a ParserError.
+	- returns: Output from the parser, or a ParserError.
 */
 public func parse
 	<A,T,C: CollectionType where C.Generator.Element == T>
 	(p: Parser<T,A>, c: C) -> Result<A,ParserError> {
 
-	return ( p <* eof() ).parse(ParserInput(c)) >>- { .success($0.output) }
+	return ( p <* eof() ).parse(ParserInput(c)) >>- { .Success($0.output) }
 }
