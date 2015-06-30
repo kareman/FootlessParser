@@ -43,4 +43,19 @@ class CSV: XCTestCase {
 			}
 		}
 	}
+
+	func testParseLargeCSVQuotesReturningArray () {
+		let filepath = pathForTestResource("CSV-quotes-large", type: "csv")
+		let movieratings = String(contentsOfFile: filepath, encoding: NSUTF8StringEncoding, error: nil)!
+
+		measureBlock {
+			let result = parse(zeroOrMore(row), movieratings)
+			if let success = result.value {
+				XCTAssertEqual(success.count, 1715)
+			} else if let failure = result.error {
+				XCTFail(failure)
+			}
+		}
+	}
+
 }

@@ -447,6 +447,7 @@
 		BAC6B2161A61D92B005643D9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "NotTooBad Software";
 				TargetAttributes = {
