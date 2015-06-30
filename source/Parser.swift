@@ -14,11 +14,21 @@ public struct ParserError : ErrorType {
 	public let _domain: String = "FootlessParser.ParserError"
 	public let _code: Int = 1
 
-	let message: String
+	public let message: String
 
 	public init (_ message: String) {
 		self.message = message
 	}
+}
+
+extension ParserError: CustomStringConvertible, Equatable {
+	public var description: String {
+		return message
+	}
+}
+
+public func == (e1: ParserError, e2: ParserError) -> Bool {
+	return e1.message == e2.message
 }
 
 public struct Parser <Token, Output> {

@@ -15,7 +15,7 @@ class StringParser_Tests: XCTestCase {
 	func testCharParser () {
 		let parser = char("a")
 
-		var input = ParserInput("a")
+		var input = ParserInput("a".characters)
 
 		assertParseFails(parser, "b")
 		assertParseSucceeds(parser, &input, result: "a")

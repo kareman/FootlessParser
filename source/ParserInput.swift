@@ -41,11 +41,6 @@ public struct ParserInput <Token> {
 	public init <C: CollectionType where C.Generator.Element == Token> (_ source: C) {
 		self.init(source, index: source.startIndex, id: NSUUID().hashValue)
 	}
-
-}
-
-public  func parserinput  (s: String)  -> ParserInput <Character > {
-	return ParserInput(s.characters)
 }
 
 extension ParserInput {
@@ -59,7 +54,6 @@ extension ParserInput {
 		}
 	}
 }
-
 
 extension ParserInput: Equatable {}
 

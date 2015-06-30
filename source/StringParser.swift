@@ -14,14 +14,15 @@ public func char (c: Character) -> Parser<Character, Character> {
 	return satisfy(expect: String(c)) { $0 == c }
 }
 
+/** Join two strings */
 public func extend  (a: String) (b: String) ->  String {
-return  a + b
+	return  a + b
 }
 
+/** Join a character with a string. */
 public func extend  (a: Character) (b: String) ->  String {
 	return  String(a) + b
 }
-
 
 /** Apply character parser once, then repeat until it fails. Returns a string. */
 public func oneOrMore <T> (p: Parser<T,Character>) -> Parser<T,String> {
@@ -48,4 +49,34 @@ public func count <T> (n: Int, _ p: Parser<T,Character>) -> Parser<T,String> {
 public func count <T> (r: Range<Int>, _ p: Parser<T,Character>) -> Parser<T,String> {
 	if r.startIndex < 0 { return fail("count(\(r)): range cannot be negative.") }
 	return extend <^> count(r.startIndex, p) <*> ( count(r.count-1, p) <|> zeroOrMore(p) )
+}
+
+/** Match a string. */
+public func tokens (s: String) -> Parser<Character,String> {
+	return { String($0) } <^> tokens(s.characters)
+}
+
+/** Succeed if the next character is in the provided string. */
+public func oneOf (s: String) -> Parser<Character,Character> {
+	return oneOf(s.characters)
+}
+
+/** Succeed if the next character is _not_ in the provided string. */
+public func noneOf (s: String) -> Parser<Character,Character> {
+	return noneOf(s.characters)
+}
+
+/**
+Parse all of the string with parser.
+
+Failure to consume all of input will result in a ParserError.
+
+- parameter p: A parser of characters.
+- parameter input: A string.
+- returns: Output from the parser.
+- throws: A ParserError.
+*/
+public func parse <A> (p: Parser<Character,A>, _ s: String) throws -> A {
+	let result: Result<A,ParserError> = ( p <* eof() ).parse(ParserInput(s.characters)) >>- { .Success($0.output) }
+	return try result.dematerialize()
 }

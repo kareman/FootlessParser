@@ -109,6 +109,14 @@ extension XCTestCase {
 		assertParseSucceeds(p, &parserinput, result: result, consumed: consumed, file: file, line: line)
 	}
 
+	/** Verifies parsing the string succeeds, and optionally checks the result and how many tokens were consumed. */
+	func assertParseSucceeds <R: Equatable>
+		(p: Parser<Character,R>, _ input: String, result: R? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+
+			var parserinput = ParserInput(input.characters)
+			assertParseSucceeds(p, &parserinput, result: result, consumed: consumed, file: file, line: line)
+	}
+
 	/** Verifies the parse succeeds, and optionally checks the result and how many tokens were consumed. */
 	func assertParseSucceeds <T, R: Equatable, C: CollectionType where C.Generator.Element == T>
 		(p: Parser<T,[R]>, _ input: C, result: [R]? = nil, consumed: Int? = nil, file: String = __FILE__, line: UInt = __LINE__) {
@@ -124,7 +132,7 @@ extension XCTestCase {
 
 		p.parse(input).analysis(
 			ifSuccess: { XCTFail("Parsing succeeded with output '\($0.output)', should have failed.", file: file, line: line) },
-			ifFailure: { if $0.isEmpty { XCTFail("Should have an error message", file: file, line: line) } }
+			ifFailure: { if $0.message.isEmpty { XCTFail("Should have an error message", file: file, line: line) } }
 		)
 	}
 
@@ -133,6 +141,13 @@ extension XCTestCase {
 		(p: Parser<T,R>, _ input: C, file: String = __FILE__, line: UInt = __LINE__) {
 
 		assertParseFails(p, ParserInput(input), file: file, line: line)
+	}
+
+	/** Verifies the parse fails with the given string as input. */
+	func assertParseFails <R>
+		(p: Parser<Character,R>, _ input: String, file: String = __FILE__, line: UInt = __LINE__) {
+
+		return assertParseFails(p, input.characters)
 	}
 }
 
@@ -146,5 +161,23 @@ extension XCTestCase {
 		assert(path != nil, "resource \(filename).\(type) not found")
 
 		return path!
+	}
+
+	// from https://forums.developer.apple.com/thread/5824
+	func XCTempAssertThrowsError (message: String = "", file: String = __FILE__, line: UInt = __LINE__, _ block: () throws -> ()) {
+		do	{
+			try block()
+
+			let msg = (message == "") ? "Tested block did not throw error as expected." : message
+			XCTFail(msg, file: file, line: line)
+		} catch {}
+	}
+
+	func XCTempAssertNoThrowError(message: String = "", file: String = __FILE__, line: UInt = __LINE__, _ block: () throws -> ()) {
+		do { try block() }
+		catch	{
+			let msg = (message == "") ? "Tested block threw unexpected error: " : message
+			XCTFail(msg + String(error), file: file, line: line)
+		}
 	}
 }
