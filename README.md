@@ -1,3 +1,5 @@
+_This is the **Swift 1.2** version (Xcode 6.3). Go [here](https://github.com/kareman/FootlessParser/tree/Swift2.0) for Swift 2.0 (Xcode 7)._
+
 # FootlessParser
 
 FootlessParser is a simple and pretty naive implementation of a parser combinator in Swift. It enables infinite lookahead, non-ambiguous parsing with error reporting.
