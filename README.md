@@ -1,3 +1,5 @@
+_This is the **Swift 2.0** version (Xcode 7). Go [here](../master) for Swift 1.2 (Xcode 6.3)._
+
 # FootlessParser
 
 FootlessParser is a simple and pretty naive implementation of a parser combinator in Swift. It enables infinite lookahead, non-ambiguous parsing with error reporting.
@@ -94,12 +96,12 @@ Finally the `csvparser` collects zero or more rows into an array.
 To perform the actual parsing:
 
 ```swift
-let result = parse(csvparser, csvtext)
-if let output = result.value {
+do {
+	let output = try parse(csvparser, csvtext)
 	// output is an array of all the rows, 
 	// where each row is an array of all its cells.
-} else if let error = result.error {
-	println(error)
+} catch {
+
 }
 ```
 
