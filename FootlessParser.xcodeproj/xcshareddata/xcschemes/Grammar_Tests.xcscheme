@@ -41,6 +41,9 @@
                <Test
                   Identifier = "CSV/testParseCSVQuotesReturningArray()">
                </Test>
+               <Test
+                  Identifier = "CSV/testParseLargeCSVQuotesReturningArray()">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>
