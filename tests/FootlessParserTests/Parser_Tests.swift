@@ -40,7 +40,7 @@ class Parser_Tests: XCTestCase {
 	func testTokensParser () {
 		let parser = tokens([1,2,3,4])
 
-		assertParseSucceeds(parser,[1,2,3,4,5], result: [1,2,3,4], consumed: 4)
+		assertParseSucceeds(parser, [1,2,3,4,5], result: [1,2,3,4], consumed: 4)
 		assertParseFails(parser, [])
 		assertParseFails(parser, [1,2,3])
 		assertParseFails(parser, [1,2,3,5])
