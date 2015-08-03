@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Result-Swift.h</key>
 		<data>
-		C2QGRoS3jcrGBp7CnGmTHy0QgCA=
+		77MGpjw8H4BEDpeI3my9K+lg4JE=
 		</data>
 		<key>Headers/Result.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		exFkOJ25lGoSYJ93MlCijE4YnGs=
+		j+TrDEwlte65jUACqP0/99mEhY4=
 		</data>
 		<key>Modules/Result.swiftmodule/arm.swiftdoc</key>
 		<data>
-		ZbcCplDbR0WfA+jIipSprEPpKgo=
+		ywuf3kkb+Gftw1q/FxLFNYZl7PU=
 		</data>
 		<key>Modules/Result.swiftmodule/arm.swiftmodule</key>
 		<data>
-		PGuAp8jL4nb+nrvJZv84sF7Hfbw=
+		SfYdMEir5z7cOWnFfNlU+Yvy3DQ=
 		</data>
 		<key>Modules/Result.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		5GmMNduOxJYONac6XxgHkcy81j8=
+		mErZVwoZUHt5qVd6b2uBsKCRl4o=
 		</data>
 		<key>Modules/Result.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		g8xpUEFXTe/gcseLpqXGzOxUtn0=
+		YhT0AcDKWy9D4WMYRLTFHpDaAig=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,7 +41,7 @@
 	<dict>
 		<key>Headers/Result-Swift.h</key>
 		<data>
-		C2QGRoS3jcrGBp7CnGmTHy0QgCA=
+		77MGpjw8H4BEDpeI3my9K+lg4JE=
 		</data>
 		<key>Headers/Result.h</key>
 		<data>
@@ -49,19 +49,19 @@
 		</data>
 		<key>Modules/Result.swiftmodule/arm.swiftdoc</key>
 		<data>
-		ZbcCplDbR0WfA+jIipSprEPpKgo=
+		ywuf3kkb+Gftw1q/FxLFNYZl7PU=
 		</data>
 		<key>Modules/Result.swiftmodule/arm.swiftmodule</key>
 		<data>
-		PGuAp8jL4nb+nrvJZv84sF7Hfbw=
+		SfYdMEir5z7cOWnFfNlU+Yvy3DQ=
 		</data>
 		<key>Modules/Result.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		5GmMNduOxJYONac6XxgHkcy81j8=
+		mErZVwoZUHt5qVd6b2uBsKCRl4o=
 		</data>
 		<key>Modules/Result.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		g8xpUEFXTe/gcseLpqXGzOxUtn0=
+		YhT0AcDKWy9D4WMYRLTFHpDaAig=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
