@@ -33,7 +33,7 @@ public struct ParserInput <Token> {
 				: ( source[index], ParserInput(source, index: index.successor(), id: id) )
 		}
 		// Heartbreakingly inefficient on long strings. Will have to be replaced if it is going to be called frequently.
-		position = { distance(source.startIndex, index) as! Int }
+		position = { source.startIndex.distanceTo(index) as! Int }
 		self.id = id
 	}
 

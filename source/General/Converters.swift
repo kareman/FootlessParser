@@ -15,7 +15,7 @@ public func extend
 	// not satisfied with this way of doing it, but RangeReplaceableCollectionType has only mutable methods.
 	var result = C()
 	result.append(x)
-	result.extend(xs)
+	result.appendContentsOf(xs)
 	return result
 }
 
@@ -24,7 +24,7 @@ public func extend
 	<C1: RangeReplaceableCollectionType, C2: CollectionType where C1.Generator.Element == C2.Generator.Element>
 	(var xs1: C1)(xs2: C2) -> C1 {
 
-	xs1.extend(xs2)
+	xs1.appendContentsOf(xs2)
 	return xs1
 }
 
