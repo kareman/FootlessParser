@@ -27,7 +27,7 @@ class CSV: XCTestCase {
 	}
 
 	func testRow () {
-		assertParseSucceeds(row, "alpha,bravo,\"charlie\",delta\n", result: ["alpha", "bravo", "charlie", "delta"])
+		assertParseSucceeds(row, "alpha,bravo,\"charlie\",delta\n".characters, result: ["alpha", "bravo", "charlie", "delta"])
 	}
 
 	func testParseCSVQuotesReturningArray () {
