@@ -33,7 +33,7 @@ public struct ParserInput <Token> {
 				: ( source[index], ParserInput(source, index: index.successor(), id: id) )
 		}
 		// Heartbreakingly inefficient on long strings. Will have to be replaced if it is going to be called frequently.
-		position = { distance(source.startIndex, index) as! Int }
+		position = { source.startIndex.distanceTo(index) as! Int }
 		self.id = id
 	}
 
@@ -46,15 +46,14 @@ public struct ParserInput <Token> {
 extension ParserInput {
 
 	/** Return the next token and the rest of the input, or an error message if the end has been reached. */
-	public func read (# expect: String) -> Result<(head: Token, tail: ParserInput<Token>), ParserError> {
+	public func read (expect  expect: String) -> Result<(head: Token, tail: ParserInput<Token>), ParserError> {
 		if let next = self.next() {
-			return .success(next)
+			return .Success(next)
 		} else {
-			return .failure("expected '\(expect)', got EOF.")
+			return .Failure(ParserError("expected '\(expect)', got EOF."))
 		}
 	}
 }
-
 
 extension ParserInput: Equatable {}
 
@@ -63,6 +62,6 @@ public func == <T> (lhs: ParserInput<T>, rhs: ParserInput<T>) -> Bool {
 	return lhs.id == rhs.id && lhs.position() == rhs.position()
 }
 
-extension ParserInput: DebugPrintable {
+extension ParserInput: CustomDebugStringConvertible {
 	public var debugDescription: String { return "position:\(position())" }
 }

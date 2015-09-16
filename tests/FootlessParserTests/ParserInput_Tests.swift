@@ -13,7 +13,7 @@ import XCTest
 class ParserInput_Tests: XCTestCase {
 
 	func testFromString () {
-		let sut = ParserInput("abc")
+		let sut = ParserInput("abc".characters)
 
 		var (head, tail) = sut.next()!
 		XCTAssertEqual(head, "a" as Character)
@@ -25,7 +25,7 @@ class ParserInput_Tests: XCTestCase {
 	}
 
 	func testFromArray () {
-		var sut = ParserInput([1,2,3])
+		let sut = ParserInput([1,2,3])
 
 		var (head, tail) = sut.next()!
 		XCTAssertEqual(head, 1)
@@ -37,7 +37,7 @@ class ParserInput_Tests: XCTestCase {
 	}
 
 	func testPosition () {
-		var sut = ParserInput("abcde")
+		var sut = ParserInput("abcde".characters)
 
 		XCTAssertEqual(sut.position(), 0)
 		(_, sut) = sut.next()!

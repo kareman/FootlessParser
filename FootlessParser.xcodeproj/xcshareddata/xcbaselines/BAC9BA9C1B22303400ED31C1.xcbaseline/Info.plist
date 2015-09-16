@@ -6,6 +6,11 @@
 	<dict>
 		<key>B8F5C957-E294-4D0B-BB49-44D878EA389F</key>
 		<dict>
+			<key>targetArchitecture</key>
+			<string>x86_64</string>
+		</dict>
+		<key>BA228F87-88C3-44B5-A1C4-8451261C2B1B</key>
+		<dict>
 			<key>localComputer</key>
 			<dict>
 				<key>busSpeedInMHz</key>

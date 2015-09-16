@@ -82,7 +82,7 @@ class Map_Tests: XCTestCase {
 	}
 
 	func testAppliesFunctionToResultOnSuccess () {
-		let parser = toString <^> token(1)
+		let parser = String.init <^> token(1)
 
 		var input = ParserInput([1])
 
@@ -91,7 +91,7 @@ class Map_Tests: XCTestCase {
 	}
 
 	func testReturnsErrorOnFailure () {
-		let parser = toString <^> token(1)
+		let parser = String.init <^> token(1)
 
 		assertParseFails(parser, [9])
 	}

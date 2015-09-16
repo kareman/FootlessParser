@@ -20,14 +20,11 @@ class Examples: XCTestCase {
 			return { _ in (name, content) } <^> closetag(name)
 		}
 
-		// this, like so much else, will be far simpler in Swift 2. And prettier.
-		parse(tag, "<a>content<a/>").analysis(
-			ifSuccess: {(name, content) in
-				XCTAssertEqual(name, "a")
-				XCTAssertEqual(content, "content")
-			},
-			ifFailure: { XCTFail($0) }
-		)
+		let (name, content) = try! parse(tag, "<a>content<a/>")
+		
+		XCTAssertEqual(name, "a")
+		XCTAssertEqual(content, "content")
+
 		assertParseFails(tag, "<a>content<b/>")
 		assertParseFails(tag, "a content<a/>")
 		assertParseFails(tag, "<a><a/>")

@@ -1,4 +1,4 @@
-_This is the **Swift 1.2** version (Xcode 6.3). Go [here](https://github.com/kareman/FootlessParser/tree/Swift2.0) for Swift 2.0 (Xcode 7)._
+_This is the **Swift 2.0** version (Xcode 7). Go [here](https://github.com/kareman/FootlessParser) for Swift 1.2 (Xcode 6.3)._
 
 # FootlessParser
 
@@ -96,12 +96,12 @@ Finally the `csvparser` collects zero or more rows into an array.
 To perform the actual parsing:
 
 ```swift
-let result = parse(csvparser, csvtext)
-if let output = result.value {
+do {
+	let output = try parse(csvparser, csvtext)
 	// output is an array of all the rows, 
 	// where each row is an array of all its cells.
-} else if let error = result.error {
-	println(error)
+} catch {
+
 }
 ```
 

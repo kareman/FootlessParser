@@ -22,9 +22,9 @@ class Parser_Tests: XCTestCase {
 	}
 
 	func testSeveralTokenParsers () {
-		var input = ParserInput("abc")
+		var input = ParserInput("abc".characters)
 
-		for character in "abc" {
+		for character in "abc".characters {
 			let parser = token(character)
 			assertParseSucceeds(parser, &input, result: character, consumed: 1)
 		}
@@ -40,7 +40,7 @@ class Parser_Tests: XCTestCase {
 	func testTokensParser () {
 		let parser = tokens([1,2,3,4])
 
-		assertParseSucceeds(parser,[1,2,3,4,5], result: [1,2,3,4], consumed: 4)
+		assertParseSucceeds(parser, [1,2,3,4,5], result: [1,2,3,4], consumed: 4)
 		assertParseFails(parser, [])
 		assertParseFails(parser, [1,2,3])
 		assertParseFails(parser, [1,2,3,5])
@@ -64,7 +64,7 @@ class Parser_Tests: XCTestCase {
 	func testAnyParser () {
 		let parser: Parser<Character, Character> = any()
 
-		var input = ParserInput("abc")
+		var input = ParserInput("abc".characters)
 
 		assertParseSucceeds(parser, &input, result: "a", consumed: 1)
 		assertParseSucceeds(parser, &input, result: "b", consumed: 1)
@@ -73,7 +73,7 @@ class Parser_Tests: XCTestCase {
 	func testOptionalParser () {
 		let parser = optional( char("a"), otherwise: "x" )
 
-		var input = ParserInput("abc")
+		var input = ParserInput("abc".characters)
 
 		assertParseSucceeds(parser, &input, result: "a", consumed: 1)
 		assertParseSucceeds(parser, &input, result: "x", consumed: 0)
@@ -208,8 +208,8 @@ class Parser_Tests: XCTestCase {
 	func testParsingAString () {
 		let parser = zeroOrMore(char("a"))
 
-		XCTAssertEqual(parse(parser, "a").value!, "a")
-		XCTAssertEqual(parse(parser, "aaaa").value!, "aaaa")
-		XCTAssertNotNil(parse(parser, "aaab").error)
+		XCTAssertEqual(try! parse(parser, "a"), "a")
+		XCTAssertEqual(try! parse(parser, "aaaa"), "aaaa")
+		XCTempAssertThrowsError { try parse(parser, "aaab") }
 	}
 }
