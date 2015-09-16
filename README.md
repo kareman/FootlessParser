@@ -1,4 +1,4 @@
-_This is the **Swift 2.0** version (Xcode 7). Go [here](https://github.com/kareman/FootlessParser) for Swift 1.2 (Xcode 6.3)._
+_Works with **Swift 2.0** (Xcode 7). Go [here](https://github.com/kareman/FootlessParser/tree/v0.1.4) for Swift 1.2)._
 
 # FootlessParser
 
