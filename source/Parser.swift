@@ -92,12 +92,12 @@ public func count <T,A> (n: Int, _ p: Parser<T,A>) -> Parser<T,[A]> {
 	return n == 0 ? pure([]) : extend <^> p <*> count(n-1, p)
 }
 
-/** 
-	Repeat parser as many times as possible within the given range.
-	
-	count(2...2, p) is identical to count(2, p)
+/**
+Repeat parser as many times as possible within the given range.
 
-	- parameter r: A positive integer range.
+count(2...2, p) is identical to count(2, p)
+
+- parameter r: A positive integer range.
 */
 public func count <T,A> (r: Range<Int>, _ p: Parser<T,A>) -> Parser<T,[A]> {
 	if r.startIndex < 0 { return fail("count(\(r)): range cannot be negative.") }
@@ -136,14 +136,14 @@ public func fail <T,A> (message: String) -> Parser<T,A> {
 }
 
 /**
-	Parse all of input with parser.
+Parse all of input with parser.
 
-	Failure to consume all of input will result in a ParserError.
+Failure to consume all of input will result in a ParserError.
 
-	- parameter p: A parser.
-	- parameter input: A collection, like a string or an array.
+- parameter p: A parser.
+- parameter input: A collection, like a string or an array.
 
-	- returns: Output from the parser, or a ParserError.
+- returns: Output from the parser, or a ParserError.
 */
 public func parse
 	<A,T,C: CollectionType where C.Generator.Element == T>

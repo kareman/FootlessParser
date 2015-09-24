@@ -40,11 +40,11 @@ public func count <T> (n: Int, _ p: Parser<T,Character>) -> Parser<T,String> {
 }
 
 /**
-	Repeat parser as many times as possible within the given range.
+Repeat parser as many times as possible within the given range.
 
-	count(2...2, p) is identical to count(2, p)
+count(2...2, p) is identical to count(2, p)
 
-	- parameter r: A positive integer range.
+- parameter r: A positive integer range.
 */
 public func count <T> (r: Range<Int>, _ p: Parser<T,Character>) -> Parser<T,String> {
 	if r.startIndex < 0 { return fail("count(\(r)): range cannot be negative.") }
