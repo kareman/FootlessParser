@@ -97,7 +97,7 @@ count(2...2, p) is identical to count(2, p)
 - parameter r: A positive integer range.
 */
 public func count <T,A> (r: Range<Int>, _ p: Parser<T,A>) -> Parser<T,[A]> {
-	if r.startIndex < 0 { return fail("count(\(r)): range cannot be negative.") }
+	guard r.startIndex >= 0 else { return fail("count(\(r)): range cannot be negative.") }
 	return extend <^> count(r.startIndex, p) <*> ( count(r.count-1, p) <|> zeroOrMore(p) )
 }
 
