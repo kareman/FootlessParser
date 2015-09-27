@@ -15,13 +15,13 @@ public func char (c: Character) -> Parser<Character, Character> {
 }
 
 /** Join two strings */
-public func extend  (a: String) (b: String) ->  String {
-	return  a + b
+public func extend (a: String) (b: String) -> String {
+	return a + b
 }
 
 /** Join a character with a string. */
-public func extend  (a: Character) (b: String) ->  String {
-	return  String(a) + b
+public func extend (a: Character) (b: String) -> String {
+	return String(a) + b
 }
 
 /** Apply character parser once, then repeat until it fails. Returns a string. */

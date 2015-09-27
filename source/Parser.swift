@@ -33,7 +33,7 @@ public struct Parser <Token, Output> {
 }
 
 /** Succeeds iff 'condition' is true. Returns the token it read. */
-public func satisfy <T> (expect  expect: String, condition: T -> Bool) -> Parser<T,T> {
+public func satisfy <T> (expect expect: String, condition: T -> Bool) -> Parser<T,T> {
 	return Parser { input in
 		return input.read(expect: expect) >>- { next in
 			if condition(next.head) {

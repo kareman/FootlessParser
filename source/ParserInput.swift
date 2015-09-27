@@ -46,7 +46,7 @@ public struct ParserInput <Token> {
 extension ParserInput {
 
 	/** Return the next token and the rest of the input, or an error message if the end has been reached. */
-	public func read (expect  expect: String) -> Result<(head: Token, tail: ParserInput<Token>), ParserError> {
+	public func read (expect expect: String) -> Result<(head: Token, tail: ParserInput<Token>), ParserError> {
 		if let next = self.next() {
 			return .Success(next)
 		} else {
