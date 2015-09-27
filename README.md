@@ -71,6 +71,14 @@ parser1 <|> parser2 <|> parser3
 
 This operator tries all the parsers in order and returns the result of the first one that succeeds.
 
+##### >>- (flatmap)
+
+```
+parser1 >>- ( o -> parser2 )
+```
+
+This does the same as the flatmap functions in the Swift Standard Library. It creates a new parser which first tries parser1. If it fails it returns the error, if it succeeds it passes the output to the function which uses it to create parser2. It then runs parser2 and returns its output or error.
+
 ### Example
 
 #### [CSV](http://www.computerhope.com/jargon/c/csv.htm) parser
