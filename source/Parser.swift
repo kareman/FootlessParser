@@ -11,9 +11,6 @@ import Result
 
 // TODO: Implement ParserError
 public struct ParserError : ErrorType {
-	public let _domain: String = "FootlessParser.ParserError"
-	public let _code: Int = 1
-
 	public let message: String
 
 	public init (_ message: String) {
