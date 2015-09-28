@@ -115,8 +115,6 @@ do {
 }
 ```
 
-The `parse` function returns a [Result](https://github.com/antitypical/Result) which if successful contains the output from the parser, or in case of failure contains the error.
-
 ### Installation
 
 #### Using [Carthage](https://github.com/Carthage/Carthage)
