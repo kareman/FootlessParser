@@ -140,11 +140,12 @@ Failure to consume all of input will result in a ParserError.
 - parameter p: A parser.
 - parameter input: A collection, like a string or an array.
 
-- returns: Output from the parser, or a ParserError.
+- returns: Output from the parser.
+- throws: ParserError.
 */
 public func parse
 	<A,T,C: CollectionType where C.Generator.Element == T>
-	(p: Parser<T,A>, c: C) -> Result<A,ParserError> {
+	(p: Parser<T,A>, _ c: C) throws -> A {
 
-	return ( p <* eof() ).parse(ParserInput(c)) >>- { .Success($0.output) }
+	return try (( p <* eof() ).parse(ParserInput(c)) >>- { .Success($0.output) }).dematerialize()
 }
