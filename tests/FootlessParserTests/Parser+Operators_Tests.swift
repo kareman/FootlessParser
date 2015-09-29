@@ -21,8 +21,7 @@ class Pure_Tests: XCTestCase {
 		let parser: Parser<Int,Int> = pure(1)
 		var input = ParserInput([2,3,4])
 
-		assertParseSucceeds(parser, &input, result: 1)
-		XCTAssertEqual(input.position(), 0)
+		assertParseSucceeds(parser, &input, result: 1, consumed: 0)
 	}
 }
 

@@ -47,13 +47,13 @@ count(2...2, p) is identical to count(2, p)
 - parameter r: A positive integer range.
 */
 public func count <T> (r: Range<Int>, _ p: Parser<T,Character>) -> Parser<T,String> {
-	if r.startIndex < 0 { return fail("count(\(r)): range cannot be negative.") }
+	guard r.startIndex >= 0 else { return fail("count(\(r)): range cannot be negative.") }
 	return extend <^> count(r.startIndex, p) <*> ( count(r.count-1, p) <|> zeroOrMore(p) )
 }
 
 /** Match a string. */
 public func tokens (s: String) -> Parser<Character,String> {
-	return { String($0) } <^> tokens(s.characters)
+	return String.init <^> tokens(s.characters)
 }
 
 /** Succeed if the next character is in the provided string. */
@@ -77,6 +77,6 @@ Failure to consume all of input will result in a ParserError.
 - throws: A ParserError.
 */
 public func parse <A> (p: Parser<Character,A>, _ s: String) throws -> A {
-	let result: Result<A,ParserError> = ( p <* eof() ).parse(ParserInput(s.characters)) >>- { .Success($0.output) }
+	let result = ( p <* eof() ).parse(ParserInput(s.characters)) >>- { .Success($0.output) }
 	return try result.dematerialize()
 }
