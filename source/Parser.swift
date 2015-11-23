@@ -70,7 +70,7 @@ public func optional <T,A> (p: Parser<T,A>, otherwise: A) -> Parser<T,A> {
 }
 
 /** Delay creation of parser until it is needed. */
-func lazy <T,A> (@autoclosure(escaping) f: () -> Parser<T,A>) -> Parser<T,A> {
+public func lazy <T,A> (@autoclosure(escaping) f: () -> Parser<T,A>) -> Parser<T,A> {
 	return Parser { input in f().parse(input) }
 }
 
