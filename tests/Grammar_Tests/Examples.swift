@@ -29,4 +29,27 @@ class Examples: XCTestCase {
 		assertParseFails(tag, "a content<a/>")
 		assertParseFails(tag, "<a><a/>")
 	}
+
+	func testRecursiveExpressionParser () {
+		func add (a:Int)(b:Int) -> Int { return a + b }
+		func multiply (a:Int)(b:Int) -> Int { return a * b }
+
+		let nr = {Int($0)!} <^> oneOrMore(oneOf("0123456789"))
+
+		var expression: Parser<Character, Int>!
+
+		let factor = nr <|> lazy( char("(") *> expression <* char(")") )
+
+		var term: Parser<Character, Int>!
+		term = lazy( multiply <^> factor <* char("*") <*> term <|> factor )
+
+		expression = lazy( add <^> term <* char("+") <*> expression <|> term )
+
+		assertParseSucceeds(expression, "12", result: 12)
+		assertParseSucceeds(expression, "1+2+3", result: 6)
+		assertParseSucceeds(expression, "(1+2)", result: 3)
+		assertParseSucceeds(expression, "(1+(2+4))+3", result: 10)
+		assertParseSucceeds(expression, "12*(3+1)", result: 48)
+		assertParseSucceeds(expression, "12*3+1", result: 37)
+	}
 }
