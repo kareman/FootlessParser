@@ -115,6 +115,32 @@ do {
 }
 ```
 
+#### Recursive expression
+
+```swift
+func add (a:Int)(b:Int) -> Int { return a + b }
+func multiply (a:Int)(b:Int) -> Int { return a * b }
+
+let nr = {Int($0)!} <^> oneOrMore(oneOf("0123456789"))
+
+var expression: Parser<Character, Int>!
+
+let factor = nr <|> lazy( char("(") *> expression <* char(")") )
+
+var term: Parser<Character, Int>!
+term = lazy( multiply <^> factor <* char("*") <*> term <|> factor )
+
+expression = lazy( add <^> term <* char("+") <*> expression <|> term )
+
+do {
+    let result = try parse(expression, "(1+(2+4))+3")
+} catch { }
+```
+
+`expression` parses input like "12", "1+2+3", "(1+2)", "12*3+1" and "12*(3+1)" and returns the result as an Int.
+
+All parsers which refer to themselves directly or indirectly must be pre-declared as variable implicitly unwrapped optionals (`var expression: Parser<Character, Int>!`). And to avoid infinte recursion the definitions must use the `lazy` function.
+
 ### Installation
 
 #### Using [Carthage](https://github.com/Carthage/Carthage)
