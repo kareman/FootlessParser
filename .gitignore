@@ -16,3 +16,6 @@ xcuserdata
 DerivedData
 *.hmap
 *.ipa
+/.build
+/Packages
+/*.xcodeproj
