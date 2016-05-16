@@ -170,7 +170,7 @@ class Choice_Tests: XCTestCase {
 	}
 
     func testBacktracking() {
-        let parser = tokens("food") <|> tokens("foot")
+        let parser = string("food") <|> string("foot")
         assertParseSucceeds(parser, "food", result: "food")
         assertParseSucceeds(parser, "foot", result: "foot")
         assertParseFails(parser, "fool")

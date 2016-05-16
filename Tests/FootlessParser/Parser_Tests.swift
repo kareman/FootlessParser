@@ -47,7 +47,7 @@ class Parser_Tests: XCTestCase {
 	}
 
 	func testStringTokensParser () {
-		let parser = tokens("abc")
+		let parser = string("abc")
 
 		assertParseSucceeds(parser, "abcde", result: "abc", consumed: 3)
 		assertParseFails(parser, "")
@@ -56,7 +56,7 @@ class Parser_Tests: XCTestCase {
 	}
 
 	func testEmptyStringTokensParser () {
-		let parser = tokens("")
+		let parser = string("")
 
 		assertParseSucceeds(parser, "abcde", result: "", consumed: 0)
 	}

@@ -85,7 +85,7 @@ class PerformanceTests: XCTestCase {
     }
 
     func testBacktrackingLeftString() {
-        let parser = tokens("food") <|> tokens("foot")
+        let parser = string("food") <|> string("foot")
         measure {
             for _ in 0..<1000 {
                 self.assertParseSucceeds(parser, "food")
@@ -94,7 +94,7 @@ class PerformanceTests: XCTestCase {
     }
 
     func testBacktrackingRightString() {
-        let parser = tokens("food") <|> tokens("foot")
+        let parser = string("food") <|> string("foot")
         measure {
             for _ in 0..<1000 {
                 self.assertParseSucceeds(parser, "foot")
@@ -103,7 +103,7 @@ class PerformanceTests: XCTestCase {
     }
 
     func testBacktrackingFailString() {
-        let parser = tokens("food") <|> tokens("foot")
+        let parser = string("food") <|> string("foot")
         measure {
             for _ in 0..<1000 {
                 self.assertParseFails(parser, "fool")

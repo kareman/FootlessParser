@@ -14,7 +14,7 @@ class Examples: XCTestCase {
 	func testXMLTagParser () {
 
 		let opentag = char("<") *> oneOrMore(not(">")) <* char(">")
-		let closetag = { (tagname: String) in char("<") *> tokens(tagname) <* tokens("/>") }
+		let closetag = { (tagname: String) in char("<") *> string(tagname) <* string("/>") }
 
 		let tag = tuple <^> opentag <*> oneOrMore(not("<")) >>- { (name, content) in
 			return { _ in (name, content) } <^> closetag(name)

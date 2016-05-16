@@ -64,8 +64,12 @@ public func count <T> (_ r: Range<Int>, _ p: Parser<T,Character>) -> Parser<T,St
     return extend <^> count(r.lowerBound, p) <*> ( count(r.count-1, p) <|> zeroOrMore(p) )
 }
 
-/** Match a string. */
-public func tokens (_ s: String) -> Parser<Character, String> {
+/** 
+ Match a string
+ - parameter: string to match
+ - note: consumes either the full string or nothing, even on a partial match.
+ */
+public func string (_ s: String) -> Parser<Character, String> {
     let s2 = AnyCollection(s.characters)
 
     let count = s.characters.count
