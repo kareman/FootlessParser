@@ -28,11 +28,6 @@ class StringParser_Tests: XCTestCase {
 		assertParseSucceeds(parser, "a", result: "a")
 		assertParseSucceeds(parser, "aaa", result: "aaa")
 		assertParseSucceeds(parser, "aaab", result: "aaa", consumed: 3)
-
-        let input = String(repeating: Character("a"), count: 1000)
-        measure {
-            self.assertParseSucceeds(parser, input, consumed: 1000)
-        }
 	}
 
 	func testZeroOrMoreParserForCharacters () {
