@@ -76,6 +76,9 @@ public func tokens (_ s: String) -> Parser<Character, String> {
 
     let count = s.characters.count
     return Parser { input in
+        guard input.startIndex < input.endIndex else {
+            throw Error.Mismatch(s, "EOF")
+        }
         let endIndex = input.index(input.startIndex, offsetBy: IntMax(count))
         guard endIndex <= input.endIndex else {
             throw Error.Mismatch(s, String(input))
