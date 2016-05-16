@@ -85,6 +85,11 @@ class Parser_Tests: XCTestCase {
 		assertParseSucceeds(parser, [1], result: [1], consumed: 1)
 		assertParseSucceeds(parser, [1,1,1], result: [1,1,1], consumed: 3)
 		assertParseSucceeds(parser, [1,1,1,9], result: [1,1,1], consumed: 3)
+
+        let input = Array(repeating: 1, count: 1000)
+        measure {
+            self.assertParseSucceeds(parser, input, consumed: 1000)
+        }
 	}
 
 	func testZeroOrMoreParser () {
@@ -112,7 +117,15 @@ class Parser_Tests: XCTestCase {
 		assertParseSucceeds(parser, [1,1,1,1], result: [1], consumed: 1)
 		assertParseFails(parser, [2,2])
 		assertParseFails(parser, [])
-	}
+    }
+    
+    func testCount1000Parser () {
+        let parser = count(1000, token(1))
+        let input = Array(repeating: 1, count: 1000)
+        measure {
+            self.assertParseSucceeds(parser, input, consumed: 1000)
+        }
+    }
 
 	func testCountParser0TimesWithoutConsumingInput () {
 		let parser = count(0, token(1))
