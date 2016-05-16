@@ -64,9 +64,29 @@ public func count <T> (_ r: Range<Int>, _ p: Parser<T,Character>) -> Parser<T,St
     return extend <^> count(r.lowerBound, p) <*> ( count(r.count-1, p) <|> zeroOrMore(p) )
 }
 
+// TODO: not happy with this; how to efficiently check for equality?
+func == <T: Equatable> (lhs: AnyCollection<T>, rhs: AnyCollection<T>) -> Bool {
+    return Array(lhs) == Array(rhs)
+}
+extension AnyCollection where Element: Equatable { }
+
 /** Match a string. */
 public func tokens (_ s: String) -> Parser<Character, String> {
-    return String.init <^> tokens(s.characters)
+    let s2 = AnyCollection(s.characters)
+
+    let count = s.characters.count
+    return Parser { input in
+        let endIndex = input.index(input.startIndex, offsetBy: IntMax(count))
+        guard endIndex <= input.endIndex else {
+            throw Error.Mismatch(s, String(input))
+        }
+        let next = input[input.startIndex..<endIndex]
+        if s2 == next {
+            return (s, input.dropFirst(count))
+        } else {
+            throw Error.Mismatch(s, String(next))
+        }
+    }
 }
 
 
