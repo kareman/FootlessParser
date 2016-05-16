@@ -40,6 +40,18 @@ public func optional <T,A> (_ p: Parser<T,A>, otherwise: A) -> Parser<T,A> {
     return p <|> pure(otherwise)
 }
 
+/** Try parser, if it fails return nil without consuming input. */
+public func optional <T,A> (_ p: Parser<T, A>) -> Parser<T, A?> {
+    return Parser { input in
+        do {
+            let (result, remainder) = try p.parse(input)
+            return (result, remainder)
+        } catch is Error {
+            return (nil, input)
+        }
+    }
+}
+
 /** Delay creation of parser until it is needed. */
 public func lazy <T,A> (_ f: @autoclosure(escaping)() -> Parser<T,A>) -> Parser<T,A> {
     return Parser { input in try f().parse(input) }
