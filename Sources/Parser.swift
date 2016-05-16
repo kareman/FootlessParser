@@ -47,7 +47,19 @@ public func lazy <T,A> (_ f: @autoclosure(escaping)() -> Parser<T,A>) -> Parser<
 
 /** Apply parser once, then repeat until it fails. Returns an array of the results. */
 public func oneOrMore <T,A> (_ p: Parser<T,A>) -> Parser<T,[A]> {
-    return extend <^> p <*> optional( lazy(oneOrMore(p)), otherwise: [] )
+    return Parser { input in
+        var (first, remainder) = try p.parse(input)
+        var result = [first]
+        while true {
+            do {
+                let next = try p.parse(remainder)
+                result.append(next.output)
+                remainder = next.remainder
+            } catch {
+                return (result, remainder)
+            }
+        }
+    }
 }
 
 /** Repeat parser until it fails. Returns an array of the results. */
@@ -57,7 +69,16 @@ public func zeroOrMore <T,A> (_ p: Parser<T,A>) -> Parser<T,[A]> {
 
 /** Repeat parser 'n' times. If 'n' == 0 it always succeeds and returns []. */
 public func count <T,A> (_ n: Int, _ p: Parser<T,A>) -> Parser<T,[A]> {
-    return n == 0 ? pure([]) : extend <^> p <*> count(n-1, p)
+    return Parser { input in
+        var input = input
+        var results = [A]()
+        for _ in 0..<n {
+            let (result, remainder) = try p.parse(input)
+            results.append(result)
+            input = remainder
+        }
+        return (results, input)
+    }
 }
 
 /**
