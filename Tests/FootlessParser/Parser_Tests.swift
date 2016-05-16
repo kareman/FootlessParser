@@ -114,11 +114,6 @@ class Parser_Tests: XCTestCase {
 		assertParseFails(parser, [])
     }
     
-    func testCount1000Parser () {
-        let parser = count(1000, token(1))
-        let input = Array(repeating: 1, count: 1000)
-    }
-
 	func testCountParser0TimesWithoutConsumingInput () {
 		let parser = count(0, token(1))
 
