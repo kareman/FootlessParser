@@ -81,7 +81,7 @@ public func *> <T,A,B> (p1: Parser<T,A>, p2: Parser<T,B>) -> Parser<T,B> {
 
 
 /**
- Create a parser which ignores input and returns this parameter.
+ Create a parser which doesn't consume input and returns this parameter.
 
  - parameter a: A value of type A
  */
