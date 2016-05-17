@@ -31,8 +31,8 @@ class Examples: XCTestCase {
 	}
 
 	func testRecursiveExpressionParser () {
-        func add (a:Int) -> (Int) -> Int { return { b in a + b } }
-        func multiply (a:Int) -> (Int) -> Int { return { b in a * b } }
+        func add (a:Int, b:Int) -> Int { return a + b }
+        func multiply (a:Int, b:Int) -> Int { return a * b }
 
 		let nr = {Int($0)!} <^> oneOrMore(oneOf("0123456789"))
 
@@ -41,9 +41,9 @@ class Examples: XCTestCase {
 		let factor = nr <|> lazy( char("(") *> expression <* char(")") )
 
 		var term: Parser<Character, Int>!
-		term = lazy( multiply <^> factor <* char("*") <*> term <|> factor )
+		term = lazy( curry(multiply) <^> factor <* char("*") <*> term <|> factor )
 
-		expression = lazy( add <^> term <* char("+") <*> expression <|> term )
+		expression = lazy( curry(add) <^> term <* char("+") <*> expression <|> term )
 
 		assertParseSucceeds(expression, "12", result: 12)
 		assertParseSucceeds(expression, "1+2+3", result: 6)
