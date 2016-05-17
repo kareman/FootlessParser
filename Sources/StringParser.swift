@@ -77,8 +77,7 @@ public func string (_ s: String) -> Parser<Character, String> {
         guard input.startIndex < input.endIndex else {
             throw Error.Mismatch(s, "EOF")
         }
-        let endIndex = input.index(input.startIndex, offsetBy: IntMax(count))
-        guard endIndex <= input.endIndex else {
+        guard let endIndex = input.index(input.startIndex, offsetBy: IntMax(count), limitedBy: input.endIndex) else {
             throw Error.Mismatch(s, String(input))
         }
         let next = input[input.startIndex..<endIndex]
@@ -99,6 +98,29 @@ public func oneOf (_ s: String) -> Parser<Character,Character> {
 /** Succeed if the next character is _not_ in the provided string. */
 public func noneOf (_ s: String) -> Parser<Character,Character> {
     return noneOf(s.characters)
+}
+
+/**
+ Produces a character if the character and succeeding to not match any of the
+ strings.
+ - parameter: strings to _not_ match
+ - note: consumes only produced characters
+ */
+public func noneOf(_ strings: [String]) -> Parser<Character, Character> {
+    let strings = strings.map { ($0, AnyCollection($0.characters)) }
+    return Parser { input in
+        guard let next = input.first else {
+            throw Error.EOF
+        }
+        for (string, characters) in strings {
+            guard characters.first == next else { continue }
+            let endIndex = input.index(input.startIndex, offsetBy: IntMax(characters.count))
+            guard endIndex <= input.endIndex else { continue }
+            let peek = input[input.startIndex..<endIndex]
+            if peek == characters { throw Error.Mismatch("anything but \(string)", string) }
+        }
+        return (next, input.dropFirst())
+    }
 }
 
 public func char(_ set: NSCharacterSet, name: String) -> Parser<Character, Character> {

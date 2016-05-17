@@ -57,4 +57,24 @@ class StringParser_Tests: XCTestCase {
 		assertParseSucceeds(parser, "aab", result: "aa", consumed: 2)
 		assertParseSucceeds(parser, "aaaaa", result: "aaaa", consumed: 4)
 	}
+
+    func testNoneOfStrings() {
+        let parser = zeroOrMore(noneOf(["foo", "bar"]))
+
+        assertParseSucceeds(parser, "", result: "")
+        assertParseSucceeds(parser, "a foo", result: "a ")
+        assertParseSucceeds(parser, "a bar", result: "a ")
+        assertParseSucceeds(parser, "bar foo", result: "")
+    }
+
+    func testString() {
+        let parser = string("foo")
+        assertParseSucceeds(parser, "foo", result: "foo")
+        assertParseSucceeds(parser, "foobar", result: "foo")
+        assertParseFails(parser, "barf")
+        assertParseFails(parser, "bar")
+        assertParseFails(parser, "ba")
+        assertParseFails(parser, "b")
+        assertParseFails(parser, "")
+    }
 }
