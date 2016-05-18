@@ -161,14 +161,6 @@ class Parser_Tests: XCTestCase {
 		assertParseSucceeds(parser, [1,1,1,2], result: [1,1], consumed: 2)
 	}
 
-	func testCountNegativeRangeYieldsFailure () {
-		let parser = count(-1...2, token(1))
-
-		assertParseFails(parser, [])
-		assertParseFails(parser, [1])
-		assertParseFails(parser, [1, 1])
-	}
-
 	func testOneOfParser () {
 		let parser = oneOf("abc")
 

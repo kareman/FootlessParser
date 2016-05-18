@@ -50,7 +50,7 @@ public func count <T> (_ n: Int, _ p: Parser<T,Character>) -> Parser<T,String> {
  - parameter r: A positive closed integer range.
  */
 public func count <T> (_ r: ClosedRange<Int>, _ p: Parser<T,Character>) -> Parser<T,String> {
-    guard r.lowerBound >= 0 else { return fail(.NegativeCount) }
+    precondition(r.lowerBound >= 0, "Count must be >= 0")
     return extend <^> count(r.lowerBound, p) <*> ( count(r.count-1, p) <|> zeroOrMore(p) )
 }
 
@@ -60,7 +60,7 @@ public func count <T> (_ r: ClosedRange<Int>, _ p: Parser<T,Character>) -> Parse
  - parameter r: A positive half open integer range.
  */
 public func count <T> (_ r: Range<Int>, _ p: Parser<T,Character>) -> Parser<T,String> {
-    guard r.lowerBound >= 0 else { return fail(.NegativeCount) }
+    precondition(r.lowerBound >= 0, "Count must be >= 0")
     return extend <^> count(r.lowerBound, p) <*> ( count(r.count-1, p) <|> zeroOrMore(p) )
 }
 
@@ -75,16 +75,16 @@ public func string (_ s: String) -> Parser<Character, String> {
     let count = s.characters.count
     return Parser { input in
         guard input.startIndex < input.endIndex else {
-            throw Error.Mismatch(s, "EOF")
+            throw ParseError.Mismatch(input, s, "EOF")
         }
         guard let endIndex = input.index(input.startIndex, offsetBy: IntMax(count), limitedBy: input.endIndex) else {
-            throw Error.Mismatch(s, String(input))
+            throw ParseError.Mismatch(input, s, String(input))
         }
         let next = input[input.startIndex..<endIndex]
         if s2 == next {
             return (s, input.dropFirst(count))
         } else {
-            throw Error.Mismatch(s, String(next))
+            throw ParseError.Mismatch(input, s, String(next))
         }
     }
 }
@@ -110,14 +110,14 @@ public func noneOf(_ strings: [String]) -> Parser<Character, Character> {
     let strings = strings.map { ($0, AnyCollection($0.characters)) }
     return Parser { input in
         guard let next = input.first else {
-            throw Error.EOF
+            throw ParseError.Mismatch(input, "anything but \(string)", "EOF")
         }
         for (string, characters) in strings {
             guard characters.first == next else { continue }
             let endIndex = input.index(input.startIndex, offsetBy: IntMax(characters.count))
             guard endIndex <= input.endIndex else { continue }
             let peek = input[input.startIndex..<endIndex]
-            if peek == characters { throw Error.Mismatch("anything but \(string)", string) }
+            if peek == characters { throw ParseError.Mismatch(input, "anything but \(string)", string) }
         }
         return (next, input.dropFirst())
     }
@@ -139,4 +139,27 @@ public func char(_ set: NSCharacterSet, name: String) -> Parser<Character, Chara
  */
 public func parse <A> (_ p: Parser<Character, A>, _ s: String) throws -> A {
     return try (p <* eof()).parse(AnyCollection(s.characters)).output
+}
+
+public func print(error: ParseError<Character>, in s: String) {
+    if case ParseError<Character>.Mismatch(let remainder, let expected, let actual) = error {
+        let index = s.index(s.endIndex, offsetBy: -Int(remainder.count))
+        let (lineRange, row, pos) = position(of: index, in: s)
+        let line = s[lineRange.lowerBound..<lineRange.upperBound].trimmingCharacters(in: NSCharacterSet.newlines())
+
+        print("An error occurred when parsing this line:")
+        print(line)
+        print(String(repeating: Character(" "), count: pos - 1) + "^")
+        print("\(row):\(pos) Expected '\(expected)', actual '\(actual)'")
+    }
+}
+
+func position(of index: String.CharacterView.Index, in string: String) -> (line: Range<String.CharacterView.Index>, row: Int, pos: Int) {
+    var head = string.startIndex..<string.startIndex
+    var row = 0
+    while head.upperBound <= index {
+        head = string.lineRange(for: head.upperBound..<head.upperBound)
+        row += 1
+    }
+    return (head, row, string.distance(from: head.lowerBound, to: index) + 1)
 }

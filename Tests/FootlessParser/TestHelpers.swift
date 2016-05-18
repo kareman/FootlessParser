@@ -10,12 +10,6 @@ import Foundation
 import FootlessParser
 import XCTest
 
-func == <T: Equatable> (lhs: AnyCollection<T>, rhs: AnyCollection<T>) -> Bool {
-    return Array(lhs) == Array(rhs)
-}
-
-extension AnyCollection where Element: Equatable { }
-
 public func == <R:Equatable, I:Equatable, E:Equatable>
     (lhs: ((output: R, remainder: AnyCollection<I>)?, E?), rhs: ((output: R, remainder: AnyCollection<I>)?, E?)) -> Bool {
     if let lhs=lhs.0, rhs=rhs.0 {
@@ -33,10 +27,6 @@ public func != <R:Equatable, I:Equatable, E:Equatable>
 	return !(lhs == rhs)
 }
 
-public func == <T: Equatable> (lhs: [T]?, rhs: [T]?) -> Bool {
-    return false
-}
-
 extension XCTestCase {
 
 	/**
@@ -47,11 +37,11 @@ extension XCTestCase {
     func assertParsesEqually <T: Equatable, R: Equatable>
         (_ p1: Parser<T,R>, _ p2: Parser<T,R>, input: [T], shouldSucceed: Bool? = nil, file: StaticString = #file, line: UInt = #line) {
 
-        let parse = { (p: Parser<T, R>) -> ((output: R, remainder: AnyCollection<T>)?, Error?) in
+        let parse = { (p: Parser<T, R>) -> ((output: R, remainder: AnyCollection<T>)?, String?) in
             do {
                 return (try p.parse(AnyCollection(input)), nil)
-            } catch let error as Error {
-                return (nil, error)
+            } catch let error as ParseError<T> {
+                return (nil, error.description)
             } catch {
                 return (nil, nil)  // should not happen
             }

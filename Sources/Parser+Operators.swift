@@ -97,15 +97,24 @@ infix operator <|> { associativity right precedence 80 }
 
  - If the first parser succeeds, return its results.
  - Else if the 2nd parser succeeds, return its results.
- - If they both fail, return the failure from the last parser.
+ - If they both fail, return the failure from the parser that got the furthest.
 
  Has infinite lookahead. The 2nd parser starts from the same position in the input as the first one.
  */
 public func <|> <T,A> (l: Parser<T,A>, r: Parser<T,A>) -> Parser<T,A> {
     return Parser { input in
-        if let result = try? l.parse(input) {
-            return result
+        do {
+            return try l.parse(input)
+        } catch ParseError<T>.Mismatch(let lr, let le, let la) {
+            do {
+                return try r.parse(input)
+            } catch ParseError<T>.Mismatch(let rr, let re, let ra) {
+                if lr.count <= rr.count {
+                    throw ParseError.Mismatch(lr, le, la)
+                } else {
+                    throw ParseError.Mismatch(rr, re, ra)
+                }
+            }
         }
-        return try r.parse(input)
     }
 }
