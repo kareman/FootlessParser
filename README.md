@@ -1,6 +1,6 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-_Works with **Swift 2.0** (Xcode 7). Here is the [Swift 1.2 version] (https://github.com/kareman/FootlessParser/tree/v0.1.4)._
+_Works with **Swift 3**. Here is the [Swift 2.2+ version](https://github.com/kareman/FootlessParser)._
 
 # FootlessParser
 
