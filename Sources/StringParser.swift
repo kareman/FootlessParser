@@ -123,7 +123,7 @@ public func noneOf(_ strings: [String]) -> Parser<Character, Character> {
     }
 }
 
-public func char(_ set: NSCharacterSet, name: String) -> Parser<Character, Character> {
+public func char(_ set: CharacterSet, name: String) -> Parser<Character, Character> {
     return satisfy(expect: name) {
         return String($0).rangeOfCharacter(from: set) != nil
     }
@@ -145,11 +145,11 @@ public func print(error: ParseError<Character>, in s: String) {
     if case ParseError<Character>.Mismatch(let remainder, let expected, let actual) = error {
         let index = s.index(s.endIndex, offsetBy: -Int(remainder.count))
         let (lineRange, row, pos) = position(of: index, in: s)
-        let line = s[lineRange.lowerBound..<lineRange.upperBound].trimmingCharacters(in: NSCharacterSet.newlines())
+        let line = s[lineRange.lowerBound..<lineRange.upperBound].trimmingCharacters(in: CharacterSet.newlines)
 
         print("An error occurred when parsing this line:")
         print(line)
-        print(String(repeating: Character(" "), count: pos - 1) + "^")
+        print(String(repeating: " ", count: pos - 1) + "^")
         print("\(row):\(pos) Expected '\(expected)', actual '\(actual)'")
     }
 }
