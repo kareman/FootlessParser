@@ -12,10 +12,10 @@ import XCTest
 
 public func == <R:Equatable, I:Equatable, E:Equatable>
     (lhs: ((output: R, remainder: AnyCollection<I>)?, E?), rhs: ((output: R, remainder: AnyCollection<I>)?, E?)) -> Bool {
-    if let lhs=lhs.0, rhs=rhs.0 {
+    if let lhs=lhs.0, let rhs=rhs.0 {
         return lhs.output == rhs.output && lhs.remainder == rhs.remainder
     }
-    if let lhs=lhs.1, rhs=rhs.1 {
+    if let lhs=lhs.1, let rhs=rhs.1 {
         return lhs == rhs
     }
     return false
@@ -107,8 +107,8 @@ extension XCTestCase {
 	}
 
 	/** Verifies the parse succeeds, and optionally checks the result and how many tokens were consumed. */
-    func assertParseSucceeds <T, R: Equatable, C: Collection where C.Iterator.Element == T>
-		(_ p: Parser<T,R>, _ input: C, result: R? = nil, consumed: Int? = nil, file: StaticString = #file, line: UInt = #line) {
+    func assertParseSucceeds <T, R: Equatable, C: Collection>
+		(_ p: Parser<T,R>, _ input: C, result: R? = nil, consumed: Int? = nil, file: StaticString = #file, line: UInt = #line) where C.Iterator.Element == T {
 
 		var parserinput = Array(input)
 		assertParseSucceeds(p, &parserinput, result: result, consumed: consumed, file: file, line: line)
@@ -123,8 +123,8 @@ extension XCTestCase {
 	}
 
 	/** Verifies the parse succeeds, and optionally checks the result and how many tokens were consumed. */
-	func assertParseSucceeds <T, R: Equatable, C: Collection where C.Iterator.Element == T>
-		(_ p: Parser<T,[R]>, _ input: C, result: [R]? = nil, consumed: Int? = nil, file: StaticString = #file, line: UInt = #line) {
+	func assertParseSucceeds <T, R: Equatable, C: Collection>
+		(_ p: Parser<T,[R]>, _ input: C, result: [R]? = nil, consumed: Int? = nil, file: StaticString = #file, line: UInt = #line) where C.Iterator.Element == T {
 
         var input = Array(input)
 		assertParseSucceeds(p, &input, result: result, consumed: consumed, file: file, line: line)
@@ -142,8 +142,8 @@ extension XCTestCase {
 	}
 
 	/** Verifies the parse fails with the given collection as input. */
-	func assertParseFails <T, R, C: Collection where C.Iterator.Element == T>
-		(_ p: Parser<T,R>, _ input: C, file: StaticString = #file, line: UInt = #line) {
+	func assertParseFails <T, R, C: Collection>
+		(_ p: Parser<T,R>, _ input: C, file: StaticString = #file, line: UInt = #line) where C.Iterator.Element == T {
 
         do {
             let (output, _) = try p.parse(AnyCollection(Array(input)))
@@ -178,7 +178,7 @@ extension XCTestCase {
 		do { try block() }
 		catch	{
 			let msg = (message == "") ? "Tested block threw unexpected error: " : message
-			XCTFail(msg + String(error), file: file, line: line)
+			XCTFail(msg + String(describing: error), file: file, line: line)
 		}
 	}
 }

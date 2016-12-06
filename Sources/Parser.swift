@@ -4,13 +4,13 @@ public struct Parser<Token, Output> {
 }
 
 public func satisfy<T>
-    (expect: String, condition: (T) -> Bool) -> Parser<T, T> {
+    (expect: String, condition: @escaping (T) -> Bool) -> Parser<T, T> {
     return Parser { input in
         if let next = input.first {
             if condition(next) {
                 return (next, input.dropFirst())
             } else {
-                throw ParseError.Mismatch(input, expect, String(next))
+                throw ParseError.Mismatch(input, expect, String(describing:next))
             }
         } else {
             throw ParseError.Mismatch(input, expect, "EOF")
@@ -19,14 +19,14 @@ public func satisfy<T>
 }
 
 public func token<T: Equatable>(_ token: T) -> Parser<T, T> {
-    return satisfy(expect: String(token)) { $0 == token }
+    return satisfy(expect: String(describing:token)) { $0 == token }
 }
 
 /** Match several tokens in a row. */
-public func tokens <T: Equatable, C: Collection where C.Iterator.Element == T> (_ xs: C) -> Parser<T,C> {
+public func tokens <T: Equatable, C: Collection> (_ xs: C) -> Parser<T,C> where C.Iterator.Element == T {
     let length = xs.count as! Int
     return count(length, any()) >>- { parsedtokens in
-        return parsedtokens.elementsEqual(xs) ? pure(xs) : fail(.Mismatch(AnyCollection(parsedtokens), String(xs), String(parsedtokens)))
+        return parsedtokens.elementsEqual(xs) ? pure(xs) : fail(.Mismatch(AnyCollection(parsedtokens), String(describing:xs), String(describing:parsedtokens)))
     }
 }
 
@@ -53,7 +53,7 @@ public func optional <T,A> (_ p: Parser<T, A>) -> Parser<T, A?> {
 }
 
 /** Delay creation of parser until it is needed. */
-public func lazy <T,A> (_ f: @autoclosure(escaping)() -> Parser<T,A>) -> Parser<T,A> {
+public func lazy <T,A> (_ f: @autoclosure @escaping () -> Parser<T,A>) -> Parser<T,A> {
     return Parser { input in try f().parse(input) }
 }
 
@@ -114,13 +114,13 @@ public func count <T,A> (_ r: Range<Int>, _ p: Parser<T,A>) -> Parser<T,[A]> {
 }
 
 /** Succeed if the next token is in the provided collection. */
-public func oneOf <T: Equatable, C: Collection where C.Iterator.Element == T> (_ collection: C) -> Parser<T,T> {
-    return satisfy(expect: "one of '\(String(collection))'") { collection.contains($0) }
+public func oneOf <T: Equatable, C: Collection> (_ collection: C) -> Parser<T,T> where C.Iterator.Element == T {
+    return satisfy(expect: "one of '\(String(describing:collection))'") { collection.contains($0) }
 }
 
 /** Succeed if the next token is _not_ in the provided collection. */
-public func noneOf <T: Equatable, C: Collection where C.Iterator.Element == T> (_ collection: C) -> Parser<T,T> {
-    return satisfy(expect: "something not in '\(String(collection))'") { !collection.contains($0) }
+public func noneOf <T: Equatable, C: Collection> (_ collection: C) -> Parser<T,T> where C.Iterator.Element == T {
+    return satisfy(expect: "something not in '\(String(describing:collection))'") { !collection.contains($0) }
 }
 
 /** Match anything but this. */
@@ -132,7 +132,7 @@ public func not <T: Equatable> (_ token: T) -> Parser<T,T> {
 public func eof <T> () -> Parser<T,()> {
     return Parser { input in
         if let next = input.first {
-            throw ParseError.Mismatch(input, "EOF", String(next))
+            throw ParseError.Mismatch(input, "EOF", String(describing:next))
         }
         return ((), input)
     }

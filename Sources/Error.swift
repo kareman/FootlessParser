@@ -1,11 +1,11 @@
 import Foundation
 
-public enum Error: ErrorProtocol {
+public enum CountError: Error {
     case NegativeCount
 }
 
 
-public enum ParseError<T>: ErrorProtocol {
+public enum ParseError<T>: Error {
     case Mismatch(AnyCollection<T>, String, String)
 }
 

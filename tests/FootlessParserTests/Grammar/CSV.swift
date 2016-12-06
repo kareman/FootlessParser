@@ -31,29 +31,29 @@ class CSV: XCTestCase {
 	}
 
 	func testParseCSVQuotesReturningArray () {
-        let filepath = NSURL(fileURLWithPath: #file).deletingLastPathComponent!.appendingPathComponent("CSV-quotes.csv").path!
-		let movieratings = try! String(contentsOfFile: filepath, encoding: NSUTF8StringEncoding)
+          let filepath = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("CSV-quotes.csv").path
+          let movieratings = try! String(contentsOfFile: filepath, encoding: .utf8)
 
 		measure {
 			do {
 				let result = try parse(zeroOrMore(row), movieratings)
 				XCTAssertEqual(result.count, 101)
 			} catch {
-				XCTFail(String(error))
+				XCTFail(String(describing: error))
 			}
 		}
 	}
 
 	func testParseLargeCSVQuotesReturningArray () {
-        let filepath = NSURL(fileURLWithPath: #file).deletingLastPathComponent!.appendingPathComponent("CSV-quotes-large.csv").path!
-		let movieratings = try! String(contentsOfFile: filepath, encoding: NSUTF8StringEncoding)
+          let filepath = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("CSV-quotes-large.csv").path
+          let movieratings = try! String(contentsOfFile: filepath, encoding: .utf8)
 
 		measure {
 			do {
 				let result = try parse(zeroOrMore(row), movieratings)
 				XCTAssertEqual(result.count, 1715)
 			} catch {
-				XCTFail(String(error))
+				XCTFail(String(describing: error))
 			}
 		}
 	}

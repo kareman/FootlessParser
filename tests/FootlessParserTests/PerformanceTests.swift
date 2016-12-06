@@ -20,7 +20,7 @@ class PerformanceTests: XCTestCase {
 
     func testZeroOrMoreString () {
         let parser = zeroOrMore(char("a"))
-        let input = String(repeating: Character("a"), count: 1000)
+        let input = String(repeating: "a", count: 1000)
         measure {
             self.assertParseSucceeds(parser, input, consumed: 1000)
         }
@@ -46,7 +46,7 @@ class PerformanceTests: XCTestCase {
         assertParseSucceeds(parser, "aaa", result: "aaa")
         assertParseSucceeds(parser, "aaab", result: "aaa", consumed: 3)
 
-        let input = String(repeating: Character("a"), count: 1000)
+        let input = String(repeating: "a", count: 1000)
         measure {
             self.assertParseSucceeds(parser, input, consumed: 1000)
         }
@@ -62,7 +62,7 @@ class PerformanceTests: XCTestCase {
 
     func testCount1000String () {
         let parser = count(1000, char("a"))
-        let input = String(repeating: Character("a"), count: 1000)
+        let input = String(repeating: "a", count: 1000)
         measure {
             self.assertParseSucceeds(parser, input, consumed: 1000)
         }
@@ -78,7 +78,7 @@ class PerformanceTests: XCTestCase {
 
     func testRange0To1000String () {
         let parser = count(0...1000, char("a"))
-        let input = String(repeating: Character("a"), count: 1000)
+        let input = String(repeating: "a", count: 1000)
         measure {
             self.assertParseSucceeds(parser, input, consumed: 1000)
         }
@@ -114,7 +114,7 @@ class PerformanceTests: XCTestCase {
     func testCSVRow() {
         measure {
             for _ in 0..<1000 {
-                try! parse(row, "Hello,\"Dear World\",\"Hello\",Again\n")
+                _ = try! parse(row, "Hello,\"Dear World\",\"Hello\",Again\n")
             }
         }
     }

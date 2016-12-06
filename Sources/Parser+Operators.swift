@@ -1,4 +1,19 @@
-infix operator >>- { associativity left precedence 100 }
+precedencegroup ApplyGroup { 
+  associativity: right 
+  higherThan: ComparisonPrecedence
+}
+
+precedencegroup FlatMapGroup {
+  higherThan: ApplyGroup
+  associativity: left
+}
+
+precedencegroup MapApplyGroup {
+  higherThan: FlatMapGroup
+  associativity: left
+}
+
+infix operator >>-: FlatMapGroup
 
 /**
  FlatMap a function over a parser.
@@ -8,7 +23,7 @@ infix operator >>- { associativity left precedence 100 }
  - parameter f: A transformation function from type A to Parser<T,B>
  - returns: A parser of type Parser<T,B>
  */
-public func >>- <T,A,B> (p: Parser<T,A>, f: (A) -> Parser<T,B>) -> Parser<T,B> {
+public func >>- <T,A,B> (p: Parser<T,A>, f: @escaping (A) -> Parser<T,B>) -> Parser<T,B> {
     return Parser { input in
         let result = try p.parse(input)
         return try f(result.output).parse(result.remainder)
@@ -16,7 +31,7 @@ public func >>- <T,A,B> (p: Parser<T,A>, f: (A) -> Parser<T,B>) -> Parser<T,B> {
 }
 
 
-infix operator <^> { associativity left precedence 130 }
+infix operator <^>: MapApplyGroup
 
 /**
  Map a function over a parser
@@ -26,7 +41,7 @@ infix operator <^> { associativity left precedence 130 }
  - parameter p: A parser of type Parser<T,A>
  - returns: A parser of type Parser<T,B>
  */
-public func <^> <T,A,B> (f: (A) -> B, p: Parser<T,A>) -> Parser<T,B> {
+public func <^> <T,A,B> (f: @escaping (A) -> B, p: Parser<T,A>) -> Parser<T,B> {
     return Parser { input in
         let result = try p.parse(input)
         return (f(result.output), result.remainder)
@@ -34,7 +49,7 @@ public func <^> <T,A,B> (f: (A) -> B, p: Parser<T,A>) -> Parser<T,B> {
 }
 
 
-infix operator <*> { associativity left precedence 130 }
+infix operator <*>: MapApplyGroup
 
 /**
  Apply a parser returning a function to another parser.
@@ -51,7 +66,7 @@ public func <*> <T,A,B> (fp: Parser<T,(A)->B>, p: Parser<T,A>) -> Parser<T,B> {
     return fp >>- { $0 <^> p }
 }
 
-infix operator <* { associativity left precedence 130 }
+infix operator <*: MapApplyGroup
 
 /**
  Apply both parsers, but only return the output from the first one.
@@ -65,7 +80,7 @@ public func <* <T,A,B> (p1: Parser<T,A>, p2: Parser<T,B>) -> Parser<T,A> {
     return { x in { _ in x } } <^> p1 <*> p2
 }
 
-infix operator *> { associativity left precedence 130 }
+infix operator *>: MapApplyGroup
 
 /**
  Apply both parsers, but only return the output from the 2nd one.
@@ -90,7 +105,7 @@ public func pure <T,A> (_ a: A) -> Parser<T,A> {
 }
 
 
-infix operator <|> { associativity right precedence 80 }
+infix operator <|>: ApplyGroup 
 
 /**
  Apply one of 2 parsers.
