@@ -202,7 +202,7 @@ class Parser_Tests: XCTestCase {
 
 		XCTAssertEqual(try! parse(parser, "a"), "a")
 		XCTAssertEqual(try! parse(parser, "aaaa"), "aaaa")
-		XCTempAssertThrowsError { try parse(parser, "aaab") }
+		XCTempAssertThrowsError { _ = try parse(parser, "aaab") }
 	}
 
 	func testParsingAnArray () {
@@ -211,6 +211,6 @@ class Parser_Tests: XCTestCase {
 		XCTAssertEqual(try! parse(parser, []), [])
 		XCTAssertEqual(try! parse(parser, [1]), [1])
 		XCTAssertEqual(try! parse(parser, [1,1,1]), [1,1,1])
-		XCTempAssertThrowsError { try parse(parser, [1,2]) }
+		XCTempAssertThrowsError { _ = try parse(parser, [1,2]) }
 	}
 }
