@@ -28,8 +28,8 @@ public func token<T: Equatable>(_ token: T) -> Parser<T, T> {
 }
 
 /** Match several tokens in a row. */
-public func tokens <T: Equatable, C: Collection> (_ xs: C) -> Parser<T,C> where C.Iterator.Element == T {
-    let length = xs.count as! Int
+public func tokens <T: Equatable, C: Collection> (_ xs: C) -> Parser<T,C> where C.Iterator.Element == T, C.IndexDistance == Int {
+    let length = xs.count
     return count(length, any()) >>- { parsedtokens in
         return parsedtokens.elementsEqual(xs) ? pure(xs) : fail(.Mismatch(AnyCollection(parsedtokens), String(describing:xs), String(describing:parsedtokens)))
     }
@@ -37,7 +37,7 @@ public func tokens <T: Equatable, C: Collection> (_ xs: C) -> Parser<T,C> where 
 
 /** Return whatever the next token is. */
 public func any <T> () -> Parser<T,T> {
-    return satisfy(expect: "anything") { T in true }
+    return satisfy(expect: "anything") { _ in true }
 }
 
 /** Try parser, if it fails return 'otherwise' without consuming input. */
@@ -125,7 +125,7 @@ public func oneOf <T: Equatable, C: Collection> (_ collection: C) -> Parser<T,T>
 
 /** Succeed if the next token is _not_ in the provided collection. */
 public func noneOf <T: Equatable, C: Collection> (_ collection: C) -> Parser<T,T> where C.Iterator.Element == T {
-    return satisfy(expect: "something not in '\(String(describing:collection))'") { !collection.contains($0) }
+    return satisfy(expect: "something not in '\(collection)'") { !collection.contains($0) }
 }
 
 /** Match anything but this. */
