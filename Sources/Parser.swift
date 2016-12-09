@@ -1,6 +1,11 @@
 // would've liked a generic typealias here.
 public struct Parser<Token, Output> {
-    public let parse: (AnyCollection<Token>) throws -> (output: Output, remainder: AnyCollection<Token>)
+    public typealias ParseFunction = (AnyCollection<Token>) throws -> (output: Output, remainder: AnyCollection<Token>)
+    public let parse: ParseFunction
+
+    public init( parse: @escaping ParseFunction ) {
+      self.parse = parse
+    }
 }
 
 public func satisfy<T>
