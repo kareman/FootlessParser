@@ -9,16 +9,16 @@ public struct Parser<Token, Output> {
 }
 
 public func satisfy<T>
-    (expect: String, condition: @escaping (T) -> Bool) -> Parser<T, T> {
+    (expect: @autoclosure @escaping () -> String, condition: @escaping (T) -> Bool) -> Parser<T, T> {
     return Parser { input in
         if let next = input.first {
             if condition(next) {
                 return (next, input.dropFirst())
             } else {
-                throw ParseError.Mismatch(input, expect, String(describing:next))
+                throw ParseError.Mismatch(input, expect(), String(describing:next))
             }
         } else {
-            throw ParseError.Mismatch(input, expect, "EOF")
+            throw ParseError.Mismatch(input, expect(), "EOF")
         }
     }
 }
