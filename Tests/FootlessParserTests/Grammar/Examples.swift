@@ -53,3 +53,10 @@ class Examples: XCTestCase {
 		assertParseSucceeds(expression, "12*3+1", result: 37)
 	}
 }
+
+extension Examples {
+	public static var allTests = [
+		("testXMLTagParser", testXMLTagParser),
+		("testRecursiveExpressionParser", testRecursiveExpressionParser),
+		]
+}

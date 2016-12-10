@@ -119,3 +119,20 @@ class PerformanceTests: XCTestCase {
         }
     }
 }
+
+extension PerformanceTests {
+	public static var allTests = [
+		("testZeroOrMoreGeneric", testZeroOrMoreGeneric),
+		("testZeroOrMoreString", testZeroOrMoreString),
+		("testOneOrMoreGeneric", testOneOrMoreGeneric),
+		("testOneOrMoreString", testOneOrMoreString),
+		("testCount1000Generic", testCount1000Generic),
+		("testCount1000String", testCount1000String),
+		("testRange0To1000Generic", testRange0To1000Generic),
+		("testRange0To1000String", testRange0To1000String),
+		("testBacktrackingLeftString", testBacktrackingLeftString),
+		("testBacktrackingRightString", testBacktrackingRightString),
+		("testBacktrackingFailString", testBacktrackingFailString),
+		("testCSVRow", testCSVRow),
+		]
+}

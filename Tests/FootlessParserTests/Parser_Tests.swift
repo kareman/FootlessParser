@@ -214,3 +214,31 @@ class Parser_Tests: XCTestCase {
 		XCTempAssertThrowsError { _ = try parse(parser, [1,2]) }
 	}
 }
+
+extension Parser_Tests {
+	public static var allTests = [
+		("testSingleTokenParser", testSingleTokenParser),
+		("testSeveralTokenParsers", testSeveralTokenParsers),
+		("testFailingParserReturnsError", testFailingParserReturnsError),
+		("testTokensParser", testTokensParser),
+		("testStringTokensParser", testStringTokensParser),
+		("testEmptyStringTokensParser", testEmptyStringTokensParser),
+		("testAnyParser", testAnyParser),
+		("testOptionalParser", testOptionalParser),
+		("testOneOrMoreParser", testOneOrMoreParser),
+		("testZeroOrMoreParser", testZeroOrMoreParser),
+		("testCountParser", testCountParser),
+		("testCount1Parser", testCount1Parser),
+		("testCountParser0TimesWithoutConsumingInput", testCountParser0TimesWithoutConsumingInput),
+		("testCountRangeOfLength3", testCountRangeOfLength3),
+		("testCountRangeOfLength2", testCountRangeOfLength2),
+		("testCountRangeOfLength1", testCountRangeOfLength1),
+		("testCountRangeFrom0", testCountRangeFrom0),
+		("testOneOfParser", testOneOfParser),
+		("testNoneOfParser", testNoneOfParser),
+		("testNotParser", testNotParser),
+		("testEofParser", testEofParser),
+		("testParsingAString", testParsingAString),
+		("testParsingAnArray", testParsingAnArray),
+		]
+}

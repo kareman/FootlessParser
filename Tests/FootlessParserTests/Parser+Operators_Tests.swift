@@ -176,3 +176,45 @@ class Choice_Tests: XCTestCase {
         assertParseFails(parser, "fool")
     }
 }
+
+extension Pure_Tests {
+	public static var allTests = [
+		("testPureReturnsInput", testPureReturnsInput),
+		("testPureDoesNotConsume", testPureDoesNotConsume),
+		]
+}
+
+extension FlatMap_Tests {
+	public static var allTests = [
+		("testLeftIdentityLaw", testLeftIdentityLaw),
+		("testRightIdentityLaw", testRightIdentityLaw),
+		("testAssociativityLaw", testAssociativityLaw),
+		]
+}
+
+extension Map_Tests {
+	public static var allTests = [
+		("testTheIdentityLaw", testTheIdentityLaw),
+		("testAppliesFunctionToResultOnSuccess", testAppliesFunctionToResultOnSuccess),
+		("testReturnsErrorOnFailure", testReturnsErrorOnFailure),
+		]
+}
+
+extension Apply_Tests {
+	public static var allTests = [
+		("testWith2Parsers", testWith2Parsers),
+		("testDiscardingRightParser", testDiscardingRightParser),
+		("testingDiscardingLeftParser", testingDiscardingLeftParser),
+		]
+}
+
+extension Choice_Tests {
+	public static var allTests = [
+		("testParsesOneOrTheOther", testParsesOneOrTheOther),
+		("testWithApplyOperator", testWithApplyOperator),
+		("testWithApplyAndIdenticalBeginning", testWithApplyAndIdenticalBeginning),
+		("test2ChoicesWithApplyAndIdenticalBeginning", test2ChoicesWithApplyAndIdenticalBeginning),
+		("testLeftSideIsTriedFirst", testLeftSideIsTriedFirst),
+		("testBacktracking", testBacktracking),
+		]
+}

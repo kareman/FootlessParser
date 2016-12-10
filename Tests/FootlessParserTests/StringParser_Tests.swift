@@ -78,3 +78,15 @@ class StringParser_Tests: XCTestCase {
         assertParseFails(parser, "")
     }
 }
+
+extension StringParser_Tests {
+	public static var allTests = [
+		("testCharParser", testCharParser),
+		("testOneOrMoreParserForCharacters", testOneOrMoreParserForCharacters),
+		("testZeroOrMoreParserForCharacters", testZeroOrMoreParserForCharacters),
+		("testStringCountParser", testStringCountParser),
+		("testStringCountRangeParser", testStringCountRangeParser),
+		("testNoneOfStrings", testNoneOfStrings),
+		("testString", testString),
+		]
+}

@@ -8,6 +8,7 @@
 
 import FootlessParser
 import XCTest
+import Foundation
 
 let delimiter = "," as Character
 let quote = "\"" as Character
@@ -57,4 +58,13 @@ class CSV: XCTestCase {
 			}
 		}
 	}
+}
+
+extension CSV {
+	public static var allTests = [
+		("testCell", testCell),
+		("testRow", testRow),
+		("testParseCSVQuotesReturningArray", testParseCSVQuotesReturningArray),
+		("testParseLargeCSVQuotesReturningArray", testParseLargeCSVQuotesReturningArray),
+		]
 }
