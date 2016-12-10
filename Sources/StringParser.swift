@@ -70,18 +70,16 @@ public func count <T> (_ r: Range<Int>, _ p: Parser<T,Character>) -> Parser<T,St
  - note: consumes either the full string or nothing, even on a partial match.
  */
 public func string (_ s: String) -> Parser<Character, String> {
-    let s2 = AnyCollection(s.characters)
-
     let count = s.characters.count
     return Parser { input in
         guard input.startIndex < input.endIndex else {
             throw ParseError.Mismatch(input, s, "EOF")
         }
-        guard let endIndex = input.index(input.startIndex, offsetBy: IntMax(count), limitedBy: input.endIndex) else {
+        guard let endIndex = input.index(input.startIndex, offsetBy:IntMax(count), limitedBy: input.endIndex) else {
             throw ParseError.Mismatch(input, s, String(input))
         }
         let next = input[input.startIndex..<endIndex]
-        if s2 == next {
+        if s.characters.elementsEqual(next) {
             return (s, input.dropFirst(count))
         } else {
             throw ParseError.Mismatch(input, s, String(next))
@@ -107,17 +105,17 @@ public func noneOf (_ s: String) -> Parser<Character,Character> {
  - note: consumes only produced characters
  */
 public func noneOf(_ strings: [String]) -> Parser<Character, Character> {
-    let strings = strings.map { ($0, AnyCollection($0.characters)) }
+    let strings = strings.map { ($0, $0.characters) }
     return Parser { input in
         guard let next = input.first else {
-            throw ParseError.Mismatch(input, "anything but \(string)", "EOF")
+            throw ParseError.Mismatch(input, "anything but \(strings)", "EOF")
         }
         for (string, characters) in strings {
             guard characters.first == next else { continue }
             let endIndex = input.index(input.startIndex, offsetBy: IntMax(characters.count))
             guard endIndex <= input.endIndex else { continue }
             let peek = input[input.startIndex..<endIndex]
-            if peek == characters { throw ParseError.Mismatch(input, "anything but \(string)", string) }
+            if characters.elementsEqual(peek) { throw ParseError.Mismatch(input, "anything but \(string)", string) }
         }
         return (next, input.dropFirst())
     }
