@@ -64,7 +64,7 @@ public func count <T> (_ r: Range<Int>, _ p: Parser<T,Character>) -> Parser<T,St
     return extend <^> count(r.lowerBound, p) <*> ( count(r.count-1, p) <|> zeroOrMore(p) )
 }
 
-/** 
+/**
  Match a string
  - parameter: string to match
  - note: consumes either the full string or nothing, even on a partial match.
@@ -112,7 +112,9 @@ public func noneOf(_ strings: [String]) -> Parser<Character, Character> {
         }
         for (string, characters) in strings {
             guard characters.first == next else { continue }
-            let endIndex = input.index(input.startIndex, offsetBy: IntMax(characters.count))
+            let offset = IntMax(characters.count)
+            guard IntMax(input.count) >= offset else { continue }
+            let endIndex = input.index(input.startIndex, offsetBy: offset)
             guard endIndex <= input.endIndex else { continue }
             let peek = input[input.startIndex..<endIndex]
             if characters.elementsEqual(peek) { throw ParseError.Mismatch(input, "anything but \(string)", string) }
