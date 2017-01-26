@@ -139,7 +139,7 @@ do {
 } catch { }
 ```
 
-`expression` parses input like "12", "1+2+3", "(1+2)", "12_3+1" and "12_(3+1)" and returns the result as an Int.
+`expression` parses input like `"12"`, `"1+2+3"`, `"(1+2)"`, `"12*3+1"` and `"12*(3+1)"` and returns the result as an Int.
 
 All parsers which refer to themselves directly or indirectly must be pre-declared as variable implicitly unwrapped optionals (`var expression: Parser<Character, Int>!`). And to avoid infinte recursion the definitions must use the `lazy` function.
 
