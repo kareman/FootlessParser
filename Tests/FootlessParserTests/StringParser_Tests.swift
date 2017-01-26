@@ -22,6 +22,14 @@ class StringParser_Tests: XCTestCase {
 		XCTAssert(input == [], "Input should be empty")
 	}
 
+  func testOffsetForNoneOf () {
+    let input = "AB"
+    let parser = zeroOrMore(noneOf(["BC"]))
+		// fatal error: cannot increment beyond endIndex
+    let _ = try! parser.parse(AnyCollection(input.characters))
+		assertParseSucceeds(parser, input, result: "AB")
+  }
+
 	func testOneOrMoreParserForCharacters () {
 		let parser = oneOrMore(char("a"))
 
@@ -88,5 +96,6 @@ extension StringParser_Tests {
 		("testStringCountRangeParser", testStringCountRangeParser),
 		("testNoneOfStrings", testNoneOfStrings),
 		("testString", testString),
+		("testOffsetForNoneOf", testOffsetForNoneOf)
 		]
 }
