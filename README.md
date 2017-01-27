@@ -40,11 +40,11 @@ The general idea is to combine very simple parsers into more complex ones. So `c
 
 ## Operators
 
-### <^> (map)
+#### <^> (map)
 
 `function <^> parser1` creates a new parser which runs parser1\. If it succeeds it passes the output to `function` and returns the result.
 
-### <*> (apply)
+#### <*> (apply)
 
 `function <^> parser1 <*> parser2` creates a new parser which first runs parser1\. If it succeeds it runs parser2\. If that also succeeds it passes both outputs to `function` and returns the result.
 
@@ -58,15 +58,15 @@ This is because <*> returns the output of 2 parsers and it doesn't know what to 
 
 If there are 3 parsers and 2 <*> the function must take 3 parameters, and so on.
 
-### <*
+#### <*
 
 The same as the <*> above, except it discards the result of the parser to its right. Since it only returns one output it doesn't need to be used together with <^> . But you can of course if you want the output converted to something else.
 
-### *>
+#### *>
 
 The same as <* , but discards the result of the parser to its left.
 
-### <|> (choice)
+#### <|> (choice)
 
 ```
 parser1 <|> parser2 <|> parser3
@@ -74,7 +74,7 @@ parser1 <|> parser2 <|> parser3
 
 This operator tries all the parsers in order and returns the result of the first one that succeeds.
 
-### >>- (flatmap)
+#### >>- (flatmap)
 
 ```
 parser1 >>- ( o -> parser2 )
@@ -83,6 +83,10 @@ parser1 >>- ( o -> parser2 )
 This does the same as the flatmap functions in the Swift Standard Library. It creates a new parser which first tries parser1\. If it fails it returns the error, if it succeeds it passes the output to the function which uses it to create parser2\. It then runs parser2 and returns its output or error.
 
 ## Example
+
+### Real life usage
+
+- [oleander/bitbar](https://github.com/oleander/bitbar/blob/swift/App/BitBar/Parser/Parser.swift) - lets you put the output from any script/program in your Mac OS X Menu Bar.
 
 ### [CSV](http://www.computerhope.com/jargon/c/csv.htm) parser
 
