@@ -1,0 +1,159 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Converters.swift",
+      "line": 53,
+      "symbol": "tuple(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Converters.swift",
+      "line": 58,
+      "symbol": "tuple(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Converters.swift",
+      "line": 62,
+      "symbol": "tuple(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Error.swift",
+      "line": null,
+      "symbol": "ParseError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Error.swift",
+      "line": 3,
+      "symbol": "CountError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Error.swift",
+      "line": 4,
+      "symbol": "CountError.NegativeCount",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Error.swift",
+      "line": 8,
+      "symbol": "ParseError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Error.swift",
+      "line": 9,
+      "symbol": "ParseError.Mismatch",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser+Operators.swift",
+      "line": 26,
+      "symbol": ">>-(_:_:).T",
+      "symbol_kind": "source.lang.swift.decl.generic_type_param",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser+Operators.swift",
+      "line": 44,
+      "symbol": "<^>(_:_:).T",
+      "symbol_kind": "source.lang.swift.decl.generic_type_param",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser+Operators.swift",
+      "line": 65,
+      "symbol": "<*>(_:_:).T",
+      "symbol_kind": "source.lang.swift.decl.generic_type_param",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser+Operators.swift",
+      "line": 79,
+      "symbol": "<*(_:_:).T",
+      "symbol_kind": "source.lang.swift.decl.generic_type_param",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser+Operators.swift",
+      "line": 93,
+      "symbol": "*>(_:_:).T",
+      "symbol_kind": "source.lang.swift.decl.generic_type_param",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser+Operators.swift",
+      "line": 119,
+      "symbol": "<|>(_:_:).T",
+      "symbol_kind": "source.lang.swift.decl.generic_type_param",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser.swift",
+      "line": 2,
+      "symbol": "Parser",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser.swift",
+      "line": 4,
+      "symbol": "Parser.parse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser.swift",
+      "line": 6,
+      "symbol": "Parser.init(parse:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser.swift",
+      "line": 11,
+      "symbol": "satisfy(expect:condition:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/Parser.swift",
+      "line": 26,
+      "symbol": "token(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/StringParser.swift",
+      "line": 26,
+      "symbol": "extend(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/StringParser.swift",
+      "line": 126,
+      "symbol": "char(_:name:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/karemorstol/Programming/Parser/FootlessParser3/Sources/StringParser.swift",
+      "line": 144,
+      "symbol": "print(error:in:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/karemorstol/Programming/Parser/FootlessParser3"
+}

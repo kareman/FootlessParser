@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Structs  Reference</title>
+    <title>Global Variables  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Structs  Reference"></a>
+    <a title="Global Variables  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">FootlessParser Docs</a> (69% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="index.html">FootlessParser Reference</a>
         <img id="carat" src="img/carat.png" />
-        Structs  Reference
+        Global Variables  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -229,8 +229,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Structs</h1>
-            <p>The following structs are available globally.</p>
+            <h1>Global Variables</h1>
+            <p>The following global variables are available globally.</p>
 
           </section>
           <section class="section task-group-section">
@@ -239,9 +239,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:V14FootlessParser6Parser"></a>
-                    <a name="//apple_ref/swift/Struct/Parser" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V14FootlessParser6Parser">Parser</a>
+                    <a name="/s:v14FootlessParser10whitespaceGVS_6ParserVs9CharacterS1__"></a>
+                    <a name="//apple_ref/swift/Global/whitespace" class="dashAnchor"></a>
+                    <a class="token" href="#/s:v14FootlessParser10whitespaceGVS_6ParserVs9CharacterS1__">whitespace</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -249,9 +249,139 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Parser that matches all the whitespace characters.</p>
 
-                        <a href="Structs/Parser.html" class="slightly-smaller">See more</a>
+<p>Matches the character set containing the characters in Unicode General 
+Category Zs and CHARACTER TABULATION (U+0009).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">whitespace</span> <span class="o">=</span> <span class="nf">char</span><span class="p">(</span><span class="kt">CharacterSet</span><span class="o">.</span><span class="n">whitespaces</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"whitespace"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:v14FootlessParser7newlineGVS_6ParserVs9CharacterS1__"></a>
+                    <a name="//apple_ref/swift/Global/newline" class="dashAnchor"></a>
+                    <a class="token" href="#/s:v14FootlessParser7newlineGVS_6ParserVs9CharacterS1__">newline</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parser that matches all the newline characters.</p>
+
+<p>Matches the character set containing the newline characters (U+000A ~ U+000D, 
+U+0085, U+2028, and U+2029).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">newline</span> <span class="o">=</span> <span class="nf">char</span><span class="p">(</span><span class="kt">CharacterSet</span><span class="o">.</span><span class="n">newlines</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"newline"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:v14FootlessParser20whitespacesOrNewlineGVS_6ParserVs9CharacterS1__"></a>
+                    <a name="//apple_ref/swift/Global/whitespacesOrNewline" class="dashAnchor"></a>
+                    <a class="token" href="#/s:v14FootlessParser20whitespacesOrNewlineGVS_6ParserVs9CharacterS1__">whitespacesOrNewline</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parser that matches all the whitespace and newline characters.</p>
+
+<p>Matches the character set containing characters in Unicode General Category 
+Z*, U+000A ~ U+000D, and U+0085.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">whitespacesOrNewline</span> <span class="o">=</span> <span class="nf">char</span><span class="p">(</span><span class="kt">CharacterSet</span><span class="o">.</span><span class="n">whitespacesAndNewlines</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"whitespacesOrNewline"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:v14FootlessParser5digitGVS_6ParserVs9CharacterS1__"></a>
+                    <a name="//apple_ref/swift/Global/digit" class="dashAnchor"></a>
+                    <a class="token" href="#/s:v14FootlessParser5digitGVS_6ParserVs9CharacterS1__">digit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parser that matches all the decimal digit characters.</p>
+
+<p>Matches the character set containing the characters in the category of Decimal
+Numbers.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">digit</span> <span class="o">=</span> <span class="nf">char</span><span class="p">(</span><span class="kt">CharacterSet</span><span class="o">.</span><span class="n">decimalDigits</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"digit"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:v14FootlessParser12alphanumericGVS_6ParserVs9CharacterS1__"></a>
+                    <a name="//apple_ref/swift/Global/alphanumeric" class="dashAnchor"></a>
+                    <a class="token" href="#/s:v14FootlessParser12alphanumericGVS_6ParserVs9CharacterS1__">alphanumeric</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parser that matches all the alphanumeric characters.</p>
+
+<p>Matches the character set containing the characters in Unicode General 
+Categories L*, M*, and N*.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">alphanumeric</span> <span class="o">=</span> <span class="nf">char</span><span class="p">(</span><span class="kt">CharacterSet</span><span class="o">.</span><span class="n">alphanumerics</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"alphanumeric"</span><span class="p">)</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
