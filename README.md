@@ -1,6 +1,6 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-Swift 3 | [Swift 2.2+](https://github.com/kareman/FootlessParser/tree/swift2.2%2B)._
+Swift 3 | [Swift 2.2+](https://github.com/kareman/FootlessParser/tree/swift2.2%2B)
 
 # FootlessParser
 
