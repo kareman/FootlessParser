@@ -18,4 +18,3 @@ DerivedData
 *.ipa
 /.build
 /Packages
-/*.xcodeproj
