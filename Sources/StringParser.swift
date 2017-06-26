@@ -20,18 +20,13 @@ public func extend (_ a: String) -> (String) -> String {
 }
 
 /** Join a character with a string. */
-//public func extend (_ a: Character) -> (String) -> String {
-//    return { b in String(a) + b }
-//}
-public func extend (_ a: Character) -> ([Character]) -> String {
-    return { b in
-        return String([a] + b)
-    }
+public func extend (_ a: Character) -> (String) -> String {
+    return { b in String(a) + b }
 }
 
 /** Apply character parser once, then repeat until it fails. Returns a string. */
 public func oneOrMore <T> (_ p: Parser<T, Character>) -> Parser<T, String> {
-    return extend <^> p <*> optional( lazy(oneOrMore(p)), otherwise: [] )
+    return extend <^> p <*> optional( lazy(oneOrMore(p)), otherwise:"" )
 }
 
 /** Repeat character parser until it fails. Returns a string. */
