@@ -23,7 +23,7 @@ infix operator >>-: FlatMapGroup
  - parameter f: A transformation function from type A to Parser<T,B>
  - returns: A parser of type Parser<T,B>
  */
-public func >>- <T,A,B> (p: Parser<T,A>, f: @escaping (A) -> Parser<T,B>) -> Parser<T,B> {
+public func >>- <T,A,B> (p: Parser<T,A>, f: @escaping (A) throws -> Parser<T,B>) -> Parser<T,B> {
     return Parser { input in
         let result = try p.parse(input)
         return try f(result.output).parse(result.remainder)
@@ -41,10 +41,10 @@ infix operator <^>: MapApplyGroup
  - parameter p: A parser of type Parser<T,A>
  - returns: A parser of type Parser<T,B>
  */
-public func <^> <T,A,B> (f: @escaping (A) -> B, p: Parser<T,A>) -> Parser<T,B> {
+public func <^> <T,A,B> (f: @escaping (A) throws -> B, p: Parser<T,A>) -> Parser<T,B> {
     return Parser { input in
         let result = try p.parse(input)
-        return (f(result.output), result.remainder)
+        return (try f(result.output), result.remainder)
     }
 }
 
