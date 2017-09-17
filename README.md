@@ -86,7 +86,7 @@ This does the same as the flatmap functions in the Swift Standard Library. It cr
 
 ### Real life usage
 
-- [oleander/bitbar](https://github.com/oleander/bitbar/blob/swift/App/BitBar/Parser/Parser.swift) - lets you put the output from any script/program in your Mac OS X Menu Bar.
+- [oleander/bitbar](https://github.com/oleander/BitBarParser/blob/master/Parser/Parser/Parser.swift) - lets you put the output from any script/program in your Mac OS X Menu Bar.
 
 ### [CSV](http://www.computerhope.com/jargon/c/csv.htm) parser
 
