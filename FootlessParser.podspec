@@ -9,4 +9,5 @@ Pod::Spec.new do |s|
   s.source = { git: 'https://github.com/kareman/FootlessParser.git', tag: s.version.to_s }
   s.source_files = 'Sources/*.swift'
   s.osx.deployment_target = '10.10'
+  s.ios.deployment_target = '9.0'
 end
