@@ -86,7 +86,8 @@ This does the same as the flatmap functions in the Swift Standard Library. It cr
 
 ### Real life usage
 
-- [oleander/bitbar](https://github.com/oleander/BitBarParser/blob/master/Parser/Parser/Parser.swift) - lets you put the output from any script/program in your Mac OS X Menu Bar.
+- [oleander/BitBarParser](https://github.com/oleander/BitBarParser/blob/master/Parser/Parser/Parser.swift) - lets you put the output from any script/program in your Mac OS X Menu Bar.
+- [banjun/NorthLayout](https://github.com/banjun/NorthLayout/blob/master/Classes/VFLSyntax.swift) - autolayout views in code.
 
 ### [CSV](http://www.computerhope.com/jargon/c/csv.htm) parser
 
@@ -164,7 +165,7 @@ Follow the current instructions in [Carthage's README][carthage-installation] fo
 Add `FootlessParser` to your `Podfile` file.
 
 ```
-pod "FootlessParser", git: "https://github.com/kareman/FootlessParser.git", branch: "master"
+pod 'FootlessParser', '~> 0.4'
 ```
 
 Then run `pod install` to install it.
