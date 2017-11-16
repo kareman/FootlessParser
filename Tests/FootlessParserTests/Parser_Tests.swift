@@ -22,9 +22,9 @@ class Parser_Tests: XCTestCase {
 	}
 
 	func testSeveralTokenParsers () {
-		var input = Array("abc".characters)
+		var input = Array("abc")
 
-		for character in "abc".characters {
+		for character in "abc" {
 			let parser = token(character)
 			assertParseSucceeds(parser, &input, result: character, consumed: 1)
 		}
@@ -64,7 +64,7 @@ class Parser_Tests: XCTestCase {
 	func testAnyParser () {
 		let parser: Parser<Character, Character> = any()
 
-		var input = Array("abc".characters)
+		var input = Array("abc")
 
 		assertParseSucceeds(parser, &input, result: "a", consumed: 1)
 		assertParseSucceeds(parser, &input, result: "b", consumed: 1)
@@ -73,7 +73,7 @@ class Parser_Tests: XCTestCase {
 	func testOptionalParser () {
 		let parser = optional( char("a"), otherwise: "x" )
 
-		var input = Array("abc".characters)
+		var input = Array("abc")
 
 		assertParseSucceeds(parser, &input, result: "a", consumed: 1)
 		assertParseSucceeds(parser, &input, result: "x", consumed: 0)

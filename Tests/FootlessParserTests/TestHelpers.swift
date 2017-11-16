@@ -114,14 +114,6 @@ extension XCTestCase {
 		assertParseSucceeds(p, &parserinput, result: result, consumed: consumed, file: file, line: line)
 	}
 
-	/** Verifies parsing the string succeeds, and optionally checks the result and how many tokens were consumed. */
-	func assertParseSucceeds <R: Equatable>
-		(_ p: Parser<Character,R>, _ input: String, result: R? = nil, consumed: Int? = nil, file: StaticString = #file, line: UInt = #line) {
-
-        var parserinput = Array(input.characters)
-        assertParseSucceeds(p, &parserinput, result: result, consumed: consumed, file: file, line: line)
-	}
-
 	/** Verifies the parse succeeds, and optionally checks the result and how many tokens were consumed. */
 	func assertParseSucceeds <T, R: Equatable, C: Collection>
 		(_ p: Parser<T,[R]>, _ input: C, result: [R]? = nil, consumed: Int? = nil, file: StaticString = #file, line: UInt = #line) where C.Iterator.Element == T {
@@ -149,13 +141,6 @@ extension XCTestCase {
             let (output, _) = try p.parse(AnyCollection(Array(input)))
             XCTFail("Parsing succeeded with output '\(output)', should have failed.", file: file, line: line)
         } catch {}
-	}
-
-	/** Verifies the parse fails with the given string as input. */
-	func assertParseFails <R>
-		(_ p: Parser<Character,R>, _ input: String, file: StaticString = #file, line: UInt = #line) {
-
-        return assertParseFails(p, Array(input.characters))
 	}
 }
 
