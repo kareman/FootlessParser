@@ -72,7 +72,7 @@ extension XCTestCase {
                 }
             }
             if let consumed = consumed {
-                let actuallyconsumed = input.count - Int(remainder.count)
+                let actuallyconsumed = input.count - remainder.count
                 if actuallyconsumed != consumed {
                     XCTFail("should have consumed \(consumed), took \(actuallyconsumed)", file: file, line: line)
                 }
@@ -95,7 +95,7 @@ extension XCTestCase {
                 }
             }
             if let consumed = consumed {
-                let actuallyconsumed = input.count - Int(remainder.count)
+                let actuallyconsumed = input.count - remainder.count
                 if actuallyconsumed != consumed {
                     XCTFail("should have consumed \(consumed), took \(actuallyconsumed)", file: file, line: line)
                 }

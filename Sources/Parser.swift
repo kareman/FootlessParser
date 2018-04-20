@@ -28,7 +28,7 @@ public func token<T: Equatable>(_ token: T) -> Parser<T, T> {
 }
 
 /** Match several tokens in a row. */
-public func tokens <T: Equatable, C: Collection> (_ xs: C) -> Parser<T,C> where C.Iterator.Element == T, C.IndexDistance == Int {
+public func tokens <T: Equatable, C: Collection> (_ xs: C) -> Parser<T,C> where C.Iterator.Element == T {
     let length = xs.count
     return count(length, any()) >>- { parsedtokens in
         return parsedtokens.elementsEqual(xs) ? pure(xs) : fail(.Mismatch(AnyCollection(parsedtokens), String(describing:xs), String(describing:parsedtokens)))
