@@ -26,7 +26,7 @@ public func extend (_ a: Character) -> (String) -> String {
 
 /** Apply character parser once, then repeat until it fails. Returns a string. */
 public func oneOrMore <T> (_ p: Parser<T, Character>) -> Parser<T, String> {
-    return extend <^> p <*> optional( lazy(oneOrMore(p)), otherwise:"" )
+    return { (cs: [Character]) in String(cs) } <^> oneOrMore(p)
 }
 
 /** Repeat character parser until it fails. Returns a string. */
