@@ -165,7 +165,7 @@ Follow the current instructions in [Carthage's README][carthage-installation] fo
 Add `FootlessParser` to your `Podfile` file.
 
 ```
-pod 'FootlessParser', '~> 0.4'
+pod 'FootlessParser', '~> 0.5'
 ```
 
 Then run `pod install` to install it.
