@@ -10,6 +10,14 @@ import Foundation
 import FootlessParser
 import XCTest
 
+func == <T: Equatable> (lhs: AnyCollection<T>, rhs: AnyCollection<T>) -> Bool {
+	guard lhs.count == rhs.count else { return false }
+	for (lhs, rhs) in zip(lhs, rhs) {
+		guard lhs == rhs else { return false }
+	}
+	return true
+}
+
 public func == <R:Equatable, I:Equatable, E:Equatable>
     (lhs: ((output: R, remainder: AnyCollection<I>)?, E?), rhs: ((output: R, remainder: AnyCollection<I>)?, E?)) -> Bool {
     if let lhs=lhs.0, let rhs=rhs.0 {
