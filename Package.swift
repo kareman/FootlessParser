@@ -1,4 +1,4 @@
-// swift-tools-version:4.2
+// swift-tools-version:4.1
 
 import PackageDescription
 
@@ -10,6 +10,5 @@ let package = Package(
 	targets: [
 		.target(name: "FootlessParser"),
 		.testTarget(name: "FootlessParserTests", dependencies: ["FootlessParser"]),
-		],
-	swiftLanguageVersions: [.v4_2]
+		]
 )
