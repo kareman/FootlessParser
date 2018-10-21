@@ -14,7 +14,6 @@
 		OBJ_39 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Parser.swift */; };
 		OBJ_40 /* Parsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Parsers.swift */; };
 		OBJ_41 /* StringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* StringParser.swift */; };
-		OBJ_48 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Extensions.swift */; };
 		OBJ_49 /* Parser+Operators_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Parser+Operators_Tests.swift */; };
 		OBJ_50 /* Parser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Parser_Tests.swift */; };
 		OBJ_51 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* PerformanceTests.swift */; };
@@ -42,7 +41,6 @@
 		OBJ_13 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		OBJ_14 /* Parsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsers.swift; sourceTree = "<group>"; };
 		OBJ_15 /* StringParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringParser.swift; sourceTree = "<group>"; };
-		OBJ_18 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		OBJ_19 /* Parser+Operators_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Parser+Operators_Tests.swift"; sourceTree = "<group>"; };
 		OBJ_20 /* Parser_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser_Tests.swift; sourceTree = "<group>"; };
 		OBJ_21 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 		OBJ_17 /* FootlessParserTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_18 /* Extensions.swift */,
 				OBJ_19 /* Parser+Operators_Tests.swift */,
 				OBJ_20 /* Parser_Tests.swift */,
 				OBJ_21 /* PerformanceTests.swift */,
@@ -146,7 +143,7 @@
 				OBJ_15 /* StringParser.swift */,
 			);
 			name = FootlessParser;
-			path = Sources;
+			path = Sources/FootlessParser;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -238,7 +235,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_48 /* Extensions.swift in Sources */,
 				OBJ_49 /* Parser+Operators_Tests.swift in Sources */,
 				OBJ_50 /* Parser_Tests.swift in Sources */,
 				OBJ_51 /* PerformanceTests.swift in Sources */,
@@ -278,7 +274,7 @@
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 armv7 armv7s arm64";
 			};
@@ -340,7 +336,7 @@
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 armv7 armv7s arm64";
 			};

@@ -9,11 +9,11 @@
 
 import Foundation
 
-func == <T: Equatable> (lhs: AnyCollection<T>, rhs: AnyCollection<T>) -> Bool {
+public func == <T: Equatable> (lhs: AnyCollection<T>, rhs: AnyCollection<T>) -> Bool {
     guard lhs.count == rhs.count else { return false }
     for (lhs, rhs) in zip(lhs, rhs) {
         guard lhs == rhs else { return false }
     }
     return true
 }
-extension AnyCollection where Element: Equatable { }
+public extension AnyCollection where Element: Equatable { }
