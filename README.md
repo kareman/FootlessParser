@@ -1,6 +1,6 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-Swift 4 | [Swift 2.2+](https://github.com/kareman/FootlessParser/tree/swift2.2%2B)
+Swift 4.2 and 4.1 | [Swift 2.2+](https://github.com/kareman/FootlessParser/tree/swift2.2%2B)
 
 # FootlessParser
 
@@ -165,7 +165,7 @@ Follow the current instructions in [Carthage's README][carthage-installation] fo
 Add `FootlessParser` to your `Podfile` file.
 
 ```
-pod 'FootlessParser', '~> 0.5'
+pod 'FootlessParser', '~> 0.5.1'
 ```
 
 Then run `pod install` to install it.
