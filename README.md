@@ -6,7 +6,7 @@ Swift 4.2 and 4.1 | [Swift 2.2+](https://github.com/kareman/FootlessParser/tree/
 
 FootlessParser is a simple and pretty naive implementation of a parser combinator in Swift. It enables infinite lookahead, non-ambiguous parsing with error reporting.
 
-There is [a series of blog posts about the development](http://blog.nottoobadsoftware.com/footlessparser/) and [documentation from the source code](http://kareman.github.io/FootlessParser/).
+There is [a series of blog posts about the development](https://nottoobadsoftware.com/blog/footlessparser/) and [documentation from the source code](http://kareman.github.io/FootlessParser/).
 
 ## Introduction
 
