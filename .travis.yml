@@ -44,18 +44,19 @@ matrix:
       osx_image: xcode9.4
       language: generic
       sudo: required
-      install: gem install xcpretty-travis-formatter
 
-    - name: "Mac Xcode 10"
+    - name: "macOS Xcode 10.2"
       os: osx
       osx_image: xcode10.2
       language: generic
       sudo: required
-      install: gem install xcpretty-travis-formatter
+      install: 
+        - gem install xcpretty-travis-formatter
+        - xcodebuild test -scheme FootlessParser | xcpretty -f `xcpretty-travis-formatter`
+        - pod repo update --silent; pod lib lint --allow-warnings
 
 script:
   - swift --version
   - swift package reset
   - swift build
   - swift test
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild test -scheme FootlessParser | xcpretty -f `xcpretty-travis-formatter` && exit ${PIPESTATUS[0]}; pod repo update --silent; pod lib lint --allow-warnings; fi
