@@ -188,10 +188,10 @@
 				LastUpgradeCheck = 9999;
 				TargetAttributes = {
 					OBJ_30 = {
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 					};
 					OBJ_43 = {
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -200,6 +200,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = OBJ_5;
@@ -292,6 +293,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = FootlessParser;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = FootlessParser;
 			};
 			name = Debug;
@@ -312,6 +314,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = FootlessParser;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = FootlessParser;
 			};
 			name = Release;
@@ -351,6 +354,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks @loader_path/../Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = FootlessParserTests;
 			};
 			name = Debug;
@@ -368,6 +372,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks @loader_path/../Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = FootlessParserTests;
 			};
 			name = Release;
