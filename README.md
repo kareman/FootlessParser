@@ -48,10 +48,10 @@ The general idea is to combine very simple parsers into more complex ones. So `c
 
 `function <^> parser1 <*> parser2` creates a new parser which first runs parser1\. If it succeeds it runs parser2\. If that also succeeds it passes both outputs to `function` and returns the result.
 
-The <*> operator requires its left parser to return a function and is normally used together with <^>. `function` must take 2 parameters of the correct types, and it must be [curried](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Declarations.html#//apple_ref/doc/uid/TP40014097-CH34-ID363), like this:
+The <*> operator requires its left parser to return a function and is normally used together with <^>. `function` must take 2 parameters of the correct types, and it must be curried, like this:
 
 ```swift
-func function (a:A)(b:B) -> C
+func function (a: A) -> (B) -> C
 ```
 
 This is because <*> returns the output of 2 parsers and it doesn't know what to do with them. If you want them returned in a tuple, an array or e.g. added together you can do so in the function before <^> .
@@ -97,9 +97,9 @@ let quote = "\"" as Character
 let newline = "\n" as Character
 
 let cell = char(quote) *> zeroOrMore(not(quote)) <* char(quote)
-    <|> zeroOrMore(noneOf([delimiter, newline]))
+	<|> zeroOrMore(noneOf([delimiter, newline]))
 
-let row = extend <^> cell <*> zeroOrMore( char(delimiter) *> cell ) <* char(newline)
+let row = extend <^> cell <*> zeroOrMore(char(delimiter) *> cell) <* char(newline)
 let csvparser = zeroOrMore(row)
 ```
 
@@ -125,23 +125,25 @@ do {
 ### Recursive expression
 
 ```swift
-func add (a:Int)(b:Int) -> Int { return a + b }
-func multiply (a:Int)(b:Int) -> Int { return a * b }
+func add(a: Int) -> (Int) -> Int { return { b in a + b } }
+func multiply(a: Int) -> (Int) -> Int { return { b in a + b } }
 
-let nr = {Int($0)!} <^> oneOrMore(oneOf("0123456789"))
+let nr = { Int($0)! } <^> oneOrMore(oneOf("0123456789"))
 
 var expression: Parser<Character, Int>!
 
-let factor = nr <|> lazy( char("(") *> expression <* char(")") )
+let factor = nr <|> lazy (char("(") *> expression <* char(")"))
 
 var term: Parser<Character, Int>!
-term = lazy( multiply <^> factor <* char("*") <*> term <|> factor )
+term = lazy (multiply <^> factor <* char("*") <*> term <|> factor)
 
-expression = lazy( add <^> term <* char("+") <*> expression <|> term )
+expression = lazy (add <^> term <* char("+") <*> expression <|> term)
 
 do {
-    let result = try parse(expression, "(1+(2+4))+3")
-} catch { }
+	let result = try parse(expression, "(1+(2+4))+3")
+} catch {
+
+}
 ```
 
 `expression` parses input like `"12"`, `"1+2+3"`, `"(1+2)"`, `"12*3+1"` and `"12*(3+1)"` and returns the result as an Int.
