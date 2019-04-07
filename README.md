@@ -6,7 +6,7 @@ Swift 5, 4.2 and 4.1 | [Swift 2.2+](https://github.com/kareman/FootlessParser/tr
 
 FootlessParser is a simple and pretty naive implementation of a parser combinator in Swift. It enables infinite lookahead, non-ambiguous parsing with error reporting.
 
-There is [a series of blog posts about the development](https://nottoobadsoftware.com/blog/footlessparser/) and [documentation from the source code](http://kareman.github.io/FootlessParser/).
+There is [a series of blog posts about the development](https://nottoobadsoftware.com/blog/footlessparser/) and [documentation from the source code](https://kareman.github.io/FootlessParser/).
 
 ## Introduction
 
@@ -36,7 +36,7 @@ Most often text, but can also be an array or really any collection of anything, 
 
 ## Parsers
 
-The general idea is to combine very simple parsers into more complex ones. So `char("a")` creates a parser which checks if the next token from the input is an "a". If it is it returns that "a", otherwise it returns an error. You can then use operators and functions like `zeroOrMore` and `optional` to create ever more complex parsers. For more check out [the full list of functions](http://kareman.github.io/FootlessParser/Functions.html).
+The general idea is to combine very simple parsers into more complex ones. So `char("a")` creates a parser which checks if the next token from the input is an "a". If it is it returns that "a", otherwise it returns an error. You can then use operators and functions like `zeroOrMore` and `optional` to create ever more complex parsers. For more check out [the full list of functions](https://kareman.github.io/FootlessParser/Functions.html).
 
 ## Operators
 
@@ -89,7 +89,7 @@ This does the same as the flatmap functions in the Swift Standard Library. It cr
 - [oleander/BitBarParser](https://github.com/oleander/BitBarParser/blob/master/Parser/Parser/Parser.swift) - lets you put the output from any script/program in your Mac OS X Menu Bar.
 - [banjun/NorthLayout](https://github.com/banjun/NorthLayout/blob/master/Classes/VFLSyntax.swift) - autolayout views in code.
 
-### [CSV](http://www.computerhope.com/jargon/c/csv.htm) parser
+### [CSV](https://www.computerhope.com/jargon/c/csv.htm) parser
 
 ```swift
 let delimiter = "," as Character
@@ -158,7 +158,7 @@ github "kareman/FootlessParser"
 
 Then run `carthage update`.
 
-Follow the current instructions in [Carthage's README][carthage-installation] for up to date installation instructions.
+Then follow the installation instructions in [Carthage's README][carthage-installation].
 
 ### Using [CocoaPods](https://cocoapods.org/)
 
