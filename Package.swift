@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
 	name: "FootlessParser",
 	products: [
-		.library(name: "FootlessParser",	targets: ["FootlessParser"]),
+		.library(name: "FootlessParser", targets: ["FootlessParser"]),
 		],
 	targets: [
 		.target(name: "FootlessParser"),
