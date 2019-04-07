@@ -53,6 +53,10 @@ matrix:
       install: 
         - gem install xcpretty-travis-formatter
       script:
+        - swift --version
+        - swift package reset
+        - swift build
+        - swift test
         - xcodebuild test -scheme FootlessParser | xcpretty -f `xcpretty-travis-formatter`
         - pod repo update --silent; pod lib lint --allow-warnings
 
